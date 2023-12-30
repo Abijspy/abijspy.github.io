@@ -34,12 +34,39 @@
 <body>
 
     <h1>Thank You for Reaching Out!</h1>
-    
-   <p>I will be contacting you as soon as I saw your message</p>
+
+    <img id="thankYouImage" src="/thank-you-image.png" alt="Thank You Image">
+
+    <h3 id="message">We Appreciate Your Interest</h3>
+
+    <p>
+        Thank you for taking the time to connect with us. Your message has been received, and we will get back to you as soon as possible. In the meantime, feel free to explore more of our work on the <a href="https://abijspy.github.io/">portfolio page</a>.
+    </p>
+
+    <h3>What's Next?</h3>
+
+    <ol>
+        <li><strong>Stay Connected:</strong> Follow us on <a href="">social media</a> for updates and more creative content.</li>
+        <li><strong>Explore Our Work:</strong> Check out our latest projects on the <a href="https://abijspy.github.io/">portfolio page</a>.</li>
+        <li><strong>Learn More About Us:</strong> Visit the <a href="">about page</a> to discover our story and values.</li>
+    </ol>
+
    
 
+    <p id="closingMessage">Thank you once again for considering us. I will be always looking forward for the opportunity to connect further.</p>
+
     <p>Best regards,<br>
-    Abishek Prabakaran R<br>
-    
+    <span id="yourName">Abishek Prabakaran Ramkumar</span><br>
+    <span id="yourPortfolio">Vist Again My Portfolio Website</span></p>
+
+    <script>
+        // Replace placeholder content with actual data
+        document.getElementById("yourName").innerText = "Abishek Prabakaran Ramkumar";
+        document.getElementById("yourPortfolio").innerHTML = '<a href="https://abijspy.github.io/">Vist Again My Portfolio Websit</a>';
+        document.getElementById("thankYouImage").src = "/thank-you-image.png";
+        document.getElementById("message").innerText = "Your message has been received, and we will get back to you as soon as possible.";
+        document.getElementById("closingMessage").innerText = "hank you once again for considering us. I will be always looking forward for the opportunity to connect further.";
+    </script>
+
 </body>
 </html>
