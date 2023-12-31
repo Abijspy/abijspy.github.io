@@ -10,13 +10,19 @@
 		<link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
 		<link rel="manifest" href="favicon/site.webmanifest">
-		
+		<style> 
+		.prevent-select {
+ 		-webkit-user-select: none; /* Safari */
+  		-ms-user-select: none; /* IE 10 and IE 11 */
+  		user-select: none; /* Standard syntax */
+		}
+		</style>
 		<!-- Bootstrap CSS -->
   		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   		<!-- Font Awesome CSS -->
   		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 	</head>
-	<body>
+	<body class="prevent-select">
 
 		<!-- Wrapper -->
 			<div id="wrapper" class="fade-in">
