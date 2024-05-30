@@ -23,7 +23,7 @@
   		<link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
 	</head>
 	<body class="prevent-select">
-			<i class="fa fa-moon"></i>
+			
 		<!-- Wrapper -->
 			<div id="wrapper" class="fade-in">
 
@@ -47,6 +47,7 @@
 							<li class="active">My Portfolio</li>
 						</ul>
 						<ul class="icons">
+							<i class="fa fa-moon"></i>
 							<li><a href="https://www.facebook.com/abishek.r.545/" class="fa-brands fa-facebook fa-shake"><span class="label"></span></a></li>
 							<li><a href="https://www.x.com/abishekprabaka2" class="fa-brands fa-x-twitter fa-shake"><span class="label"></span></a></li>
 							<li><a href="https://www.instagram.com/abishek_prabakaran_r/" class="fa-brands fa-instagram fa-shake"><span class="label"></span></a></li>
@@ -213,6 +214,19 @@ themeToggle.addEventListener('click', () => {
   themeToggle.classList.toggle('fa-sun');
   themeToggle.classList.toggle('fa-moon');
 });
+
+.dark-theme {
+  background-color: #333;
+  color: #fff;
+}
+
+.dark-theme .fa-moon {
+  display: none;
+}
+
+.dark-theme .fa-sun {
+  display: block;
+}
 				
    </script>
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
