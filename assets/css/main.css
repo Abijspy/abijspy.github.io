@@ -3859,11 +3859,13 @@ input, select, textarea {
 			}
 
 			#main > .posts > article {
-				border-color: black;
+				border-color: #000000;
 				border-left-width: 2px;
 				border-style: solid;
 				border-top-width: 2px;
 				text-align: center;
+				color-bg: #000000; /* default background color */
+  				color-fg: #ffffff; /* default foreground color */
 			}
 
 				#main > .posts > article > :last-child {
