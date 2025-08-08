@@ -1,136 +1,177 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<title>Project 4</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		<link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
-		<link rel="manifest" href="favicon/site.webmanifest">
-		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6585175449792244"
-     crossorigin="anonymous"></script>
-	</head>
-	<body class="is-preload" oncontextmenu = "return false" onmousedown="return false" onselectstart="return false">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Smart Student Management System — Abishek R</title>
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+  <!-- FontAwesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
 
-				<!-- Header -->
-					<header id="header">
-						<a class="logo">Intro</a>
-					</header>
+  <style>
+  :root{
+    --bg-color:#0b1220; --text-color:#e6eef6; --card-bg:#111318;
+    --accent-color:#4dabf7; --nav-bg:#0f1116; --bg:#071026;
+    --text:var(--text-color); --card:var(--card-bg);
+    --muted:#9aa5b1; --accent:var(--accent-color);
+    --glass-border:rgba(255,255,255,0.06);
+  }
+  [data-theme="light"]{
+    --bg-color:#f6f8fb; --text-color:#04202a; --card-bg:rgba(255,255,255,0.9);
+    --accent-color:#0077b6; --nav-bg:#ffffff; --bg:#f6f8fb;
+    --text:#04202a; --card:rgba(255,255,255,0.9);
+    --muted:#44505a; --accent:#0077b6;
+    --glass-border:rgba(0,0,0,0.06);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;font-family:"Poppins",system-ui,Segoe UI,Roboto,Arial;-webkit-font-smoothing:antialiased}
+  body{
+    background:linear-gradient(180deg,var(--bg),var(--bg-color)80%);
+    color:var(--text);transition:background 300ms ease,color 300ms ease;
+  }
+  a{color:inherit;text-decoration:none}
+  .container{max-width:1100px;margin:0 auto;padding:28px 20px}
 
-				<!-- Nav -->
-					<nav id="nav">
-						<ul class="links">	
-							<li class="active"><a href="project4.html">Project 4</a></li>
-						</ul>
-						<ul class="icons">
-							<li><a href="https://www.x.com/abishekprabaka2" class="fa-brands fa-x-twitter fa-shake"><span class="label"></span></a></li>
-							<li><a href="https://www.reddit.com/user/Abishekr01/" class="fa-brands fa-reddit-alien fa-shake"><span class="label"></span></a></li>
-							<li><a href="https://www.linkedin.com/in/abishek-prabakaran-ramkumar/" class="fa-brands fa-linkedin fa-shake"><span class="label"></span></a></li>
-							<li><a href="https://github.com/Abijspy" class="fa-brands fa-github fa-shake"><span class="label"></span></a></li>
-							<li><a href="https://www.researchgate.net/profile/Abishek-Prabakaran-Ramkumar" class="fa-brands fa-researchgate fa-shake"><span class="label"><span class="label"></span></a></li>
-							<li><a href="https://scholar.google.com/citations?hl=en&user=xMhP6tgAAAAJ" class="fa-brands fa-google-scholar fa-shake"><span class="label"></span></a></li>
-							<li><a href="https://www.youtube.com/channel/UCuLX4A09OKyq7HsbUzjGMtg" class="fa-brands fa-youtube fa-shake"><span class="label"></span></a></li>
-							<li><a href="https://orcid.org/0000-0003-0592-2146" class="fa-brands fa-orcid fa-shake"><span class="label"></span></a></li>
-							<li><a href="https://www.hackerrank.com/reachabishekr" class="fa-brands fa-hackerrank fa-shake"><span class="label"></span></a></li>
-						</ul>
-					</nav>
+  /* NAV */
+  nav.sticky{
+    position:sticky;top:12px;z-index:999;backdrop-filter:blur(8px);
+    background:rgba(255,255,255,0.02);border-radius:14px;margin:10px auto;
+    padding:12px 18px;border:1px solid var(--glass-border);
+    width:calc(100% - 40px);
+  }
+  nav .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.05rem}
+  .logo i{background:linear-gradient(90deg,var(--accent),#6c63ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .breadcrumb{font-size:0.95rem;color:var(--muted)}
+  .breadcrumb a{color:var(--muted);font-weight:600}
+  .breadcrumb a:hover{color:var(--accent)}
+  .theme-toggle{cursor:pointer;display:inline-flex;align-items:center;gap:10px;
+    padding:8px 12px;border-radius:10px;border:1px solid var(--glass-border);background:var(--card)}
 
-				<!-- Main -->
-					<div id="main">
+  /* HERO */
+  header.hero{padding:36px 0 10px;display:flex;gap:18px;align-items:flex-start}
+  .hero-left{flex:1}
+  .hero-right{width:320px;max-width:38%}
+  .project-card{background:var(--card);border-radius:12px;padding:16px;border:1px solid var(--glass-border)}
 
-						<!-- Post -->
-							<section class="post">
-								<header class="major">
-									<h1>Smart Student management system</h1>
-									<p>Currently, we keep records on paper, but our student information system will be created and put into place to replace them, through a secure and better online user interface that has been applied properly and well. 
-										The admin will have direct access to all aspects of a student's academic achievements, student data, notes, and numerous student activities. The college administrator manages the cloud servers where all the data is stored, ensuring the highest level of security
-										</p>
-								</header>
-								<ul><li><b>Technologies that we used for front-end development:</b> HTML, CSS</li>
-									<li><b>Technologies that we used for back-end development:</b> JavaScript, Python, Django(framework)</li>
-									<li><b>Technologies that we used for server-side development:</b> SQLite</li>
-									<li><b>Modules we used for this project: </b>pip, regex, Django, db-sqlite3, pyflakes, etc.</li>
-								</ul>
-									<p>First, With the help of front-end tools like HTML and CSS, we created a login page for our project. Then we used Python to develop back-end structure along with the Django framework. SQLite database will store the students and faculty information. Finally, the admin will login and he has the complete access to add or remove the data. 
-									</p>
-                                <p>In our project, we have added the students and faculty information using SQLite. The admin is the responsible person to display the complete student data like academics, marks, grades, attendance, etc…
-									In the sub system, we added some of the key modules like academics, attendance, etc
-									</p>
-								<p>	1.	<b>Academics:</b> In this section, we added the academic terms as terms 1,2,3, etc.<br>
-									2.	<b>Attendance:</b> Here, the attendance of a particular person will be displayed. Based on this attendance, he or she will be eligible for exams.<br>
-									3.	<b>Marks and Grades:</b> In these sections, the student obtained marks and grades will be calculated and shown by the administrator.<br>
-									4.	<b>Payments:</b> Here, parents are able to get the access to pay the particular student’s academic fees. Later, the administrator will be able to show the bills.<br>
-								</p>
-                                				<b>Home Page:</b>
-								<div class="image main"><img src="images/project4/homepage.jpg" width="300" height="500"></div>
-								<b>Add Student:</b>
-								<div class="image main"><img src="images/project4/studentlist.jpg" width="300" height="500"></div>
-								<b>Add Faculty</b>
-								<div class="image main"><img src="images/project4/facultylist.jpg" width="300" height="500"></div>
-                                <p>Hence, we are here to conclude our project. This project was designed for the sake of storing useful information about the student and faculty in the form of a database, and then linking it with the help of backend tools like Django and Javascript technologies. Finally, the combination of frontend and backend along with the server-side management helps us to fulfill the dreams of this project and thus we made this project a full-stack Student Management System.</p>
-								<br>
-								<p>Youtube Video</b></p>
-								<br>
-								<iframe width="560" height="315" src="https://www.youtube.com/embed/uFsCrUkC0Tg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-								<br>
-								<br>
-									<ul class="actions special">
-										<li><a href="https://abijspy.github.io/" class="button">Back to My Portfolio</a></li>
-										<li><a href="https://github.com/Abijspy/Django_Student_Management_System" class="button">Github Link</a></li>
-                                        					<li><a href="https://www.researchgate.net/publication/372767286_Student_Management_System_Capstone_Project" class="button">ResearchGate Link</a></li>
-									</ul>
-							</section>
+  /* GALLERY */
+  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:14px}
+  .gallery .img-card{border-radius:12px;overflow:hidden;border:1px solid var(--glass-border)}
+  .gallery img{width:100%;height:220px;object-fit:cover}
+  .gallery img.full-size {height:auto;max-height:none;object-fit:contain;background:var(--card)}
 
-					</div>
+  /* VIDEO */
+  .video-wrap{margin-top:18px;border-radius:12px;overflow:hidden;border:1px solid var(--glass-border);padding:12px;background:var(--card)}
+  .video-wrap iframe{width:100%;height:420px;border:0;border-radius:8px}
 
-				<!-- Footer -->
-					<footer id="footer">
-						<section class="split contact">
-							
-							<section>
-								<h3>Social</h3>
-								<ul class="icons alt">
-								<li><a href="https://www.x.com/abishekprabaka2" class="fa-brands fa-x-twitter fa-shake"><span class="label"></span></a></li>
-								<li><a href="https://www.reddit.com/user/Abishekr01/" class="fa-brands fa-reddit-alien fa-shake"><span class="label"></span></a></li>
-								<li><a href="https://www.linkedin.com/in/abishek-prabakaran-ramkumar/" class="fa-brands fa-linkedin fa-shake"><span class="label"></span></a></li>
-								<li><a href="https://github.com/Abijspy" class="fa-brands fa-github fa-shake"><span class="label"></span></a></li>
-								<li><a href="https://www.researchgate.net/profile/Abishek-Prabakaran-Ramkumar" class="fa-brands fa-researchgate fa-shake"><span class="label"><span class="label"></span></a></li>
-								<li><a href="https://scholar.google.com/citations?hl=en&user=xMhP6tgAAAAJ" class="fa-brands fa-google-scholar fa-shake"><span class="label"></span></a></li>
-								<li><a href="https://www.youtube.com/channel/UCuLX4A09OKyq7HsbUzjGMtg" class="fa-brands fa-youtube fa-shake"><span class="label"></span></a></li>
-								<li><a href="https://orcid.org/0000-0003-0592-2146" class="fa-brands fa-orcid fa-shake"><span class="label"></span></a></li>
-								<li><a href="https://www.hackerrank.com/reachabishekr" class="fa-brands fa-hackerrank fa-shake"><span class="label"></span></a></li>
-							</section>
-						</section>
-					</footer>
+  /* BUTTONS */
+  .actions{display:flex;gap:12px;margin-top:14px;flex-wrap:wrap}
+  .btn{background:linear-gradient(90deg,var(--accent),#6c63ff);color:white;
+    padding:10px 14px;border-radius:10px;font-weight:700;display:inline-flex;gap:8px;align-items:center}
+  .btn.ghost{background:transparent;border:1px solid var(--glass-border);color:var(--muted)}
 
-				
+  article{margin-top:22px;line-height:1.65}
+  article p{margin:0 0 12px}
+  ul{margin-left:1.15rem}
 
-			</div>
+  footer{padding:26px 0 80px;color:var(--muted)}
+  @media(max-width:980px){.hero-right{display:none} .video-wrap iframe{height:320px}}
+  @media(max-width:560px){.gallery img{height:160px} .video-wrap iframe{height:220px}}
+  </style>
+</head>
+<body>
+  <nav class="sticky">
+    <div class="container nav-inner">
+      <div class="logo"><i class="fa-solid fa-graduation-cap"></i> Abishek R</div>
+      <div style="display:flex;align-items:center;gap:14px;">
+        <div class="breadcrumb"><a href="index.html">Home</a> <span style="color:var(--muted)">/ Smart Student Management</span></div>
+        <button class="theme-toggle" id="theme-toggle"><i class="fa-regular fa-moon" id="theme-icon"></i></button>
+      </div>
+    </div>
+  </nav>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-			<script>
- 			function disableClick(){
- 			document.onclick=function(event){
- 			if (event.button == 2) {
- 			alert('Right Click Message');
- 			return false;
- 			}
- 			}
- 			}
- 			</script>
+  <main class="container">
+    <header class="hero">
+      <div class="hero-left">
+        <h1>Smart Student Management System</h1>
+        <div class="meta">By <strong>Abishek Prabakaran R</strong> • Full-Stack Project</div>
+        <p style="max-width:70ch;color:var(--muted)">
+          A secure and efficient system to manage student records, academic performance, attendance, and payments — replacing traditional paper-based records with a modern, centralized, and accessible online platform.
+        </p>
+        <div class="actions">
+          <a class="btn" href="https://github.com/Abijspy/Django_Student_Management_System" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+          <a class="btn" href="https://www.researchgate.net/publication/372767286_Student_Management_System_Capstone_Project" target="_blank"><i class="fa-solid fa-flask"></i> ResearchGate</a>
+          <a class="btn ghost" href="https://abijspy.github.io/"><i class="fa-solid fa-arrow-left"></i> Portfolio</a>
+        </div>
+      </div>
+      <aside class="hero-right">
+        <div class="project-card">
+          <h3>Technologies Used</h3>
+          <ul style="color:var(--muted);margin:0;padding-left:1rem;">
+            <li><b>Frontend:</b> HTML, CSS</li>
+            <li><b>Backend:</b> Python, Django, JavaScript</li>
+            <li><b>Database:</b> SQLite</li>
+            <li><b>Modules:</b> pip, regex, pyflakes, db-sqlite3</li>
+          </ul>
+        </div>
+      </aside>
+    </header>
 
-	</body>
+    <section>
+      <h2>Gallery</h2>
+      <div class="gallery">
+        <figure class="img-card"><img src="images/project4/homepage.jpg" alt="Home Page"></figure>
+        <figure class="img-card"><img src="images/project4/studentlist.jpg" alt="Add Student"></figure>
+        <figure class="img-card"><img src="images/project4/facultylist.jpg" alt="Add Faculty"></figure>
+      </div>
+    </section>
+
+    <section id="video">
+      <h2>Project Demo</h2>
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed/uFsCrUkC0Tg" title="Student Management System Demo" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <article>
+      <h2>Project Overview</h2>
+      <p>The system provides the administrator with complete access to student academic records, attendance, grades, and payments. Data is stored in a secure cloud-managed SQLite database, ensuring both privacy and accessibility.</p>
+      <p>Key modules include:</p>
+      <ul>
+        <li><b>Academics:</b> Track academic terms, courses, and performance.</li>
+        <li><b>Attendance:</b> Record and monitor attendance to determine exam eligibility.</li>
+        <li><b>Marks & Grades:</b> Automatically calculate and display results.</li>
+        <li><b>Payments:</b> Enable parents to pay academic fees online with generated bills.</li>
+      </ul>
+      <p>By integrating frontend and backend technologies, the system offers a streamlined, full-stack solution for student and faculty data management.</p>
+    </article>
+
+    <footer>
+      <p>© Abishek R</p>
+    </footer>
+  </main>
+
+  <script>
+  const THEME_KEY='abijspy_theme';
+  const themeToggleBtn=document.getElementById('theme-toggle');
+  const themeIcon=document.getElementById('theme-icon');
+  function setUI(theme){
+    document.documentElement.setAttribute('data-theme',theme);
+    themeIcon.className=theme==='dark'?'fa-regular fa-sun':'fa-regular fa-moon';
+  }
+  function applyTheme(theme){
+    setUI(theme);
+    localStorage.setItem(THEME_KEY,theme);
+  }
+  themeToggleBtn.addEventListener('click',()=>{
+    const cur=document.documentElement.getAttribute('data-theme');
+    applyTheme(cur==='dark'?'light':'dark');
+  });
+  (function initTheme(){
+    let saved=localStorage.getItem(THEME_KEY);
+    if(saved){applyTheme(saved);return;}
+    applyTheme(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+  })();
+  </script>
+</body>
 </html>
