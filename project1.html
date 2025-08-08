@@ -1,136 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chatbot Using Python - Abishek R</title>
-<link rel="stylesheet" href="styles.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <style>
 :root {
   --accent: #6c63ff;
+  --text: #1a1a1a;
+  --muted: #777;
+  --card: rgba(255,255,255,0.08);
+  --glass-border: rgba(255,255,255,0.1);
+  --bg: #f5f5f5;
+  --nav-bg: rgba(255,255,255,0.6);
+}
+[data-theme="dark"] {
+  --bg: #0e0e0e;
+  --text: #f5f5f5;
   --muted: #aaa;
-  --text: #fff;
-  --nav-bg: rgba(0,0,0,0.4);
   --card: rgba(255,255,255,0.05);
   --glass-border: rgba(255,255,255,0.1);
+  --nav-bg: rgba(0,0,0,0.4);
 }
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  background: #111;
+  background-color: var(--bg);
   color: var(--text);
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
   line-height: 1.6;
 }
-.container { max-width: 1100px; margin: auto; padding: 0 16px; }
+
+/* Navbar */
 nav.sticky {
-  position: sticky; top: 12px; z-index: 999; backdrop-filter: blur(8px);
+  position: sticky;
+  top: 12px;
+  z-index: 999;
+  backdrop-filter: blur(8px);
   background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  border-radius: 14px; margin: 10px auto; padding: 10px 16px;
-  border: 1px solid var(--glass-border); width: calc(100% - 40px);
+  border-radius: 14px;
+  margin: 10px auto;
+  padding: 10px 16px;
+  border: 1px solid var(--glass-border);
+  width: calc(100% - 40px);
 }
-nav .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.05rem; }
-.logo i { background: linear-gradient(90deg, var(--accent), #6c63ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.breadcrumb { font-size: 0.9rem; color: var(--muted); }
-.breadcrumb a { color: var(--accent); text-decoration: none; }
-.breadcrumb a:hover { text-decoration: underline; }
-.theme-toggle { cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
-  padding: 6px 10px; border-radius: 10px; border: 1px solid var(--glass-border);
-  background: var(--card); }
-.theme-toggle i { font-size: 1rem; }
-section { padding: 40px 0; }
-iframe { display: block; max-width: 100%; border-radius: 12px; margin: 20px auto; }
-.btn-link {
-  display: inline-block; padding: 10px 16px; margin: 8px 8px 0 0;
-  background: var(--accent); color: white; text-decoration: none;
-  border-radius: 8px; font-weight: bold; transition: 0.3s;
+nav .nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.btn-link:hover { background: #564de0; }
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+.logo i {
+  background: linear-gradient(90deg, var(--accent), #6c63ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.breadcrumb a {
+  color: var(--muted);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.92rem;
+}
+.breadcrumb a:hover {
+  color: var(--accent);
+}
+.theme-toggle {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--glass-border);
+  background: var(--card);
+}
+.theme-toggle i {
+  font-size: 1rem;
+}
+
+/* Content */
+.container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+}
+h1, h2, h3 {
+  color: var(--text);
+}
+iframe {
+  max-width: 100%;
+  border-radius: 10px;
+  margin: 20px 0;
+}
+.project-links a {
+  display: inline-block;
+  margin-right: 10px;
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+.project-links a:hover {
+  text-decoration: underline;
+}
 </style>
 </head>
 <body>
 
-<!-- Navbar -->
-<nav class="sticky" role="navigation" aria-label="Main navigation">
+<nav class="sticky" role="navigation">
   <div class="container nav-inner">
     <div class="logo"><i class="fa-solid fa-atom"></i> Abishek R</div>
-    <div style="display:flex; align-items:center; gap:12px">
-      <div class="breadcrumb"><a href="index.html">Home</a> / Chatbot Using Python</div>
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-        <i class="fa-regular fa-moon" id="theme-icon"></i>
-        <span id="theme-label" style="font-weight:600; font-size:.9rem; color:var(--muted)"></span>
-      </button>
-    </div>
+    <div class="breadcrumb"><a href="index.html"><i class="fa-solid fa-house"></i> Home</a> / Chatbot Using Python</div>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+      <i class="fa-regular fa-moon" id="theme-icon"></i>
+    </button>
   </div>
 </nav>
 
-<!-- Main Content -->
 <div class="container">
-  <section>
-    <h1>Chatbot Using Python</h1>
-    <p>This project demonstrates how to build a chatbot using Python. The chatbot can be used for answering COVID-19 related queries and providing information. The implementation uses NLP techniques and integrates with various datasets to improve accuracy.</p>
+  <h1>Chatbot Using Python</h1>
+  <p>This project demonstrates the creation of a simple chatbot in Python, designed specifically for answering queries about the Coronavirus. The bot utilizes Python libraries for natural language processing and pattern matching to respond accurately to user queries.</p>
+  
+  <iframe width="680" height="382" src="https://www.youtube.com/embed/vwU75MG0TaI" title="Chat Bot Using Python- Project Exhibition -1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-    <iframe width="680" height="382"
-      src="https://www.youtube.com/embed/vwU75MG0TaI"
-      title="Chat Bot Using Python- Project Exhibition -1" frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <h2>Project Overview</h2>
+  <p>The chatbot was built with Python and leverages a combination of NLP techniques to interpret and respond to user questions about COVID-19. It provides instant, accurate answers based on predefined datasets and responses.</p>
 
-    <p>
-      <a href="https://github.com/Abijspy/Chatbot-Using-python/" target="_blank" class="btn-link"><i class="fa-brands fa-github"></i> View Project on GitHub</a>
-      <a href="https://www.researchgate.net/publication/372767377_CHATBOT_USING_PYTHON_FOR_CORONA_VIRUS" target="_blank" class="btn-link"><i class="fa-solid fa-file-lines"></i> View on ResearchGate</a>
-    </p>
+  <h2>Features</h2>
+  <ul>
+    <li>Python-based backend</li>
+    <li>Natural language processing</li>
+    <li>COVID-19 specific knowledge base</li>
+    <li>Instant response time</li>
+  </ul>
 
-    <h2>Overview</h2>
-    <p>The chatbot was developed to assist users in retrieving relevant COVID-19 information efficiently. By leveraging Python libraries like NLTK and scikit-learn, the chatbot processes user queries and returns accurate responses.</p>
-
-    <h2>Features</h2>
-    <ul>
-      <li>Text-based interaction</li>
-      <li>COVID-19 dataset integration</li>
-      <li>Natural Language Processing</li>
-      <li>User-friendly interface</li>
-    </ul>
-
-    <h2>Technology Stack</h2>
-    <ul>
-      <li>Python</li>
-      <li>NLTK</li>
-      <li>scikit-learn</li>
-      <li>Flask (for deployment)</li>
-    </ul>
-  </section>
+  <h2>Links</h2>
+  <div class="project-links">
+    <a href="https://github.com/Abijspy/Chatbot-Using-python/" target="_blank"><i class="fa-brands fa-github"></i> GitHub Repo</a>
+    <a href="https://www.researchgate.net/publication/372767377_CHATBOT_USING_PYTHON_FOR_CORONA_VIRUS" target="_blank"><i class="fa-solid fa-book"></i> ResearchGate</a>
+  </div>
 </div>
 
 <script>
-const toggleBtn = document.getElementById('theme-toggle');
+// Theme toggle with localStorage sync
+const themeToggle = document.getElementById('theme-toggle');
 const themeIcon = document.getElementById('theme-icon');
-const themeLabel = document.getElementById('theme-label');
 
-function setTheme(dark) {
-  if (dark) {
-    document.body.style.background = "#111";
-    document.body.style.color = "#fff";
-    themeIcon.classList.remove('fa-sun');
-    themeIcon.classList.add('fa-moon');
-    themeLabel.textContent = "Dark";
-  } else {
-    document.body.style.background = "#fff";
-    document.body.style.color = "#000";
-    themeIcon.classList.remove('fa-moon');
-    themeIcon.classList.add('fa-sun');
-    themeLabel.textContent = "Light";
-  }
+function setTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+  themeIcon.className = theme === 'dark' ? 'fa-regular fa-sun' : 'fa-regular fa-moon';
 }
 
-let darkMode = true;
-setTheme(darkMode);
-
-toggleBtn.addEventListener('click', () => {
-  darkMode = !darkMode;
-  setTheme(darkMode);
+themeToggle.addEventListener('click', () => {
+  const currentTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  setTheme(currentTheme);
 });
+
+(function () {
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  setTheme(savedTheme);
+})();
 </script>
 
 </body>
