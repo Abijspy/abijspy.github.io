@@ -2,145 +2,224 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Chat Bot Using Python</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat Bot Using Python - Abishek R</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
   <style>
-    /* --- Your CSS pasted here --- */
-    :root{
-      --bg-color: #0b1220;
-      --text-color: #e6eef6;
-      --card-bg: #111318;
-      --accent-color: #4dabf7;
-      --nav-bg: #0f1116;
-      --bg: #071026;
-      --text: var(--text-color);
-      --card: var(--card-bg);
-      --muted: #9aa5b1;
-      --accent: var(--accent-color);
-      --glass-border: rgba(255,255,255,0.06);
+    :root {
+      --accent: #6c63ff;
+      --muted: #a0a0a0;
+      --text: #fff;
+      --glass-border: rgba(255,255,255,0.1);
+      --card: rgba(255,255,255,0.02);
+      --nav-bg: rgba(15, 15, 15, 0.8);
     }
-    body.light{
-      --bg-color: #f6f8fb;
-      --text-color: #04202a;
-      --card-bg: rgba(255,255,255,0.9);
-      --accent-color: #0077b6;
-      --nav-bg: #ffffff;
-      --bg: #f6f8fb;
-      --text: #04202a;
-      --card: rgba(255,255,255,0.9);
-      --muted: #44505a;
-      --accent: #0077b6;
-      --glass-border: rgba(0,0,0,0.06);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%; margin:0; font-family:"Poppins",system-ui,Segoe UI,Roboto,Arial; scroll-behavior:smooth; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale}
-    body{
-      background: linear-gradient(180deg, var(--bg), var(--bg-color) 80%);
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0d0d0d;
       color: var(--text);
-      transition: background 300ms ease, color 300ms ease;
+      line-height: 1.6;
     }
-    a{color:inherit; text-decoration:none}
-    .container{max-width:1100px; margin:0 auto; padding:36px 20px}
+
     nav.sticky {
-      position:sticky; top:12px; z-index:999; backdrop-filter: blur(8px);
+      position: sticky;
+      top: 12px;
+      z-index: 999;
+      backdrop-filter: blur(8px);
       background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-radius:14px; margin:10px auto; padding:10px 16px; border:1px solid var(--glass-border); width:calc(100% - 40px);
+      border-radius: 14px;
+      margin: 10px auto;
+      padding: 10px 16px;
+      border: 1px solid var(--glass-border);
+      width: calc(100% - 40px);
     }
-    nav .nav-inner{display:flex; align-items:center; justify-content:space-between; gap:12px}
-    .logo {display:flex; align-items:center; gap:10px; font-weight:700; font-size:1.05rem}
-    .logo i{background:linear-gradient(90deg,var(--accent), #6c63ff); -webkit-background-clip:text; background-clip:text; color:transparent}
-    .nav-links{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
-    .nav-links a{padding:8px 12px; border-radius:10px; font-weight:600; font-size:0.92rem; color:var(--muted)}
-    .nav-links a:hover{color:var(--text); background: rgba(255,255,255,0.03)}
-    nav { background-color: var(--nav-bg); box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); }
-    .theme-toggle{cursor:pointer; display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:10px; border:1px solid var(--glass-border); background:var(--card)}
-    .theme-toggle i{font-size:1rem}
-    .hero{padding:56px 0 36px;}
-    .hero h1{font-size:2.2rem; margin:0 0 10px}
-    .hero p{color:var(--muted); line-height:1.6}
-    .card{background:var(--card); border-radius:12px; padding:16px; border:1px solid var(--glass-border); transition:transform .18s}
-    .card h4{margin:0 0 8px}
-    .card p{margin:0; color:var(--muted)}
-    footer{padding:30px 0 80px; color:var(--muted)}
-    nav.sticky, .card {
-      backdrop-filter: blur(14px) saturate(140%);
-      -webkit-backdrop-filter: blur(14px) saturate(140%);
-      background: rgba(255, 255, 255, 0.06);
+    nav .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
     }
-    .card:hover { background: rgba(255, 255, 255, 0.12); transform: translateY(-6px) scale(1.02);}
-    iframe {border-radius:8px; max-width:100%;}
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+    .logo i {
+      background: linear-gradient(90deg, var(--accent), #6c63ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .nav-links {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .nav-links a:hover {
+      color: var(--text);
+      background: rgba(255,255,255,0.03);
+    }
+    .social-icons {
+      display: flex;
+      gap: 8px;
+    }
+    .social-icons a {
+      padding: 8px;
+      border-radius: 10px;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+    .social-icons a:hover {
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .theme-toggle {
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 10px;
+      border: 1px solid var(--glass-border);
+      background: var(--card);
+    }
+    .theme-toggle i {
+      font-size: 1rem;
+    }
+    .breadcrumb {
+      font-size: 0.9rem;
+      margin: 15px 20px;
+    }
+    .breadcrumb a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .breadcrumb span {
+      color: var(--muted);
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+    iframe {
+      display: block;
+      margin: 20px auto;
+      border-radius: 12px;
+    }
   </style>
 </head>
 <body>
 
   <!-- Navigation -->
-  <nav class="sticky">
-    <div class="nav-inner">
-      <div class="logo"><i>🤖</i> Chat Bot Project</div>
-      <div class="nav-links">
-        <a href="#">Home</a>
-        <a href="#about">About</a>
-        <a href="#demo">Demo</a>
-        <a href="#contact">Contact</a>
+  <nav class="sticky" role="navigation" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <div class="logo"><i class="fa-solid fa-atom"></i> Abishek R</div>
+
+      <div style="display:flex; align-items:center; gap:12px">
+        <div class="nav-links" id="nav-links">
+          <a href="index.html">Home</a>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#certificates">Certificates</a>
+          <a href="#internships">Internships</a>
+          <a href="#github-stats">GitHub</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <div class="social-icons">
+          <a href="https://x.com/abishekprabaka2" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://www.reddit.com/user/Abishekr01/" target="_blank"><i class="fa-brands fa-reddit-alien"></i></a>
+          <a href="https://www.linkedin.com/in/abishek-prabakaran-ramkumar/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="https://github.com/Abijspy" target="_blank"><i class="fa-brands fa-github"></i></a>
+        </div>
+
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <i class="fa-regular fa-moon" id="theme-icon"></i>
+          <span id="theme-label" style="font-weight:600; font-size:.9rem; color:var(--muted)"></span>
+        </button>
       </div>
-      <div class="theme-toggle" id="themeToggle"><i>🌓</i></div>
     </div>
   </nav>
 
-  <!-- Hero -->
-  <section class="hero container">
-    <h1>Chat Bot Using Python</h1>
-    <p><em>By Abishek Prabakaran R • Jan 2, 2025</em></p>
-    <p>This project is based on <strong>Tkinter</strong> for the GUI and uses a <strong>JSON file</strong> for the AI logic.</p>
-  </section>
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <a href="index.html">Home</a> <span>› Chat Bot Using Python</span>
+  </div>
 
   <!-- Content -->
-  <section id="about" class="container">
-    <div class="card">
-      <h4>Project Overview</h4>
-      <p>
-        We propose a system that functions as an application providing users with information about their present health.
-        The system determines what the user is inquiring about by retrieving the semantic meaning of the query.
-        That semantic text is then used as input for a pattern-matching algorithm.
-      </p>
-      <p>
-        The algorithm leverages pre-fed knowledge to generate a response. The interface presents two distinct formats: 
-        one rendered via a Python GUI, and another through a Python-based JSON output.
-      </p>
-    </div>
-  </section>
+  <div class="container">
+    <h1>Chat Bot Using Python</h1>
+    <p>In this project, I have created a simple Chat Bot using Python that responds to user queries. It demonstrates how Natural Language Processing (NLP) can be implemented in Python to create conversational agents.</p>
 
-  <!-- Demo -->
-  <section id="demo" class="container">
-    <div class="card">
-      <h4>Demo Output</h4>
-      <img src="YOUR_IMAGE_URL_HERE" alt="Chatbot GUI output" style="width:100%; border-radius:8px; margin-bottom:1rem;">
-      <p>Chatbot GUI displaying clear information of severe symptoms.</p>
-      <h4 style="margin-top:1.5rem;">Video Presentation</h4>
-      <iframe width="680" height="382" src="https://www.youtube.com/embed/vwU75MG0TaI" title="Chat Bot Using Python- Project Exhibition -1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
-  </section>
+    <h2>Video Demonstration</h2>
+    <iframe width="680" height="382" src="https://www.youtube.com/embed/vwU75MG0TaI" 
+      title="Chat Bot Using Python- Project Exhibition -1" frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+    </iframe>
 
-  <!-- Footer -->
-  <footer class="container">
-    <p>
-      <a href="GITHUB_PROJECT_LINK" class="btn">View on GitHub</a>
-      <a href="RESEARCH_GATE_LINK" class="btn">Research Article</a>
-    </p>
-  </footer>
+    <h2>Project Overview</h2>
+    <p>The chat bot is developed using Python libraries like <strong>NLTK</strong> and makes use of predefined patterns to respond to inputs. It simulates basic conversation and can be expanded to handle more complex queries.</p>
 
-  <!-- Theme Toggle Script -->
-  <script>
-    const toggle = document.getElementById('themeToggle');
-    toggle.addEventListener('click', () => {
-      document.body.classList.toggle('light');
-      localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
-    });
-    // Load saved theme
-    if(localStorage.getItem('theme') === 'light'){
-      document.body.classList.add('light');
-    }
-  </script>
+    <h2>Technologies Used</h2>
+    <ul>
+      <li>Python</li>
+      <li>NLTK Library</li>
+      <li>Regex for pattern matching</li>
+    </ul>
+
+    <h2>Features</h2>
+    <ul>
+      <li>Responds to basic user queries</li>
+      <li>Can be customized with additional patterns</li>
+      <li>Lightweight and easy to run</li>
+    </ul>
+
+    <h2>Source Code</h2>
+    <pre><code>
+import nltk
+from nltk.chat.util import Chat, reflections
+
+pairs = [
+    [
+        r"hi|hello|hey",
+        ["Hello!", "Hi there!", "Hey!"]
+    ],
+    [
+        r"how are you ?",
+        ["I'm doing fine, thank you!", "I'm good, thanks for asking!"]
+    ],
+    [
+        r"quit",
+        ["Bye! Take care.", "Goodbye!"]
+    ]
+]
+
+def chatbot():
+    print("Hi! I'm your chatbot. Type 'quit' to exit.")
+    chat = Chat(pairs, reflections)
+    chat.converse()
+
+if __name__ == "__main__":
+    chatbot()
+    </code></pre>
+  </div>
 
 </body>
 </html>
