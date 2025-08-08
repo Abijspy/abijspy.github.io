@@ -1,239 +1,496 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<title>Abishek Prabakaran R -- Portfolio</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		<link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
-		<link rel="manifest" href="favicon/site.webmanifest">
-		<style> 
-		.prevent-select {
- 		-webkit-user-select: none; /* Safari */
-  		-ms-user-select: none; /* IE 10 and IE 11 */
-  		user-select: none; /* Standard syntax */
-		}
-		</style>
-		<!-- Bootstrap CSS -->
-  		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  		<!-- Font Awesome CSS -->
-  		<link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
-	</head>
-	<body class="prevent-select">
-			
-		<!-- Wrapper -->
-			<div id="wrapper" class="fade-in">
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Abishek Prabakaran R — Portfolio</title>
 
-				<!-- Intro -->
-					<div id="intro">
-						<h1>My Portfolio</h1>
-						<p>A showcase of my projects and my abilities</p>
-						<ul class="actions">
-							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-						</ul>
-					</div>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-				<!-- Header -->
-					<header id="header">
-						<a class="logo">INTRO</a>
-					</header>
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
 
-				<!-- Nav -->
-					<nav id="nav">
-						<ul class="links">
-							
-						</ul>
-						<ul class="icons">
-							
-							
-							<li><a href="https://www.x.com/abishekprabaka2" class="fa-brands fa-x-twitter fa-shake"><span class="label"></span></a></li>
-							<li><a href="https://www.reddit.com/user/Abishekr01/" class="fa-brands fa-reddit-alien fa-shake"><span class="label"></span></a></li>
-							<li><a href="https://www.linkedin.com/in/abishek-prabakaran-ramkumar/" class="fa-brands fa-linkedin fa-shake"><span class="label"></span></a></li>
-							<li><a href="https://github.com/Abijspy" class="fa-brands fa-github fa-shake"><span class="label"></span></a></li>
-							<li><a href="https://www.researchgate.net/profile/Abishek-Prabakaran-Ramkumar" class="fa-brands fa-researchgate fa-shake"><span class="label"><span class="label"></span></a></li>
-							<li><a href="https://scholar.google.com/citations?hl=en&user=xMhP6tgAAAAJ" class="fa-brands fa-google-scholar fa-shake"><span class="label"></span></a></li>
-							<li><a href="https://www.youtube.com/channel/UCuLX4A09OKyq7HsbUzjGMtg" class="fa-brands fa-youtube fa-shake"><span class="label"></span></a></li>
-							<li><a href="https://orcid.org/0000-0003-0592-2146" class="fa-brands fa-orcid fa-shake"><span class="label"></span></a></li>
-							<li><a href="https://www.hackerrank.com/reachabishekr" class="fa-brands fa-hackerrank fa-shake"><span class="label"></span></a></li>
-						</ul>
-					</nav>
+  <!-- AOS for scroll animations -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-				<!-- Main -->
-					<div id="main">
+ <style>
+:root{
+  /* Dark theme (default) */
+  --bg-color: #0b1220;
+  --text-color: #e6eef6;
+  --card-bg: #111318;
+  --accent-color: #4dabf7;
+  --nav-bg: #0f1116;
 
-						<!-- Featured Post -->
-							<article class="post featured">
-								<header class="major">
-									<h2>My name is Abishek Prabakaran Ramkumar<br /></h2>
-									<p>I am a Btech Final Year Student Passinate about to learn new technologies like Data science,AI & ML</p>
-								</header>
-								
-								
-							</article>
+  /* legacy / helper names used elsewhere in your CSS */
+  --bg: #071026;
+  --text: var(--text-color);
+  --card: var(--card-bg);
+  --muted: #9aa5b1;
+  --accent: var(--accent-color);
+  --glass-border: rgba(255,255,255,0.06);
+}
 
-						<!-- Posts -->
-							<section class="posts">
-								<article>
-									<header>
-										
-										<h2>Project 1<br />
-										Chatbot-Using-Python</a></h2>
-									</header>
-									<a href="/project1.html" class="image fit"><img src="images\chatbot using pyhton.png" width="400" height="200" /></a>
-									<p>Public can use the ChatBot to query COVID-19 specific information like nearby hospitals, basic medicines to be used, provide information about emergency contact phone numbers, etc.,</p>
-									<ul class="actions special">
-										<li><a href="https://medium.com/@reachabishekr/chat-bot-using-python-8f6a09561436" class="button">More Info</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<h2>Project 2<br />
-										Facial Detection</a></h2>
-									</header>
-									<a href="/project2.html" class="image fit"><img src="images/Facial%20Expression.png" width="400" height="200"/></a>
-									<p>Detect the facial emotion and mapping this to the appropriate Emoji image using ML/AI algorithms. The project utilizes certain open-source projects to accomplish the goal.</p>
-									<ul class="actions special">
-										<li><a href="/project2.html" class="button">More Info</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<h2>Project 3<br />
-										Smart Water Management System</a></h2>
-									</header>
-									<a href="/project3.html" class="image fit"><img src="images/Smart Water Mangement System.png" alt="" /></a>
-									<p>The project demonstrates the smart water management in urban areas using IOT technology. The project supports TDS level detection, Leakage detection, Flow Measurement and Tank water level indication. Alongside, the project also shares procedures for effective rainwater harvesting and recycling of the Kitchen water. The treated water can be used for non-human consumable activities like gardening.</p>
-									<ul class="actions special">
-										<li><a href="project3.html" class="button">More info</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<h2>Project 4<br />
-										Smart Student Management System</a></h2>
-									</header>
-									<a href="project4.html" class="image fit"><img src="images/smart student management system.jpg" alt="" /></a>
-									<p>The project demonstrates the smart student management system full stack project using Full Stack. The technologies used HTML,CSS,JAVASCRIPT,SQLite & Background framework such as Python Django </p>
-									<ul class="actions special">
-										<li><a href="project4.html" class="button">More info</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<h2>Certificates</h2>
-									</header>
-									<li>NASSCOM Skill Up Future Skills AI Foundations</li>	
-									
-									<li>Problem Solving (Basic) from Hacker Rank</li>
-									
-									<li>Problem Solving (Intermediate) from Hacker Rank</li>
-									
-									<li>Python (Basic) from Hacker Rank</li>
-									
-									<li>SQL (Basic) from Hacker Rank</li>
-									
-									<li>SQL (Intermediate) from Hacker Rank</li>
-									
-									<li>AWS Cloud Practitioner Essentials</li>
-									
-									<li>Mirrar DoNext Full Stack Development Program</li>
-									
-									<li>CISCO NDG Linux Unhatched Certificate</li>
-									
-								</article>
-								<article>
-									<header>
-										<h2>Externship</h2>
-									</header>
-									<p><b>Verzeo LTD- SHAASTRA2020:(November 2019 - Febuary 2020)</b>
-									<li>Given a Women Clothing, the software shall suggest whether it had Good Rating or NotGiven the age-group, which product had sold more in E-commerce site.</li>
-									<li>Input: Data containing the reviews were given in CSV Data file.</li></p>
-									
-									<br>
-									<p><b>Mirrar DoNext Full Stack Development Program:(Febuary 2023 - March 2023)</b>
-									<li>Learned about client software like HTML,JS,JavaScript,Vue js and server software like PHP,Python,Node Js,Database Like MySQL,SQLite or MongoDB & Laravel</li></p>
-									
-								</article>
-							<article>
-								<header>
-									<h2>Github Stats, streaks & Thropies</h2>
-								</header>
-								<br><br>
-								<h2 align="center"> My Throphies </h3>
-								<br>
-								<p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=abijspy" alt="abijspy" /></a> </p>
+/* Light theme overrides applied by adding .light to <body> */
+body.light{
+  --bg-color: #f6f8fb;
+  --text-color: #04202a;
+  --card-bg: rgba(255,255,255,0.9);
+  --accent-color: #0077b6;
+  --nav-bg: #ffffff;
 
-								<h2 align="center"> My Stats </h3>
-								<br>
-								<p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=abijspy&show_icons=true&locale=en" alt="abijspy" /><img align="right" src="https://github-readme-stats.vercel.app/api/top-langs?username=abijspy&show_icons=true&locale=en&layout=compact" alt="abijspy" /></p>
-								<br>
-								<br>
-								<br>
-								<br>
-								<br>
-								<br>
-								<br>
-								<br>
-								<br>
-								
-								
-								<h2 align="center"> My Streak </h3>
-								<br>
-								<p align="center"><img src="https://github-readme-streak-stats.herokuapp.com/?user=abijspy&" alt="abijspy" /></p>
-							</article>	
-						<!-- Footer -->
-							<footer>
-								
-							</footer>
+  --bg: #f6f8fb;
+  --text: #04202a;
+  --card: rgba(255,255,255,0.9);
+  --muted: #44505a;
+  --accent: #0077b6;
+  --glass-border: rgba(0,0,0,0.06);
+}
 
-					</div>
+/* Base reset */
+*{box-sizing:border-box}
+html,body{height:100%; margin:0; font-family:"Poppins",system-ui,Segoe UI,Roboto,Arial; scroll-behavior:smooth; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale}
 
-				<!-- Footer -->
-					<footer id="footer">
-						<section class="split contact">
-							
-							<section>
-								<h3>Social</h3>
-								<ul class="icons alt">
-									
-									<li><a href="https://www.x.com/abishekprabaka2" class="fa-brands fa-x-twitter fa-shake"><span class="label"></span></a></li>
-									<li><a href="https://www.reddit.com/user/Abishekr01/" class="fa-brands fa-reddit-alien fa-shake"><span class="label"></span></a></li>
-									<li><a href="https://www.linkedin.com/in/abishek-prabakaran-ramkumar/" class="fa-brands fa-linkedin fa-shake"><span class="label"></span></a></li>
-									<li><a href="https://github.com/Abijspy" class="fa-brands fa-github fa-shake"><span class="label"></span></a></li>
-									<li><a href="https://www.researchgate.net/profile/Abishek-Prabakaran-Ramkumar" class="fa-brands fa-researchgate fa-shake"><span class="label"><span class="label"></span></a></li>
-									<li><a href="https://scholar.google.com/citations?hl=en&user=xMhP6tgAAAAJ" class="fa-brands fa-google-scholar fa-shake"><span class="label"></span></a></li>
-									<li><a href="https://www.youtube.com/channel/UCuLX4A09OKyq7HsbUzjGMtg" class="fa-brands fa-youtube fa-shake"><span class="label"></span></a></li>
-									<li><a href="https://orcid.org/0000-0003-0592-2146" class="fa-brands fa-orcid fa-shake"><span class="label"></span></a></li>
-									<li><a href="https://www.hackerrank.com/reachabishekr" class="fa-brands fa-hackerrank fa-shake"><span class="label"></span></a></li>
-									
-								</ul>
-							</section>
-						</section>
-					</footer>
-				
+/* Body background & text use the theme vars */
+body{
+  background: linear-gradient(180deg, var(--bg), var(--bg-color) 80%);
+  color: var(--text);
+  transition: background 300ms ease, color 300ms ease;
+}
 
-			</div>
-		
-	<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-			<script>
-      document.addEventListener("contextmenu", (event) => {
-         event.preventDefault();
+a{color:inherit}
+.container{max-width:1100px; margin:0 auto; padding:36px 20px}
+
+/* NAV */
+nav.sticky {
+  position:sticky; top:12px; z-index:999; backdrop-filter: blur(8px);
+  background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius:14px; margin:10px auto; padding:10px 16px; border:1px solid var(--glass-border); width:calc(100% - 40px);
+}
+nav .nav-inner{display:flex; align-items:center; justify-content:space-between; gap:12px}
+.logo {display:flex; align-items:center; gap:10px; font-weight:700; font-size:1.05rem}
+.logo i{background:linear-gradient(90deg,var(--accent), #6c63ff); -webkit-background-clip:text; background-clip:text; color:transparent}
+.nav-links{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+.nav-links a{padding:8px 12px; border-radius:10px; font-weight:600; font-size:0.92rem; color:var(--muted)}
+.nav-links a:hover{color:var(--text); background: rgba(255,255,255,0.03)}
+.social-icons{display:flex; gap:8px}
+.social-icons a{padding:8px; border-radius:10px; color:var(--muted); font-size:1.05rem}
+.social-icons a:hover{color:var(--accent); transform:translateY(-2px)}
+nav { background-color: var(--nav-bg); box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); }
+
+/* theme toggle */
+.theme-toggle{cursor:pointer; display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:10px; border:1px solid var(--glass-border); background:var(--card)}
+.theme-toggle i{font-size:1rem}
+
+/* Hero */
+.hero{padding:56px 0 36px; display:grid; grid-template-columns: 1fr 360px; gap:28px; align-items:center}
+.hero h1{font-size:2.2rem; margin:0 0 10px}
+.hero p{color:var(--muted); line-height:1.6}
+.cta {margin-top:18px; display:flex; gap:12px; flex-wrap:wrap}
+.btn{background:linear-gradient(90deg,var(--accent), #6c63ff); color:white; padding:10px 16px; border-radius:12px; font-weight:600; text-decoration:none}
+.btn.ghost{background:transparent; border:1px solid var(--glass-border); color:var(--text)}
+
+/* profile card */
+.profile-card{background:var(--card); border-radius:14px; padding:20px; border:1px solid var(--glass-border); backdrop-filter: blur(8px); text-align:center}
+.profile-card img{width:110px; height:110px; object-fit:cover; border-radius:50%; border:2px solid rgba(255,255,255,0.06)}
+.profile-card h3{margin:10px 0 4px}
+.profile-card small{color:var(--muted)}
+
+/* project card */
+.project-card {
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+.project-card:hover { transform: translateY(-5px); }
+.project-card img { width: 100%; height: auto; border-radius: 10px 10px 0 0; }
+
+/* Buttons */
+.button, .btn {
+  background-color: var(--accent-color);
+  color: #fff;
+  border: none;
+  padding: 0.6em 1.2em;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: filter 0.2s ease, transform 0.12s ease;
+}
+.button:hover, .btn:hover { filter:brightness(0.92); transform: translateY(-1px); }
+
+/* Sections */
+section {padding:48px 0}
+section .section-head{display:flex; align-items:center; gap:12px; margin-bottom:18px}
+section h2{margin:0; font-size:1.25rem}
+section p.lead{color:var(--muted); margin:6px 0 18px}
+
+/* Skills */
+.skills-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:14px}
+.skill{background:var(--card); border-radius:12px; padding:14px; display:flex; gap:10px; align-items:center; border:1px solid var(--glass-border)}
+.skill i{font-size:1.6rem; width:36px; text-align:center}
+.skill .name{font-weight:600; color:var(--text)}
+
+/* Projects grid */
+.projects-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px}
+.project-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:12px; overflow:hidden; border:1px solid var(--glass-border); transition:transform .28s ease, box-shadow .28s ease; display:flex; flex-direction:column}
+.project-card:hover{transform:translateY(-8px); box-shadow:0 18px 40px rgba(2,6,23,0.6)}
+.project-card img{width:100%; height:170px; object-fit:cover; display:block}
+.project-body{padding:14px; display:flex; flex-direction:column; gap:10px; flex:1}
+.project-body h3{margin:0; font-size:1.05rem}
+.project-body p{margin:0; color:var(--muted); font-size:0.95rem}
+.tech-icons{display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-top:8px}
+.tech-icons i{background:rgba(255,255,255,0.02); padding:6px 8px; border-radius:8px; font-size:0.92rem; color:var(--muted)}
+.project-actions{display:flex; gap:10px; margin-top:auto}
+.project-actions a{align-self:flex-end}
+
+/* Certificates & internships */
+.cards-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px}
+.card{background:var(--card); border-radius:12px; padding:16px; border:1px solid var(--glass-border); transition:transform .18s}
+.card h4{margin:0 0 8px}
+.card p{margin:0; color:var(--muted)}
+
+/* GitHub stats */
+.github-cards{display:flex; gap:12px; flex-wrap:wrap; justify-content:center}
+.github-cards img{max-width:420px; width:100%; border-radius:10px; border:1px solid var(--glass-border)}
+
+/* Contact/footer */
+footer{padding:30px 0 80px; color:var(--muted)}
+.footer-icons{display:flex; gap:12px; justify-content:center; padding-top:10px}
+.footer-icons a{color:var(--muted); font-size:1.15rem}
+.footer-icons a:hover{color:var(--accent)}
+
+/* responsive */
+@media (max-width:980px){ .hero{grid-template-columns:1fr} .nav-links{display:none} .nav-inner{justify-content:space-between} }
+@media (max-width:560px){ .social-icons{display:none} .profile-card img{width:92px;height:92px} .project-card img{height:150px} }
+</style>
+
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="sticky" role="navigation" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <div class="logo"><i class="fa-solid fa-atom"></i> Abishek R</div>
+
+      <div style="display:flex; align-items:center; gap:12px">
+        <div class="nav-links" id="nav-links">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#certificates">Certificates</a>
+          <a href="#internships">Internships</a>
+          <a href="#github-stats">GitHub</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <div class="social-icons" aria-hidden="true">
+          <a href="https://x.com/abishekprabaka2" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://www.reddit.com/user/Abishekr01/" target="_blank" rel="noopener"><i class="fa-brands fa-reddit-alien"></i></a>
+          <a href="https://www.linkedin.com/in/abishek-prabakaran-ramkumar/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="https://github.com/Abijspy" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i></a>
+        </div>
+
+        <div style="width:8px"></div>
+
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <i class="fa-regular fa-moon" id="theme-icon"></i>
+          <span id="theme-label" style="font-weight:600; font-size:.9rem; color:var(--muted)"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO / ABOUT -->
+  <main>
+    <div class="container hero" id="about">
+      <div data-aos="fade-up">
+        <h1>Hi — I’m <strong>Abishek Prabakaran R</strong></h1>
+        <p class="lead">B.Tech final year student passionate about Data Science, AI & ML. I build practical projects that combine machine learning, IoT and web development.</p>
+
+        <div class="cta">
+          <a class="btn" href="#projects">View Projects</a>
+          <a class="btn ghost" href="mailto:reachabishekr@example.com">Contact Me</a>
+        </div>
+
+        <div style="margin-top:18px; color:var(--muted)">
+          <i class="fa-solid fa-location-dot"></i> India &nbsp; • &nbsp; <i class="fa-solid fa-graduation-cap"></i> B.Tech
+        </div>
+      </div>
+
+      <aside class="profile-card" data-aos="fade-left">
+        <!-- Replace src with your profile image path if available -->
+        <img src="images/profile-placeholder.png" alt="Profile image" onerror="this.style.display='none'">
+        
+      </aside>
+    </div>
+
+    <!-- SKILLS -->
+    <section id="skills" class="container" data-aos="fade-up">
+      <div class="section-head">
+        <h2><i class="fa-solid fa-gear"></i> Skills</h2>
+      </div>
+      <p class="lead">Languages, frameworks and tools I use frequently.</p>
+
+      <div class="skills-grid">
+        <div class="skill"><i class="fa-brands fa-python"></i><div class="name">Python</div></div>
+        <div class="skill"><i class="fa-brands fa-js-square"></i><div class="name">JavaScript</div></div>
+        <div class="skill"><i class="fa-brands fa-html5"></i><div class="name">HTML5</div></div>
+        <div class="skill"><i class="fa-brands fa-css3-alt"></i><div class="name">CSS</div></div>
+        <div class="skill"><i class="fa-brands fa-react"></i><div class="name">React</div></div>
+        <div class="skill"><i class="fa-solid fa-microchip"></i><div class="name">IoT / Embedded</div></div>
+        <div class="skill"><i class="fa-solid fa-database"></i><div class="name">SQLite / MySQL</div></div>
+        <div class="skill"><i class="fa-solid fa-cloud"></i><div class="name">AWS Basics</div></div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="container" data-aos="fade-up">
+      <div class="section-head"><h2><i class="fa-solid fa-diagram-project"></i> Projects</h2></div>
+      <p class="lead">Four selected projects — click "More Info" to view details.</p>
+
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <article class="project-card" data-aos="zoom-in">
+          <img src="images/chatbot using pyhton.png" alt="Chatbot Using Python">
+          <div class="project-body">
+            <h3>Chatbot — Using Python</h3>
+            <p>Public can use the ChatBot to query COVID-19 specific information like nearby hospitals, basic medicines to be used, and emergency contact numbers.</p>
+            <div class="tech-icons" aria-hidden="true">
+              <i class="fa-brands fa-python" title="Python"></i>
+              <i class="fa-solid fa-robot" title="NLP/Chatbot"></i>
+              <i class="fa-solid fa-database" title="Data handling"></i>
+            </div>
+            <div class="project-actions">
+              <a href="https://medium.com/@reachabishekr/chat-bot-using-python-8f6a09561436" class="btn ghost" title="Project Page">Details</a>
+              
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project-card" data-aos="zoom-in" data-aos-delay="80">
+          <!-- encode space in src for browsers that need it (both forms often work) -->
+          <img src="images/Facial Expression.png" alt="Facial Detection">
+          <div class="project-body">
+            <h3>Facial Detection</h3>
+            <p>Detects facial emotion and maps it to the appropriate emoji using ML/AI algorithms. Leverages OpenCV and ML models.</p>
+            <div class="tech-icons" aria-hidden="true">
+              <i class="fa-brands fa-python" title="Python"></i>
+              <i class="fa-solid fa-face-smile" title="Facial Expressions"></i>
+              <i class="fa-solid fa-microchip" title="Model inference"></i>
+            </div>
+            <div class="project-actions">
+              <a href="/project2.html" class="btn ghost">Details</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project-card" data-aos="zoom-in" data-aos-delay="160">
+          <img src="images/Smart Water Mangement System.png" alt="Smart Water Management System">
+          <div class="project-body">
+            <h3>Smart Water Management System</h3>
+            <p>IoT-driven water management: TDS level detection, leakage detection, flow measurement and tank level indication. Also includes rainwater harvesting guidance.</p>
+            <div class="tech-icons" aria-hidden="true">
+              <i class="fa-solid fa-wifi" title="IoT"></i>
+              <i class="fa-solid fa-flask" title="Sensors"></i>
+              <i class="fa-brands fa-python" title="Backend"></i>
+            </div>
+            <div class="project-actions">
+              <a href="/project3.html" class="btn ghost">Details</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="project-card" data-aos="zoom-in" data-aos-delay="240">
+          <img src="images/smart student management system.jpg" alt="Smart Student Management System">
+          <div class="project-body">
+            <h3>Smart Student Management System</h3>
+            <p>Full-stack student management system built with HTML/CSS/JS for frontend and Django + SQLite for backend and persistence.</p>
+            <div class="tech-icons" aria-hidden="true">
+              <i class="fa-brands fa-html5" title="HTML"></i>
+              <i class="fa-brands fa-css3-alt" title="CSS"></i>
+              <i class="fa-brands fa-python" title="Django/Python"></i>
+            </div>
+            <div class="project-actions">
+              <a href="/project4.html" class="btn ghost">Details</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CERTIFICATES -->
+    <section id="certificates" class="container" data-aos="fade-up">
+      <div class="section-head"><h2><i class="fa-solid fa-certificate"></i> Certificates</h2></div>
+      <p class="lead">Some of the certifications and courses I have completed.</p>
+
+      <div class="cards-grid">
+        <div class="card">
+          <h4>NASSCOM Skill Up — AI Foundations</h4>
+          <p>Foundations in AI concepts and applications.</p>
+        </div>
+
+        <div class="card">
+          <h4>HackerRank — Problem Solving (Basic)</h4>
+          <p>Core algorithmic problem solving fundamentals.</p>
+        </div>
+
+        <div class="card">
+          <h4>HackerRank — Problem Solving (Intermediate)</h4>
+          <p>Intermediate algorithmic challenges and data structures.</p>
+        </div>
+
+        <div class="card">
+          <h4>HackerRank — Python & SQL (Basic / Intermediate)</h4>
+          <p>Hands-on Python and SQL practice & certifications.</p>
+        </div>
+
+        <div class="card">
+          <h4>AWS Cloud Practitioner Essentials</h4>
+          <p>Introductory AWS cloud concepts and services.</p>
+        </div>
+
+        <div class="card">
+          <h4>Mirrar DoNext — Full Stack Program</h4>
+          <p>Full stack web development fundamentals & tools.</p>
+        </div>
+
+        <div class="card">
+          <h4>CISCO NDG — Linux Unhatched</h4>
+          <p>Basic Linux usage and environment certificates.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERNSHIPS / EXTERNSHIPS -->
+    <section id="internships" class="container" data-aos="fade-up">
+      <div class="section-head"><h2><i class="fa-solid fa-briefcase"></i> Externships / Internships</h2></div>
+      <p class="lead">Hands-on programs and projects I worked on during externships.</p>
+
+      <div class="cards-grid">
+        <div class="card">
+          <h4>Verzeo LTD — SHAASTRA2020</h4>
+          <p><strong>Nov 2019 — Feb 2020</strong></p>
+          <p>Built analytics to rate women clothing based on CSV review data; analyzed product popularity across age groups.</p>
+        </div>
+
+        <div class="card">
+          <h4>Mirrar DoNext — Full Stack Development Program</h4>
+          <p><strong>Feb 2023 — Mar 2023</strong></p>
+          <p>Learned frontend (HTML, JS, Vue) and backend basics (PHP, Python, Node), and databases (MySQL, SQLite, MongoDB).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- GITHUB STATS -->
+    <section id="github-stats" class="container" data-aos="fade-up">
+      <div class="section-head"><h2><i class="fa-solid fa-chart-line"></i> GitHub — @abijspy</h2></div>
+      <p class="lead">Live GitHub statistics and top languages (powered by GitHub Readme Stats).</p>
+
+      <div class="github-cards">
+        <!-- Theme can be adjusted (e.g., dark / default) — these images are dynamic -->
+        <img src="https://github-readme-stats.vercel.app/api?username=abijspy&show_icons=true&locale=en" alt="GitHub Stats">
+        <img src="https://github-readme-stats.vercel.app/api/top-langs?username=abijspy&layout=compact&locale=en" alt="Top Languages">
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="container" data-aos="fade-up">
+      <div class="section-head"><h2><i class="fa-solid fa-envelope"></i> Contact</h2></div>
+      <p class="lead">Reach out — I typically respond within a few days.</p>
+
+      <div style="display:flex; gap:18px; flex-wrap:wrap; align-items:center; justify-content:center; margin-top:12px">
+        <a class="btn" href="mailto:reachabishekr@example.com"><i class="fa-solid fa-envelope"></i> Email</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/abishek-prabakaran-ramkumar/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+        <a class="btn ghost" href="https://github.com/Abijspy" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container" style="text-align:center">
+        <div class="footer-icons" aria-hidden="true">
+          <a href="https://x.com/abishekprabaka2" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://www.reddit.com/user/Abishekr01/" target="_blank" rel="noopener"><i class="fa-brands fa-reddit-alien"></i></a>
+          <a href="https://www.linkedin.com/in/abishek-prabakaran-ramkumar/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="https://github.com/Abijspy" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i></a>
+          <a href="https://www.researchgate.net/profile/Abishek-Prabakaran-Ramkumar" target="_blank" rel="noopener"><i class="fa-brands fa-researchgate"></i></a>
+          <a href="https://scholar.google.com/citations?hl=en&user=xMhP6tgAAAAJ" target="_blank" rel="noopener"><i class="fa-brands fa-google"></i></a>
+          <a href="https://www.youtube.com/channel/UCuLX4A09OKyq7HsbUzjGMtg" target="_blank" rel="noopener"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://orcid.org/0000-0003-0592-2146" target="_blank" rel="noopener"><i class="fa-brands fa-orcid"></i></a>
+          <a href="https://www.hackerrank.com/reachabishekr" target="_blank" rel="noopener"><i class="fa-brands fa-hackerrank"></i></a>
+        </div>
+
+        <p style="margin-top:14px; color:var(--muted)">© 2025 Abishek Prabakaran R • Built with ❤️ • One-page portfolio</p>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Init AOS
+    AOS.init({duration:700, once:true, offset:60});
+
+    // Theme toggle logic
+    const body = document.body;
+const toggleBtn = document.getElementById('theme-toggle');
+const themeIcon = document.getElementById('theme-icon');
+const themeLabel = document.getElementById('theme-label');
+
+function applyTheme(theme) {
+  if (theme === 'light') {
+    body.classList.add('light');
+    themeIcon.className = 'fa-regular fa-sun';
+    themeLabel.textContent = 'Light';
+    toggleBtn.setAttribute('aria-pressed', 'true');
+  } else {
+    body.classList.remove('light');
+    themeIcon.className = 'fa-regular fa-moon';
+    themeLabel.textContent = 'Dark';
+    toggleBtn.setAttribute('aria-pressed', 'false');
+  }
+}
+    // load preference
+    const saved = localStorage.getItem('site-theme') || 'dark';
+applyTheme(saved);
+
+toggleBtn.addEventListener('click', () => {
+  const now = body.classList.contains('light') ? 'dark' : 'light';
+  applyTheme(now);
+  localStorage.setItem('site-theme', now);
+});
+
+    // Smoothly collapse mobile nav (simple)
+    // small helper: highlight current nav on scroll
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const sections = document.querySelectorAll('main section, main #about');
+
+    function onScroll(){
+      const y = window.scrollY + 120;
+      sections.forEach((sec) => {
+        if(!sec.id) return;
+        const el = document.getElementById(sec.id);
+        if(!el) return;
+        const top = el.offsetTop;
+        const bottom = top + el.offsetHeight;
+        navLinks.forEach(a => a.classList.remove('active'));
+        if(y >= top && y < bottom){
+          const a = document.querySelector('.nav-links a[href="#'+sec.id+'"]');
+          if(a) a.classList.add('active');
+        }
       });
+    }
+    window.addEventListener('scroll', onScroll);
+    onScroll();
 
-				
-   </script>
-			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	</body>
+    // Accessibility: keyboard navigation for theme toggle
+    toggleBtn.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleBtn.click(); }
+    });
+  </script>
+</body>
 </html>
