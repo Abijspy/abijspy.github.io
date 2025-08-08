@@ -492,16 +492,17 @@ section:nth-of-type(even) { animation-delay: 0.5s; }
   <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    // Init AOS
-    AOS.init({duration:700, once:true, offset:60});
+	// -------------------- Init AOS --------------------
+AOS.init({ duration: 700, once: true, offset: 60 });
 
-    // Theme toggle logic
-    const body = document.body;
+// -------------------- Theme Toggle --------------------
+const THEME_KEY = 'site-theme';
+const body = document.body;
 const toggleBtn = document.getElementById('theme-toggle');
 const themeIcon = document.getElementById('theme-icon');
 const themeLabel = document.getElementById('theme-label');
 
-function applyTheme(theme) {
+function setUI(theme) {
   if (theme === 'light') {
     body.classList.add('light');
     themeIcon.className = 'fa-regular fa-sun';
@@ -514,44 +515,60 @@ function applyTheme(theme) {
     toggleBtn.setAttribute('aria-pressed', 'false');
   }
 }
-    // load preference
-    const saved = localStorage.getItem('site-theme') || 'dark';
-applyTheme(saved);
+
+function applyTheme(theme) {
+  setUI(theme);
+  localStorage.setItem(THEME_KEY, theme);
+}
 
 toggleBtn.addEventListener('click', () => {
-  const now = body.classList.contains('light') ? 'dark' : 'light';
-  applyTheme(now);
-  localStorage.setItem('site-theme', now);
+  const curTheme = body.classList.contains('light') ? 'light' : 'dark';
+  applyTheme(curTheme === 'light' ? 'dark' : 'light');
 });
 
-    // Smoothly collapse mobile nav (simple)
-    // small helper: highlight current nav on scroll
-    const navLinks = document.querySelectorAll('.nav-links a');
-    const sections = document.querySelectorAll('main section, main #about');
+// Init theme from saved preference or system preference
+(function initTheme() {
+  const saved = localStorage.getItem(THEME_KEY);
+  if (saved) {
+    applyTheme(saved);
+  } else {
+    applyTheme(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  }
+})();
 
-    function onScroll(){
-      const y = window.scrollY + 120;
-      sections.forEach((sec) => {
-        if(!sec.id) return;
-        const el = document.getElementById(sec.id);
-        if(!el) return;
-        const top = el.offsetTop;
-        const bottom = top + el.offsetHeight;
-        navLinks.forEach(a => a.classList.remove('active'));
-        if(y >= top && y < bottom){
-          const a = document.querySelector('.nav-links a[href="#'+sec.id+'"]');
-          if(a) a.classList.add('active');
-        }
-      });
+// Accessibility: keyboard navigation for theme toggle
+toggleBtn.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    toggleBtn.click();
+  }
+});
+
+// -------------------- Highlight Current Nav --------------------
+const navLinks = document.querySelectorAll('.nav-links a');
+const sections = document.querySelectorAll('main section, main #about');
+
+function onScroll() {
+  const y = window.scrollY + 120;
+  sections.forEach((sec) => {
+    if (!sec.id) return;
+    const el = document.getElementById(sec.id);
+    if (!el) return;
+    const top = el.offsetTop;
+    const bottom = top + el.offsetHeight;
+
+    navLinks.forEach(a => a.classList.remove('active'));
+    if (y >= top && y < bottom) {
+      const a = document.querySelector(`.nav-links a[href="#${sec.id}"]`);
+      if (a) a.classList.add('active');
     }
-    window.addEventListener('scroll', onScroll);
-    onScroll();
+  });
+}
 
-    // Accessibility: keyboard navigation for theme toggle
-    toggleBtn.addEventListener('keydown', (e) => {
-      if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleBtn.click(); }
-    });
-    // Simple intersection observer for fadeUp animations
+window.addEventListener('scroll', onScroll);
+onScroll();
+
+// -------------------- Intersection Observer Animations --------------------
 const animatedElements = document.querySelectorAll("section, .hero > div, .hero > aside");
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -566,9 +583,11 @@ animatedElements.forEach(el => {
   el.style.animationPlayState = "paused";
   observer.observe(el);
 });
+
   </script>
 </body>
 </html>
+
 
 
 
