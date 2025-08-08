@@ -3,27 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chat Bot Using Python - Abishek R</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="styles.css">
+  <title>Chat Bot Using Python – Abishek R</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css"> <!-- Your portfolio CSS -->
   <style>
-    :root {
-      --accent: #6c63ff;
-      --muted: #a0a0a0;
-      --text: #fff;
-      --glass-border: rgba(255,255,255,0.1);
-      --card: rgba(255,255,255,0.02);
-      --nav-bg: rgba(15, 15, 15, 0.8);
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #0d0d0d;
-      color: var(--text);
-      line-height: 1.6;
-    }
-
+    /* Navbar Styling */
     nav.sticky {
       position: sticky;
       top: 12px;
@@ -67,159 +51,114 @@
       font-weight: 600;
       font-size: 0.92rem;
       color: var(--muted);
-      text-decoration: none;
     }
     .nav-links a:hover {
       color: var(--text);
       background: rgba(255,255,255,0.03);
     }
-    .social-icons {
-      display: flex;
-      gap: 8px;
-    }
-    .social-icons a {
-      padding: 8px;
-      border-radius: 10px;
-      color: var(--muted);
-      font-size: 1.05rem;
-    }
-    .social-icons a:hover {
-      color: var(--accent);
-      transform: translateY(-2px);
-    }
-    .theme-toggle {
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 10px;
-      border-radius: 10px;
-      border: 1px solid var(--glass-border);
-      background: var(--card);
-    }
-    .theme-toggle i {
-      font-size: 1rem;
-    }
     .breadcrumb {
       font-size: 0.9rem;
-      margin: 15px 20px;
+      color: var(--muted);
     }
     .breadcrumb a {
       color: var(--accent);
       text-decoration: none;
     }
-    .breadcrumb span {
-      color: var(--muted);
+    .breadcrumb a:hover {
+      text-decoration: underline;
     }
-    .container {
+    /* Article Styling */
+    main {
       max-width: 900px;
       margin: auto;
       padding: 20px;
     }
+    .video-container {
+      margin: 20px 0;
+      display: flex;
+      justify-content: center;
+    }
     iframe {
-      display: block;
-      margin: 20px auto;
       border-radius: 12px;
+    }
+    .btn-links {
+      margin-top: 20px;
+      display: flex;
+      gap: 12px;
+    }
+    .btn-links a {
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-weight: 600;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .btn-links a:hover {
+      background: #5848c2;
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav class="sticky" role="navigation" aria-label="Main navigation">
+  <!-- Navbar -->
+  <nav class="sticky" role="navigation">
     <div class="container nav-inner">
       <div class="logo"><i class="fa-solid fa-atom"></i> Abishek R</div>
-
-      <div style="display:flex; align-items:center; gap:12px">
-        <div class="nav-links" id="nav-links">
-          <a href="index.html">Home</a>
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#projects">Projects</a>
-          <a href="#certificates">Certificates</a>
-          <a href="#internships">Internships</a>
-          <a href="#github-stats">GitHub</a>
-          <a href="#contact">Contact</a>
-        </div>
-
-        <div class="social-icons">
-          <a href="https://x.com/abishekprabaka2" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
-          <a href="https://www.reddit.com/user/Abishekr01/" target="_blank"><i class="fa-brands fa-reddit-alien"></i></a>
-          <a href="https://www.linkedin.com/in/abishek-prabakaran-ramkumar/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-          <a href="https://github.com/Abijspy" target="_blank"><i class="fa-brands fa-github"></i></a>
-        </div>
-
-        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-          <i class="fa-regular fa-moon" id="theme-icon"></i>
-          <span id="theme-label" style="font-weight:600; font-size:.9rem; color:var(--muted)"></span>
-        </button>
+      <div class="nav-links">
+        <a href="index.html">🏠 Home</a>
+        <a href="#article">Article</a>
+        <a href="#video">Video</a>
       </div>
     </div>
   </nav>
 
   <!-- Breadcrumb -->
-  <div class="breadcrumb">
-    <a href="index.html">Home</a> <span>› Chat Bot Using Python</span>
+  <div class="breadcrumb" style="max-width:900px; margin:auto; padding:10px;">
+    <a href="index.html">Home</a> / Chat Bot Using Python
   </div>
 
   <!-- Content -->
-  <div class="container">
+  <main id="article">
     <h1>Chat Bot Using Python</h1>
-    <p>In this project, I have created a simple Chat Bot using Python that responds to user queries. It demonstrates how Natural Language Processing (NLP) can be implemented in Python to create conversational agents.</p>
+    <p><strong>Authors:</strong> Abishek R</p>
 
-    <h2>Video Demonstration</h2>
-    <iframe width="680" height="382" src="https://www.youtube.com/embed/vwU75MG0TaI" 
-      title="Chat Bot Using Python- Project Exhibition -1" frameborder="0" 
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-      referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-    </iframe>
+    <p>This project focuses on developing an AI-based chatbot using Python, aimed at answering queries related to the coronavirus (COVID-19). The bot uses Natural Language Processing (NLP) and Machine Learning techniques to respond to user input intelligently.</p>
 
-    <h2>Project Overview</h2>
-    <p>The chat bot is developed using Python libraries like <strong>NLTK</strong> and makes use of predefined patterns to respond to inputs. It simulates basic conversation and can be expanded to handle more complex queries.</p>
-
-    <h2>Technologies Used</h2>
-    <ul>
-      <li>Python</li>
-      <li>NLTK Library</li>
-      <li>Regex for pattern matching</li>
-    </ul>
+    <h2>Abstract</h2>
+    <p>The chatbot is designed to assist users by providing accurate information on COVID-19 symptoms, prevention measures, and general guidelines from WHO and other trusted sources. The goal is to reduce misinformation and improve accessibility of verified knowledge.</p>
 
     <h2>Features</h2>
     <ul>
-      <li>Responds to basic user queries</li>
-      <li>Can be customized with additional patterns</li>
-      <li>Lightweight and easy to run</li>
+      <li>Interactive text-based chatbot interface</li>
+      <li>Pre-trained dataset for COVID-19 related queries</li>
+      <li>Integration with NLP libraries</li>
+      <li>Lightweight and easy to deploy</li>
     </ul>
 
-    <h2>Source Code</h2>
-    <pre><code>
-import nltk
-from nltk.chat.util import Chat, reflections
+    <h2>Technology Stack</h2>
+    <ul>
+      <li>Python 3.x</li>
+      <li>NLTK (Natural Language Toolkit)</li>
+      <li>TensorFlow/Keras (for deep learning models)</li>
+      <li>Flask (for web deployment)</li>
+    </ul>
 
-pairs = [
-    [
-        r"hi|hello|hey",
-        ["Hello!", "Hi there!", "Hey!"]
-    ],
-    [
-        r"how are you ?",
-        ["I'm doing fine, thank you!", "I'm good, thanks for asking!"]
-    ],
-    [
-        r"quit",
-        ["Bye! Take care.", "Goodbye!"]
-    ]
-]
+    <h2 id="video">Project Video</h2>
+    <div class="video-container">
+      <iframe width="680" height="382" src="https://www.youtube.com/embed/vwU75MG0TaI" 
+        title="Chat Bot Using Python- Project Exhibition -1" frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        allowfullscreen>
+      </iframe>
+    </div>
 
-def chatbot():
-    print("Hi! I'm your chatbot. Type 'quit' to exit.")
-    chat = Chat(pairs, reflections)
-    chat.converse()
-
-if __name__ == "__main__":
-    chatbot()
-    </code></pre>
-  </div>
+    <div class="btn-links">
+      <a href="https://github.com/Abijspy/Chatbot-Using-python/" target="_blank"><i class="fa-brands fa-github"></i> View on GitHub</a>
+      <a href="https://www.researchgate.net/publication/372767377_CHATBOT_USING_PYTHON_FOR_CORONA_VIRUS" target="_blank"><i class="fa-solid fa-book"></i> ResearchGate</a>
+    </div>
+  </main>
 
 </body>
 </html>
