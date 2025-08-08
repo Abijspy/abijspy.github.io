@@ -1,141 +1,174 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<title>Project 3</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		<link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
-		<link rel="manifest" href="favicon/site.webmanifest">
-		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6585175449792244"
-     crossorigin="anonymous"></script>
-	</head>
-	<body class="is-preload" oncontextmenu = "return false" onmousedown="return false" onselectstart="return false">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Smart Water Supply — Abishek R</title>
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+  <!-- FontAwesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
 
-				<!-- Header -->
-					<header id="header">
-						<a class="logo">Intro</a>
-					</header>
+  <style>
+  :root{
+    --bg-color:#0b1220; --text-color:#e6eef6; --card-bg:#111318;
+    --accent-color:#4dabf7; --nav-bg:#0f1116; --bg:#071026;
+    --text:var(--text-color); --card:var(--card-bg);
+    --muted:#9aa5b1; --accent:var(--accent-color);
+    --glass-border:rgba(255,255,255,0.06);
+  }
+  [data-theme="light"]{
+    --bg-color:#f6f8fb; --text-color:#04202a; --card-bg:rgba(255,255,255,0.9);
+    --accent-color:#0077b6; --nav-bg:#ffffff; --bg:#f6f8fb;
+    --text:#04202a; --card:rgba(255,255,255,0.9);
+    --muted:#44505a; --accent:#0077b6;
+    --glass-border:rgba(0,0,0,0.06);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;font-family:"Poppins",system-ui,Segoe UI,Roboto,Arial;-webkit-font-smoothing:antialiased}
+  body{
+    background:linear-gradient(180deg,var(--bg),var(--bg-color)80%);
+    color:var(--text);transition:background 300ms ease,color 300ms ease;
+  }
+  a{color:inherit;text-decoration:none}
+  .container{max-width:1100px;margin:0 auto;padding:28px 20px}
 
-				<!-- Nav -->
-					<nav id="nav">
-						<ul class="links">	
-							<li class="active"><a href="project3.html">Project 3</a></li>
-						</ul>
-						<ul class="icons">
-							<li><a href="https://www.x.com/abishekprabaka2" class="fa-brands fa-x-twitter fa-shake"><span class="label"></span></a></li>
-							<li><a href="https://www.reddit.com/user/Abishekr01/" class="fa-brands fa-reddit-alien fa-shake"><span class="label"></span></a></li>
-							<li><a href="https://www.linkedin.com/in/abishek-prabakaran-ramkumar/" class="fa-brands fa-linkedin fa-shake"><span class="label"></span></a></li>
-							<li><a href="https://github.com/Abijspy" class="fa-brands fa-github fa-shake"><span class="label"></span></a></li>
-							<li><a href="https://www.researchgate.net/profile/Abishek-Prabakaran-Ramkumar" class="fa-brands fa-researchgate fa-shake"><span class="label"><span class="label"></span></a></li>
-							<li><a href="https://scholar.google.com/citations?hl=en&user=xMhP6tgAAAAJ" class="fa-brands fa-google-scholar fa-shake"><span class="label"></span></a></li>
-							<li><a href="https://www.youtube.com/channel/UCuLX4A09OKyq7HsbUzjGMtg" class="fa-brands fa-youtube fa-shake"><span class="label"></span></a></li>
-							<li><a href="https://orcid.org/0000-0003-0592-2146" class="fa-brands fa-orcid fa-shake"><span class="label"></span></a></li>
-							<li><a href="https://www.hackerrank.com/reachabishekr" class="fa-brands fa-hackerrank fa-shake"><span class="label"></span></a></li>
-					</nav>
+  /* NAV */
+  nav.sticky{
+    position:sticky;top:12px;z-index:999;backdrop-filter:blur(8px);
+    background:rgba(255,255,255,0.02);border-radius:14px;margin:10px auto;
+    padding:12px 18px;border:1px solid var(--glass-border);
+    width:calc(100% - 40px);
+  }
+  nav .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.05rem}
+  .logo i{background:linear-gradient(90deg,var(--accent),#6c63ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .breadcrumb{font-size:0.95rem;color:var(--muted)}
+  .breadcrumb a{color:var(--muted);font-weight:600}
+  .breadcrumb a:hover{color:var(--accent)}
+  .theme-toggle{cursor:pointer;display:inline-flex;align-items:center;gap:10px;
+    padding:8px 12px;border-radius:10px;border:1px solid var(--glass-border);background:var(--card)}
 
-				<!-- Main -->
-					<div id="main">
+  /* HERO */
+  header.hero{padding:36px 0 10px;display:flex;gap:18px;align-items:flex-start}
+  .hero-left{flex:1}
+  .hero-right{width:320px;max-width:38%}
+  .project-card{background:var(--card);border-radius:12px;padding:16px;border:1px solid var(--glass-border)}
 
-						<!-- Post -->
-							<section class="post">
-								<header class="major">
-									<h1>Smart Water Supply and Management System</h1>
-									<p>A smart water management system basically refers
-                                        to a system created to collect information on the distribution,
-                                        pressure, and flow of water in a city or town. Our principal
-                                        objective is to improve the current system for managing and
-                                        meeting the water needs of urban areas</p>
-								</header>
-								<p>● The main source for water is the Dam water or the River water. Here, the water is
-                                    purified and identifies the diseases in the water. After the disease identification
-                                    the water is sent to the tank and this tank water is sent to the various houses
-                                    nearby through a pipeline.</p>
-                                <p>● A particular room is kept for identifying the leakage detection in the pipes, reach
-                                    of water through the destination, and whether anyone is extracting water from the
-                                    tank illegally. The water logging in some areas is also extracted and purified and
-                                    it is used.</p>
-                                <p>● After the usage of water in every house, the waste water from the kitchen,
-                                    bathroom etc, this water is purified and stored in the recycled water tank in each
-                                    house. Which can be used for other purposes like gardening etc. Similarly, every
-                                    house and the main tank has a rainwater harvesting system which is purified and
-                                    stored in the sump which can be used later and in water scarcity periods.</p>
-                                <p>Our Project divided into different parts</p>
-                                <ul>
-                                    <li>Water Level Indication</li>
-                                    <li>Checking Purity of Water</li>
-                                    <li>Reach of Water to the Destination</li>
-                                    <li>Leakage Detection</li>
-                                    <li>Rainwater Harvesting</li>
-                                    <li>Recycling of Water</li>
-                                </ul>
-                                <b>Systematic Diagram:</b>
-				<div class="image main"><img src="images/project3/Systematic diagram1.png" width="300" height="500"></div>
-                                <p>We have developed a method to regulate the elements of the
-                                    supply system, including water pressure, water quality, and
-                                    water pollution.This system can be used in
-                                    smart cities, towns, villages, and other locations where
-                                    intelligent and sophisticated water management and
-                                    distribution is required.</p>
-				<p><b>Project Youtube Video</b></p>
-				<br>
-				<iframe width="560" height="315" src="https://www.youtube.com/embed/8_UiDmKFfs4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-				<br>
-				<br>
-				<p><b>Journal Youtube Video</b></p>
-				<iframe width="560" height="315" src="https://www.youtube.com/embed/xqzCimIJfWo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>				
-				<br><br>				
-				<ul class="actions special">
-				<li><a href="https://abijspy.github.io/" class="button">Back to My Portfolio</a></li>
-				<li><a href="https://github.com/Abijspy/Smart-Water-Supply-and-Management-System" class="button">Github Link</a></li>
-                                <li><a href="https://www.ijrte.org/portfolio-item/c72700911322/" class="button">Journal Link</a></li>
-				<li><a href="https://stm.bookpi.org/RADER-V1/article/view/10105" class="button">Book Chapter Link</a></li>
-				<li><a href="https://www.researchgate.net/publication/360269606_Smart_Water_Supply_and_Management_System_water_smartwater_supply_watersupply_waterscarcity" class="button">ResearchGate Link</a></li>
-										
-				</ul>
-							</section>
+  /* GALLERY */
+  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:14px}
+  .gallery .img-card{border-radius:12px;overflow:hidden;border:1px solid var(--glass-border)}
+  .gallery img{width:100%;height:220px;object-fit:cover}
 
-					</div>
+  /* VIDEO */
+  .video-wrap{margin-top:18px;border-radius:12px;overflow:hidden;border:1px solid var(--glass-border);padding:12px;background:var(--card)}
+  .video-wrap iframe{width:100%;height:420px;border:0;border-radius:8px}
 
-				<!-- Footer -->
-					<footer id="footer">
-						<section class="split contact">
-							
-							<section>
-								<h3>Social</h3>
-								<ul class="icons alt">
-									<li><a href="https://www.x.com/abishekprabaka2" class="fa-brands fa-x-twitter fa-shake"><span class="label"></span></a></li>
-									<li><a href="https://www.reddit.com/user/Abishekr01/" class="fa-brands fa-reddit-alien fa-shake"><span class="label"></span></a></li>
-									<li><a href="https://www.linkedin.com/in/abishek-prabakaran-ramkumar/" class="fa-brands fa-linkedin fa-shake"><span class="label"></span></a></li>
-									<li><a href="https://github.com/Abijspy" class="fa-brands fa-github fa-shake"><span class="label"></span></a></li>
-									<li><a href="https://www.researchgate.net/profile/Abishek-Prabakaran-Ramkumar" class="fa-brands fa-researchgate fa-shake"><span class="label"><span class="label"></span></a></li>
-									<li><a href="https://scholar.google.com/citations?hl=en&user=xMhP6tgAAAAJ" class="fa-brands fa-google-scholar fa-shake"><span class="label"></span></a></li>
-									<li><a href="https://www.youtube.com/channel/UCuLX4A09OKyq7HsbUzjGMtg" class="fa-brands fa-youtube fa-shake"><span class="label"></span></a></li>
-									<li><a href="https://orcid.org/0000-0003-0592-2146" class="fa-brands fa-orcid fa-shake"><span class="label"></span></a></li>
-									<li><a href="https://www.hackerrank.com/reachabishekr" class="fa-brands fa-hackerrank fa-shake"><span class="label"></span></a></li>
-								</ul>
-							</section>
-						</section>
-					</footer>
+  /* BUTTONS */
+  .actions{display:flex;gap:12px;margin-top:14px;flex-wrap:wrap}
+  .btn{background:linear-gradient(90deg,var(--accent),#6c63ff);color:white;
+    padding:10px 14px;border-radius:10px;font-weight:700;display:inline-flex;gap:8px;align-items:center}
+  .btn.ghost{background:transparent;border:1px solid var(--glass-border);color:var(--muted)}
 
-				
+  article{margin-top:22px;line-height:1.65}
+  article p{margin:0 0 12px}
+  ul{margin-left:1.15rem}
 
-			</div>
+  footer{padding:26px 0 80px;color:var(--muted)}
+  @media(max-width:980px){.hero-right{display:none} .video-wrap iframe{height:320px}}
+  @media(max-width:560px){.gallery img{height:160px} .video-wrap iframe{height:220px}}
+  </style>
+</head>
+<body>
+  <nav class="sticky">
+    <div class="container nav-inner">
+      <div class="logo"><i class="fa-solid fa-droplet"></i> Abishek R</div>
+      <div style="display:flex;align-items:center;gap:14px;">
+        <div class="breadcrumb"><a href="index.html">Home</a> <span style="color:var(--muted)">/ Smart Water Supply</span></div>
+        <button class="theme-toggle" id="theme-toggle"><i class="fa-regular fa-moon" id="theme-icon"></i></button>
+      </div>
+    </div>
+  </nav>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+  <main class="container">
+    <header class="hero">
+      <div class="hero-left">
+        <h1>Smart Water Supply and Management System</h1>
+        <div class="meta">By <strong>Abishek Prabakaran R</strong> • Project</div>
+        <p style="max-width:70ch;color:var(--muted)">
+          A smart water management system to monitor, distribute, and purify water efficiently for urban and rural needs — featuring leakage detection, purity checks, recycling, and rainwater harvesting integration.
+        </p>
+        <div class="actions">
+          <a class="btn" href="https://github.com/Abijspy/Smart-Water-Supply-and-Management-System" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+          <a class="btn" href="https://www.ijrte.org/portfolio-item/c72700911322/" target="_blank"><i class="fa-solid fa-book"></i> Journal</a>
+          <a class="btn" href="https://stm.bookpi.org/RADER-V1/article/view/10105" target="_blank"><i class="fa-solid fa-book-open"></i> Book Chapter</a>
+          <a class="btn" href="https://www.researchgate.net/publication/360269606_Smart_Water_Supply_and_Management_System_water_smartwater_supply_watersupply_waterscarcity" target="_blank"><i class="fa-solid fa-flask"></i> ResearchGate</a>
+        </div>
+      </div>
+      <aside class="hero-right">
+        <div class="project-card">
+          <h3>Project Modules</h3>
+          <ul style="color:var(--muted);margin:0;padding-left:1rem;">
+            <li>Water Level Indication</li>
+            <li>Checking Purity of Water</li>
+            <li>Reach of Water to Destination</li>
+            <li>Leakage Detection</li>
+            <li>Rainwater Harvesting</li>
+            <li>Recycling of Water</li>
+          </ul>
+        </div>
+      </aside>
+    </header>
 
-	</body>
+    <section>
+      <h2>Systematic Diagram</h2>
+      <div class="gallery">
+        <figure class="img-card"><img src="images/project3/Systematic diagram1.png" alt="Systematic diagram of water management system"></figure>
+      </div>
+    </section>
+
+    <section id="video">
+      <h2>Video Demonstrations</h2>
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed/8_UiDmKFfs4" title="Project Demo Video" allowfullscreen></iframe>
+      </div>
+      <div class="video-wrap" style="margin-top:20px;">
+        <iframe src="https://www.youtube.com/embed/xqzCimIJfWo" title="Journal Presentation Video" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <article>
+      <h2>Project Overview</h2>
+      <p>The main source of water is dam or river water, which is purified and tested for diseases before being sent to storage tanks for distribution. A dedicated monitoring room tracks leakage, water delivery, and unauthorized extraction.</p>
+      <p>Wastewater from households is purified and stored in a recycled water tank for reuse in gardening and other non-drinking purposes. Rainwater harvesting systems are implemented in every household and main tank to store water for scarcity periods.</p>
+      <p>This system regulates water pressure, quality, and pollution levels — making it suitable for smart cities, towns, and villages.</p>
+    </article>
+
+    <footer>
+      <p>© Abishek R</p>
+    </footer>
+  </main>
+
+  <script>
+  const THEME_KEY='abijspy_theme';
+  const themeToggleBtn=document.getElementById('theme-toggle');
+  const themeIcon=document.getElementById('theme-icon');
+  function setUI(theme){
+    document.documentElement.setAttribute('data-theme',theme);
+    themeIcon.className=theme==='dark'?'fa-regular fa-sun':'fa-regular fa-moon';
+  }
+  function applyTheme(theme){
+    setUI(theme);
+    localStorage.setItem(THEME_KEY,theme);
+  }
+  themeToggleBtn.addEventListener('click',()=>{
+    const cur=document.documentElement.getAttribute('data-theme');
+    applyTheme(cur==='dark'?'light':'dark');
+  });
+  (function initTheme(){
+    let saved=localStorage.getItem(THEME_KEY);
+    if(saved){applyTheme(saved);return;}
+    applyTheme(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+  })();
+  </script>
+</body>
 </html>
