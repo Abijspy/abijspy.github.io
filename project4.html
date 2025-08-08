@@ -56,8 +56,8 @@
 
   /* GALLERY */
   .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:14px}
-  .gallery .img-card{border-radius:12px;overflow:hidden;border:1px solid var(--glass-border)}
-  .gallery img{width:100%;height:220px;object-fit:cover}
+  .gallery .img-card{border-radius:12px;overflow:hidden;border:1px solid var(--glass-border); cursor: pointer;}
+  .gallery img{width:100%;height:220px;object-fit:cover;display:block}
   .gallery img.full-size {height:auto;max-height:none;object-fit:contain;background:var(--card)}
 
   /* VIDEO */
@@ -75,6 +75,53 @@
   ul{margin-left:1.15rem}
 
   footer{padding:26px 0 80px;color:var(--muted)}
+
+  /* Popup Overlay */
+  .popup-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  .popup-overlay.show {
+    opacity: 1;
+    visibility: visible;
+  }
+  .popup-img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 14px;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+    transform: scale(0.85);
+    transition: transform 0.3s ease;
+  }
+  .popup-overlay.show .popup-img {
+    transform: scale(1);
+  }
+  .popup-close {
+    position: absolute;
+    top: 20px; right: 28px;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    user-select: none;
+    z-index: 10001;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(8px);
+    padding: 4px 10px;
+    border-radius: 50%;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .popup-close:hover {
+    background: rgba(255,255,255,0.3);
+    color: var(--accent);
+  }
+
   @media(max-width:980px){.hero-right{display:none} .video-wrap iframe{height:320px}}
   @media(max-width:560px){.gallery img{height:160px} .video-wrap iframe{height:220px}}
   </style>
@@ -153,13 +200,23 @@
     </footer>
   </main>
 
+  <!-- Image Popup Overlay -->
+  <div class="popup-overlay" id="image-popup" role="dialog" aria-modal="true" aria-hidden="true">
+    <button class="popup-close" id="popup-close" aria-label="Close image popup">&times;</button>
+    <img class="popup-img" id="popup-img" src="" alt="">
+  </div>
+
   <script>
+  // Theme toggle code
   const THEME_KEY='abijspy_theme';
   const themeToggleBtn=document.getElementById('theme-toggle');
   const themeIcon=document.getElementById('theme-icon');
+  const themeLabel=document.getElementById('theme-label');
+
   function setUI(theme){
     document.documentElement.setAttribute('data-theme',theme);
     themeIcon.className=theme==='dark'?'fa-regular fa-sun':'fa-regular fa-moon';
+    themeLabel.textContent = theme === 'dark' ? 'Dark' : 'Light';
   }
   function applyTheme(theme){
     setUI(theme);
@@ -174,6 +231,38 @@
     if(saved){applyTheme(saved);return;}
     applyTheme(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
   })();
+
+  // Image popup logic
+  const popup = document.getElementById("image-popup");
+  const popupImg = document.getElementById("popup-img");
+  const popupClose = document.getElementById("popup-close");
+
+  document.querySelectorAll(".gallery img").forEach(img => {
+    img.addEventListener("click", () => {
+      popupImg.src = img.src;
+      popupImg.alt = img.alt;
+      popup.setAttribute('aria-hidden', 'false');
+      popup.classList.add("show");
+      popupClose.focus();
+    });
+  });
+
+  function closePopup() {
+    popup.classList.remove("show");
+    popup.setAttribute('aria-hidden', 'true');
+  }
+
+  popupClose.addEventListener("click", closePopup);
+  popup.addEventListener("click", e => {
+    if(e.target === popup) closePopup();
+  });
+
+  // Close popup on Escape key
+  document.addEventListener('keydown', (e) => {
+    if(e.key === "Escape" && popup.classList.contains("show")) {
+      closePopup();
+    }
+  });
   </script>
 </body>
 </html>
