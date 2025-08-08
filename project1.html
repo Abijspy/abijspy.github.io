@@ -23,7 +23,6 @@
     --accent: var(--accent-color);
     --glass-border: rgba(255,255,255,0.06);
   }
-  /* light theme overrides */
   [data-theme="light"]{
     --bg-color: #f6f8fb;
     --text-color: #04202a;
@@ -38,19 +37,16 @@
     --glass-border: rgba(0,0,0,0.06);
   }
 
-  /* ---------- Base reset & layout ---------- */
   *{box-sizing:border-box}
   html,body{height:100%; margin:0; font-family:"Poppins",system-ui,Segoe UI,Roboto,Arial; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale}
   body{
     background: linear-gradient(180deg, var(--bg), var(--bg-color) 80%);
     color: var(--text);
     transition: background 300ms ease, color 300ms ease;
-    -webkit-font-smoothing:antialiased;
   }
   a{color:inherit; text-decoration:none}
   .container{max-width:1100px; margin:0 auto; padding:28px 20px}
 
-  /* ---------- NAV (matches your home site size) ---------- */
   nav.sticky {
     position:sticky; top:12px; z-index:999; backdrop-filter: blur(8px);
     background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
@@ -59,14 +55,13 @@
   }
   nav .nav-inner{display:flex; align-items:center; justify-content:space-between; gap:12px}
   .logo {display:flex; align-items:center; gap:10px; font-weight:700; font-size:1.05rem}
-  .logo i{background:linear-gradient(90deg,var(--accent), #6c63ff); -webkit-background-clip:text; background-clip:text; color:transparent}
+  .logo i{background:linear-gradient(90deg,var(--accent), #6c63ff); -webkit-background-clip:text; color:transparent}
   .breadcrumb {font-size:0.95rem; color:var(--muted)}
   .breadcrumb a{color:var(--muted); font-weight:600}
   .breadcrumb a:hover{color:var(--accent)}
   .theme-toggle{cursor:pointer; display:inline-flex; align-items:center; gap:10px; padding:8px 12px; border-radius:10px; border:1px solid var(--glass-border); background:var(--card); color:var(--text)}
   .theme-toggle i{font-size:1rem}
 
-  /* ---------- Page hero / project header ---------- */
   header.hero{padding:36px 0 10px; display:flex; gap:18px; align-items:flex-start; justify-content:space-between}
   .hero-left{flex:1; min-width:0}
   .hero-right{width:320px; max-width:38%}
@@ -75,33 +70,26 @@
   h1{font-size:1.9rem; margin:0 0 8px}
   .meta{color:var(--muted); margin-bottom:14px}
 
-  /* ---------- gallery ---------- */
   .gallery{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-top:14px}
-  .gallery .img-card{border-radius:12px; overflow:hidden; border:1px solid var(--glass-border); background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:0}
+  .gallery .img-card{border-radius:12px; overflow:hidden; border:1px solid var(--glass-border); background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:0; cursor:pointer}
   .gallery img{width:100%; height:220px; object-fit:cover; display:block}
 
-  /* ---------- video ---------- */
   .video-wrap{margin-top:18px; border-radius:12px; overflow:hidden; border:1px solid var(--glass-border); background:var(--card); padding:12px}
   .video-wrap iframe{width:100%; height:420px; border:0; display:block; border-radius:8px}
 
-  /* ---------- buttons ---------- */
   .actions{display:flex; gap:12px; margin-top:14px; flex-wrap:wrap}
-  .btn{background:linear-gradient(90deg,var(--accent), #6c63ff); color:white; padding:10px 14px; border-radius:10px; font-weight:700; text-decoration:none; display:inline-flex; gap:8px; align-items:center}
+  .btn{background:linear-gradient(90deg,var(--accent), #6c63ff); color:white; padding:10px 14px; border-radius:10px; font-weight:700; display:inline-flex; gap:8px; align-items:center}
   .btn.ghost{background:transparent; border:1px solid var(--glass-border); color:var(--text)}
 
-  /* ---------- content ---------- */
   article{margin-top:22px; line-height:1.65}
   article p{color:var(--text); margin:0 0 12px}
   article h2{margin-top:18px; color:var(--text)}
   ul{color:var(--muted); margin-left:1.15rem}
 
-  /* ---------- footer ---------- */
   footer{padding:26px 0 80px; color:var(--muted)}
 
-  /* ---------- glass hover ---------- */
   nav.sticky, .project-card, .img-card {
     backdrop-filter: blur(14px) saturate(140%);
-    -webkit-backdrop-filter: blur(14px) saturate(140%);
     background: rgba(255, 255, 255, 0.03);
     transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
   }
@@ -157,7 +145,6 @@
     color: var(--accent);
   }  
 
-  /* ---------- responsive ---------- */
   @media (max-width:980px) {
     .hero-right{display:none}
     .video-wrap iframe{height:320px}
@@ -169,14 +156,12 @@
   </style>
 </head>
 <body>
-  <!-- NAVBAR (breadcrumb only) -->
-  <nav class="sticky" role="navigation" aria-label="Main navigation">
+  <nav class="sticky">
     <div class="container nav-inner">
       <div class="logo"><i class="fa-solid fa-atom"></i> Abishek R</div>
-
       <div style="display:flex; align-items:center; gap:14px;">
         <div class="breadcrumb"><a href="index.html">Home</a> <span style="color:var(--muted)">/ Chat Bot Using Python</span></div>
-        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+        <button class="theme-toggle" id="theme-toggle">
           <i class="fa-regular fa-moon" id="theme-icon"></i>
           <span id="theme-label" style="font-weight:600; font-size:.9rem; color:var(--muted)"></span>
         </button>
@@ -185,40 +170,33 @@
   </nav>
 
   <main class="container">
-    <!-- HERO -->
-    <header class="hero" role="banner">
+    <header class="hero">
       <div class="hero-left">
         <h1>Chat Bot Using Python</h1>
         <div class="meta">By <strong>Abishek Prabakaran R</strong> • Dec 28, 2022 • Project</div>
         <p style="max-width:70ch; color:var(--muted)">
           A lightweight chatbot built with Python (NLTK / pattern-matching) with a Tkinter GUI and JSON-driven responses.
-          This project focuses on answering Corona-virus related queries accurately using pre-fed knowledge and pattern matching.
         </p>
-
         <div class="actions">
-          <a class="btn" href="https://github.com/Abijspy/Chatbot-Using-python/" target="_blank" rel="noopener">
+          <a class="btn" href="https://github.com/Abijspy/Chatbot-Using-python/" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
           </a>
-          <a class="btn" href="https://www.researchgate.net/publication/372767377_CHATBOT_USING_PYTHON_FOR_CORONA_VIRUS" target="_blank" rel="noopener">
+          <a class="btn" href="https://www.researchgate.net/publication/372767377_CHATBOT_USING_PYTHON_FOR_CORONA_VIRUS" target="_blank">
             <i class="fa-solid fa-book"></i> ResearchGate
           </a>
-          <a class="btn ghost" href="#video" style="background:transparent; border:1px solid var(--glass-border); color:var(--muted)">Watch Demo</a>
+          <a class="btn ghost" href="#video">Watch Demo</a>
         </div>
       </div>
-
-      <!-- right profile / quick info card (hidden on small screens like main site) -->
       <aside class="hero-right">
         <div class="project-card">
-          <h3 style="margin:0 0 8px">Project Snapshot</h3>
-          <p style="margin:0 0 8px; color:var(--muted)">Tkinter GUI • NLTK • JSON driven responses • Covid-19 dataset</p>
-          <p style="margin:0; color:var(--muted); font-size:.9rem">Images below show GUI screens and sample static outputs.</p>
+          <h3>Project Snapshot</h3>
+          <p style="color:var(--muted)">Tkinter GUI • NLTK • JSON • Covid-19 dataset</p>
         </div>
       </aside>
     </header>
 
-    <!-- GALLERY -->
-    <section aria-labelledby="gallery-head">
-      <h2 id="gallery-head">Project Images</h2>
+    <section>
+      <h2>Project Images</h2>
       <div class="gallery">
         <figure class="img-card"><img src="images/project1/GUI1.png" alt="Chatbot GUI screenshot 1"></figure>
         <figure class="img-card"><img src="images/project1/GUI2.png" alt="Chatbot GUI screenshot 2"></figure>
@@ -226,104 +204,61 @@
       </div>
     </section>
 
-    <!-- VIDEO -->
-    <section id="video" aria-labelledby="video-head">
-      <h2 id="video-head">Video Presentation</h2>
+    <section id="video">
+      <h2>Video Presentation</h2>
       <div class="video-wrap">
-        <iframe
-          src="https://www.youtube.com/embed/vwU75MG0TaI"
-          title="Chat Bot Using Python- Project Exhibition -1"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/vwU75MG0TaI" allowfullscreen></iframe>
       </div>
     </section>
 
-    <!-- ARTICLE / DESCRIPTION -->
-    <article aria-labelledby="overview-head">
-      <h2 id="overview-head">Project Overview</h2>
-      <p>
-        The Chatbot uses a combination of simple NLP and pattern-matching to interpret user queries. The user interacts with a Tkinter GUI; responses are driven by a JSON file containing questions and pattern-based replies.
-      </p>
-
-      <h3>How it works</h3>
-      <ul>
-        <li>User types a question in the GUI input box.</li>
-        <li>The input text is preprocessed (tokenization, normalization).</li>
-        <li>Semantic meaning is extracted and matched against stored patterns.</li>
-        <li>A relevant pre-defined response from the JSON knowledge base is returned.</li>
-      </ul>
-
-      <h3>Tech stack</h3>
-      <ul>
-        <li>Python (3.x)</li>
-        <li>NLTK for basic NLP</li>
-        <li>Tkinter for GUI</li>
-        <li>JSON for response patterns / dataset</li>
-      </ul>
-
-      <h3>Notes</h3>
-      <p style="color:var(--muted)">
-        To use the images included here, ensure the files are placed at:
-        <code>images/project1/GUI1.png</code>,
-        <code>images/project1/GUI2.png</code>,
-        and <code>images/project1/Static1.png</code> relative to this HTML file.
-      </p>
+    <article>
+      <h2>Project Overview</h2>
+      <p>The Chatbot uses simple NLP and pattern-matching via Tkinter GUI and JSON data.</p>
     </article>
 
-    <footer style="margin-top:22px; color:var(--muted)">
+    <footer>
       <p>© Abishek R</p>
     </footer>
   </main>
 
-  <!-- ---------- Theme sync script (single-file) ---------- -->
-  <script>
-  // Theme key - keeps theme in sync across pages that use the same script
-  const THEME_KEY = 'abijspy_theme';
+  <!-- Image Popup -->
+  <div class="popup-overlay" id="image-popup">
+    <span class="popup-close" id="popup-close">&times;</span>
+    <img class="popup-img" id="popup-img" src="" alt="">
+  </div>
 
+  <script>
+  const THEME_KEY = 'abijspy_theme';
   const themeToggleBtn = document.getElementById('theme-toggle');
   const themeIcon = document.getElementById('theme-icon');
   const themeLabel = document.getElementById('theme-label');
 
-  // setUI updates icon & label based on current theme
   function setUI(theme) {
     if(theme === 'dark') {
       document.documentElement.setAttribute('data-theme','dark');
-      themeIcon.className = 'fa-regular fa-sun';     // show sun meaning clicking gives light
-      if(themeLabel) themeLabel.textContent = 'Dark';
+      themeIcon.className = 'fa-regular fa-sun';
+      themeLabel.textContent = 'Dark';
     } else {
       document.documentElement.setAttribute('data-theme','light');
       themeIcon.className = 'fa-regular fa-moon';
-      if(themeLabel) themeLabel.textContent = 'Light';
+      themeLabel.textContent = 'Light';
     }
   }
-
-  // apply theme and persist
   function applyTheme(theme) {
     setUI(theme);
-    try { localStorage.setItem(THEME_KEY, theme); } catch(e) { /* ignore storage errors */ }
+    localStorage.setItem(THEME_KEY, theme);
   }
-
-  // toggle logic
   themeToggleBtn.addEventListener('click', () => {
-    const cur = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
-    const next = cur === 'dark' ? 'light' : 'dark';
-    applyTheme(next);
+    const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+    applyTheme(cur === 'dark' ? 'light' : 'dark');
   });
-
-  // initialize: try localStorage, then prefer OS-level (prefers-color-scheme), else fallback to dark
   (function initTheme(){
-    let saved = null;
-    try { saved = localStorage.getItem(THEME_KEY); } catch(e) { saved = null; }
-    if(saved === 'dark' || saved === 'light') {
-      applyTheme(saved);
-      return;
-    }
-    // no saved choice — respect system preference if available
-    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    applyTheme(prefersDark ? 'dark' : 'light');
+    let saved = localStorage.getItem(THEME_KEY);
+    if(saved) { applyTheme(saved); return; }
+    applyTheme(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   })();
-    // Popup logic
+
+  // Popup logic
   const popup = document.getElementById("image-popup");
   const popupImg = document.getElementById("popup-img");
   const popupClose = document.getElementById("popup-close");
