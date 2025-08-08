@@ -1,164 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chat Bot Using Python – Abishek R</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="styles.css"> <!-- Your portfolio CSS -->
-  <style>
-    /* Navbar Styling */
-    nav.sticky {
-      position: sticky;
-      top: 12px;
-      z-index: 999;
-      backdrop-filter: blur(8px);
-      background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-radius: 14px;
-      margin: 10px auto;
-      padding: 10px 16px;
-      border: 1px solid var(--glass-border);
-      width: calc(100% - 40px);
-    }
-    nav .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 700;
-      font-size: 1.05rem;
-    }
-    .logo i {
-      background: linear-gradient(90deg, var(--accent), #6c63ff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    .nav-links {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    .nav-links a {
-      padding: 8px 12px;
-      border-radius: 10px;
-      font-weight: 600;
-      font-size: 0.92rem;
-      color: var(--muted);
-    }
-    .nav-links a:hover {
-      color: var(--text);
-      background: rgba(255,255,255,0.03);
-    }
-    .breadcrumb {
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-    .breadcrumb a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-    .breadcrumb a:hover {
-      text-decoration: underline;
-    }
-    /* Article Styling */
-    main {
-      max-width: 900px;
-      margin: auto;
-      padding: 20px;
-    }
-    .video-container {
-      margin: 20px 0;
-      display: flex;
-      justify-content: center;
-    }
-    iframe {
-      border-radius: 12px;
-    }
-    .btn-links {
-      margin-top: 20px;
-      display: flex;
-      gap: 12px;
-    }
-    .btn-links a {
-      padding: 10px 14px;
-      border-radius: 8px;
-      font-weight: 600;
-      background: var(--accent);
-      color: white;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-    .btn-links a:hover {
-      background: #5848c2;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Chatbot Using Python - Abishek R</title>
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+<style>
+:root {
+  --accent: #6c63ff;
+  --muted: #aaa;
+  --text: #fff;
+  --nav-bg: rgba(0,0,0,0.4);
+  --card: rgba(255,255,255,0.05);
+  --glass-border: rgba(255,255,255,0.1);
+}
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #111;
+  color: var(--text);
+  line-height: 1.6;
+}
+.container { max-width: 1100px; margin: auto; padding: 0 16px; }
+nav.sticky {
+  position: sticky; top: 12px; z-index: 999; backdrop-filter: blur(8px);
+  background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius: 14px; margin: 10px auto; padding: 10px 16px;
+  border: 1px solid var(--glass-border); width: calc(100% - 40px);
+}
+nav .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.05rem; }
+.logo i { background: linear-gradient(90deg, var(--accent), #6c63ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.breadcrumb { font-size: 0.9rem; color: var(--muted); }
+.breadcrumb a { color: var(--accent); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+.theme-toggle { cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 10px; border-radius: 10px; border: 1px solid var(--glass-border);
+  background: var(--card); }
+.theme-toggle i { font-size: 1rem; }
+section { padding: 40px 0; }
+iframe { display: block; max-width: 100%; border-radius: 12px; margin: 20px auto; }
+.btn-link {
+  display: inline-block; padding: 10px 16px; margin: 8px 8px 0 0;
+  background: var(--accent); color: white; text-decoration: none;
+  border-radius: 8px; font-weight: bold; transition: 0.3s;
+}
+.btn-link:hover { background: #564de0; }
+</style>
 </head>
 <body>
 
-  <!-- Navbar -->
-  <nav class="sticky" role="navigation">
-    <div class="container nav-inner">
-      <div class="logo"><i class="fa-solid fa-atom"></i> Abishek R</div>
-      <div class="nav-links">
-        <a href="index.html">🏠 Home</a>
-        <a href="#article">Article</a>
-        <a href="#video">Video</a>
-      </div>
+<!-- Navbar -->
+<nav class="sticky" role="navigation" aria-label="Main navigation">
+  <div class="container nav-inner">
+    <div class="logo"><i class="fa-solid fa-atom"></i> Abishek R</div>
+    <div style="display:flex; align-items:center; gap:12px">
+      <div class="breadcrumb"><a href="index.html">Home</a> / Chatbot Using Python</div>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+        <i class="fa-regular fa-moon" id="theme-icon"></i>
+        <span id="theme-label" style="font-weight:600; font-size:.9rem; color:var(--muted)"></span>
+      </button>
     </div>
-  </nav>
-
-  <!-- Breadcrumb -->
-  <div class="breadcrumb" style="max-width:900px; margin:auto; padding:10px;">
-    <a href="index.html">Home</a> / Chat Bot Using Python
   </div>
+</nav>
 
-  <!-- Content -->
-  <main id="article">
-    <h1>Chat Bot Using Python</h1>
-    <p><strong>Authors:</strong> Abishek R</p>
+<!-- Main Content -->
+<div class="container">
+  <section>
+    <h1>Chatbot Using Python</h1>
+    <p>This project demonstrates how to build a chatbot using Python. The chatbot can be used for answering COVID-19 related queries and providing information. The implementation uses NLP techniques and integrates with various datasets to improve accuracy.</p>
 
-    <p>This project focuses on developing an AI-based chatbot using Python, aimed at answering queries related to the coronavirus (COVID-19). The bot uses Natural Language Processing (NLP) and Machine Learning techniques to respond to user input intelligently.</p>
+    <iframe width="680" height="382"
+      src="https://www.youtube.com/embed/vwU75MG0TaI"
+      title="Chat Bot Using Python- Project Exhibition -1" frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-    <h2>Abstract</h2>
-    <p>The chatbot is designed to assist users by providing accurate information on COVID-19 symptoms, prevention measures, and general guidelines from WHO and other trusted sources. The goal is to reduce misinformation and improve accessibility of verified knowledge.</p>
+    <p>
+      <a href="https://github.com/Abijspy/Chatbot-Using-python/" target="_blank" class="btn-link"><i class="fa-brands fa-github"></i> View Project on GitHub</a>
+      <a href="https://www.researchgate.net/publication/372767377_CHATBOT_USING_PYTHON_FOR_CORONA_VIRUS" target="_blank" class="btn-link"><i class="fa-solid fa-file-lines"></i> View on ResearchGate</a>
+    </p>
+
+    <h2>Overview</h2>
+    <p>The chatbot was developed to assist users in retrieving relevant COVID-19 information efficiently. By leveraging Python libraries like NLTK and scikit-learn, the chatbot processes user queries and returns accurate responses.</p>
 
     <h2>Features</h2>
     <ul>
-      <li>Interactive text-based chatbot interface</li>
-      <li>Pre-trained dataset for COVID-19 related queries</li>
-      <li>Integration with NLP libraries</li>
-      <li>Lightweight and easy to deploy</li>
+      <li>Text-based interaction</li>
+      <li>COVID-19 dataset integration</li>
+      <li>Natural Language Processing</li>
+      <li>User-friendly interface</li>
     </ul>
 
     <h2>Technology Stack</h2>
     <ul>
-      <li>Python 3.x</li>
-      <li>NLTK (Natural Language Toolkit)</li>
-      <li>TensorFlow/Keras (for deep learning models)</li>
-      <li>Flask (for web deployment)</li>
+      <li>Python</li>
+      <li>NLTK</li>
+      <li>scikit-learn</li>
+      <li>Flask (for deployment)</li>
     </ul>
+  </section>
+</div>
 
-    <h2 id="video">Project Video</h2>
-    <div class="video-container">
-      <iframe width="680" height="382" src="https://www.youtube.com/embed/vwU75MG0TaI" 
-        title="Chat Bot Using Python- Project Exhibition -1" frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-        allowfullscreen>
-      </iframe>
-    </div>
+<script>
+const toggleBtn = document.getElementById('theme-toggle');
+const themeIcon = document.getElementById('theme-icon');
+const themeLabel = document.getElementById('theme-label');
 
-    <div class="btn-links">
-      <a href="https://github.com/Abijspy/Chatbot-Using-python/" target="_blank"><i class="fa-brands fa-github"></i> View on GitHub</a>
-      <a href="https://www.researchgate.net/publication/372767377_CHATBOT_USING_PYTHON_FOR_CORONA_VIRUS" target="_blank"><i class="fa-solid fa-book"></i> ResearchGate</a>
-    </div>
-  </main>
+function setTheme(dark) {
+  if (dark) {
+    document.body.style.background = "#111";
+    document.body.style.color = "#fff";
+    themeIcon.classList.remove('fa-sun');
+    themeIcon.classList.add('fa-moon');
+    themeLabel.textContent = "Dark";
+  } else {
+    document.body.style.background = "#fff";
+    document.body.style.color = "#000";
+    themeIcon.classList.remove('fa-moon');
+    themeIcon.classList.add('fa-sun');
+    themeLabel.textContent = "Light";
+  }
+}
+
+let darkMode = true;
+setTheme(darkMode);
+
+toggleBtn.addEventListener('click', () => {
+  darkMode = !darkMode;
+  setTheme(darkMode);
+});
+</script>
 
 </body>
 </html>
