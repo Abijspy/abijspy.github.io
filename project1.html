@@ -1,174 +1,288 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chatbot Using Python - Abishek R</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-<style>
-:root {
-  --accent: #6c63ff;
-  --text: #1a1a1a;
-  --muted: #777;
-  --card: rgba(255,255,255,0.08);
-  --glass-border: rgba(255,255,255,0.1);
-  --bg: #f5f5f5;
-  --nav-bg: rgba(255,255,255,0.6);
-}
-[data-theme="dark"] {
-  --bg: #0e0e0e;
-  --text: #f5f5f5;
-  --muted: #aaa;
-  --card: rgba(255,255,255,0.05);
-  --glass-border: rgba(255,255,255,0.1);
-  --nav-bg: rgba(0,0,0,0.4);
-}
-body {
-  background-color: var(--bg);
-  color: var(--text);
-  font-family: 'Segoe UI', sans-serif;
-  margin: 0;
-  padding: 0;
-  line-height: 1.6;
-}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Chatbot Using Python — Abishek R</title>
 
-/* Navbar */
-nav.sticky {
-  position: sticky;
-  top: 12px;
-  z-index: 999;
-  backdrop-filter: blur(8px);
-  background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  border-radius: 14px;
-  margin: 10px auto;
-  padding: 10px 16px;
-  border: 1px solid var(--glass-border);
-  width: calc(100% - 40px);
-}
-nav .nav-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 700;
-  font-size: 1.05rem;
-}
-.logo i {
-  background: linear-gradient(90deg, var(--accent), #6c63ff);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.breadcrumb a {
-  color: var(--muted);
-  font-weight: 600;
-  text-decoration: none;
-  font-size: 0.92rem;
-}
-.breadcrumb a:hover {
-  color: var(--accent);
-}
-.theme-toggle {
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 10px;
-  border-radius: 10px;
-  border: 1px solid var(--glass-border);
-  background: var(--card);
-}
-.theme-toggle i {
-  font-size: 1rem;
-}
+  <!-- FontAwesome for icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
 
-/* Content */
-.container {
-  max-width: 900px;
-  margin: 20px auto;
-  padding: 20px;
-}
-h1, h2, h3 {
-  color: var(--text);
-}
-iframe {
-  max-width: 100%;
-  border-radius: 10px;
-  margin: 20px 0;
-}
-.project-links a {
-  display: inline-block;
-  margin-right: 10px;
-  color: var(--accent);
-  font-weight: 600;
-  text-decoration: none;
-}
-.project-links a:hover {
-  text-decoration: underline;
-}
-</style>
+  <style>
+  /* ---------- Theme variables (light + dark) ---------- */
+  :root{
+    --bg-color: #0b1220;
+    --text-color: #e6eef6;
+    --card-bg: #111318;
+    --accent-color: #4dabf7;
+    --nav-bg: #0f1116;
+    --bg: #071026;
+    --text: var(--text-color);
+    --card: var(--card-bg);
+    --muted: #9aa5b1;
+    --accent: var(--accent-color);
+    --glass-border: rgba(255,255,255,0.06);
+  }
+  /* light theme overrides */
+  [data-theme="light"]{
+    --bg-color: #f6f8fb;
+    --text-color: #04202a;
+    --card-bg: rgba(255,255,255,0.9);
+    --accent-color: #0077b6;
+    --nav-bg: #ffffff;
+    --bg: #f6f8fb;
+    --text: #04202a;
+    --card: rgba(255,255,255,0.9);
+    --muted: #44505a;
+    --accent: #0077b6;
+    --glass-border: rgba(0,0,0,0.06);
+  }
+
+  /* ---------- Base reset & layout ---------- */
+  *{box-sizing:border-box}
+  html,body{height:100%; margin:0; font-family:"Poppins",system-ui,Segoe UI,Roboto,Arial; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale}
+  body{
+    background: linear-gradient(180deg, var(--bg), var(--bg-color) 80%);
+    color: var(--text);
+    transition: background 300ms ease, color 300ms ease;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit; text-decoration:none}
+  .container{max-width:1100px; margin:0 auto; padding:28px 20px}
+
+  /* ---------- NAV (matches your home site size) ---------- */
+  nav.sticky {
+    position:sticky; top:12px; z-index:999; backdrop-filter: blur(8px);
+    background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border-radius:14px; margin:10px auto; padding:12px 18px; border:1px solid var(--glass-border); width:calc(100% - 40px);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+  nav .nav-inner{display:flex; align-items:center; justify-content:space-between; gap:12px}
+  .logo {display:flex; align-items:center; gap:10px; font-weight:700; font-size:1.05rem}
+  .logo i{background:linear-gradient(90deg,var(--accent), #6c63ff); -webkit-background-clip:text; background-clip:text; color:transparent}
+  .breadcrumb {font-size:0.95rem; color:var(--muted)}
+  .breadcrumb a{color:var(--muted); font-weight:600}
+  .breadcrumb a:hover{color:var(--accent)}
+  .theme-toggle{cursor:pointer; display:inline-flex; align-items:center; gap:10px; padding:8px 12px; border-radius:10px; border:1px solid var(--glass-border); background:var(--card); color:var(--text)}
+  .theme-toggle i{font-size:1rem}
+
+  /* ---------- Page hero / project header ---------- */
+  header.hero{padding:36px 0 10px; display:flex; gap:18px; align-items:flex-start; justify-content:space-between}
+  .hero-left{flex:1; min-width:0}
+  .hero-right{width:320px; max-width:38%}
+  .project-card{background:var(--card); border-radius:12px; padding:16px; border:1px solid var(--glass-border); backdrop-filter: blur(8px);}
+
+  h1{font-size:1.9rem; margin:0 0 8px}
+  .meta{color:var(--muted); margin-bottom:14px}
+
+  /* ---------- gallery ---------- */
+  .gallery{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-top:14px}
+  .gallery .img-card{border-radius:12px; overflow:hidden; border:1px solid var(--glass-border); background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:0}
+  .gallery img{width:100%; height:220px; object-fit:cover; display:block}
+
+  /* ---------- video ---------- */
+  .video-wrap{margin-top:18px; border-radius:12px; overflow:hidden; border:1px solid var(--glass-border); background:var(--card); padding:12px}
+  .video-wrap iframe{width:100%; height:420px; border:0; display:block; border-radius:8px}
+
+  /* ---------- buttons ---------- */
+  .actions{display:flex; gap:12px; margin-top:14px; flex-wrap:wrap}
+  .btn{background:linear-gradient(90deg,var(--accent), #6c63ff); color:white; padding:10px 14px; border-radius:10px; font-weight:700; text-decoration:none; display:inline-flex; gap:8px; align-items:center}
+  .btn.ghost{background:transparent; border:1px solid var(--glass-border); color:var(--text)}
+
+  /* ---------- content ---------- */
+  article{margin-top:22px; line-height:1.65}
+  article p{color:var(--text); margin:0 0 12px}
+  article h2{margin-top:18px; color:var(--text)}
+  ul{color:var(--muted); margin-left:1.15rem}
+
+  /* ---------- footer ---------- */
+  footer{padding:26px 0 80px; color:var(--muted)}
+
+  /* ---------- glass hover ---------- */
+  nav.sticky, .project-card, .img-card {
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    background: rgba(255, 255, 255, 0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  }
+  .img-card:hover, .project-card:hover {
+    background: rgba(255,255,255,0.08);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.25);
+    transform: translateY(-6px) scale(1.02);
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:980px) {
+    .hero-right{display:none}
+    .video-wrap iframe{height:320px}
+  }
+  @media (max-width:560px){
+    .gallery img{height:160px}
+    .video-wrap iframe{height:220px}
+  }
+  </style>
 </head>
 <body>
+  <!-- NAVBAR (breadcrumb only) -->
+  <nav class="sticky" role="navigation" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <div class="logo"><i class="fa-solid fa-atom"></i> Abishek R</div>
 
-<nav class="sticky" role="navigation">
-  <div class="container nav-inner">
-    <div class="logo"><i class="fa-solid fa-atom"></i> Abishek R</div>
-    <div class="breadcrumb"><a href="index.html"><i class="fa-solid fa-house"></i> Home</a> / Chatbot Using Python</div>
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-      <i class="fa-regular fa-moon" id="theme-icon"></i>
-    </button>
-  </div>
-</nav>
+      <div style="display:flex; align-items:center; gap:14px;">
+        <div class="breadcrumb"><a href="index.html">Home</a> <span style="color:var(--muted)">/ Chat Bot Using Python</span></div>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
+          <i class="fa-regular fa-moon" id="theme-icon" aria-hidden="true"></i>
+          <span id="theme-label" style="font-weight:700; font-size:.92rem; color:var(--muted); margin-left:-6px;"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
 
-<div class="container">
-  <h1>Chatbot Using Python</h1>
-  <p>This project demonstrates the creation of a simple chatbot in Python, designed specifically for answering queries about the Coronavirus. The bot utilizes Python libraries for natural language processing and pattern matching to respond accurately to user queries.</p>
-  
-  <iframe width="680" height="382" src="https://www.youtube.com/embed/vwU75MG0TaI" title="Chat Bot Using Python- Project Exhibition -1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <main class="container">
+    <!-- HERO -->
+    <header class="hero" role="banner">
+      <div class="hero-left">
+        <h1>Chat Bot Using Python</h1>
+        <div class="meta">By <strong>Abishek Prabakaran R</strong> • Dec 28, 2022 • Project</div>
+        <p style="max-width:70ch; color:var(--muted)">
+          A lightweight chatbot built with Python (NLTK / pattern-matching) with a Tkinter GUI and JSON-driven responses.
+          This project focuses on answering Corona-virus related queries accurately using pre-fed knowledge and pattern matching.
+        </p>
 
-  <h2>Project Overview</h2>
-  <p>The chatbot was built with Python and leverages a combination of NLP techniques to interpret and respond to user questions about COVID-19. It provides instant, accurate answers based on predefined datasets and responses.</p>
+        <div class="actions">
+          <a class="btn" href="https://github.com/Abijspy/Chatbot-Using-python/" target="_blank" rel="noopener">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+          <a class="btn" href="https://www.researchgate.net/publication/372767377_CHATBOT_USING_PYTHON_FOR_CORONA_VIRUS" target="_blank" rel="noopener">
+            <i class="fa-solid fa-book"></i> ResearchGate
+          </a>
+          <a class="btn ghost" href="#video" style="background:transparent; border:1px solid var(--glass-border); color:var(--muted)">Watch Demo</a>
+        </div>
+      </div>
 
-  <h2>Features</h2>
-  <ul>
-    <li>Python-based backend</li>
-    <li>Natural language processing</li>
-    <li>COVID-19 specific knowledge base</li>
-    <li>Instant response time</li>
-  </ul>
+      <!-- right profile / quick info card (hidden on small screens like main site) -->
+      <aside class="hero-right">
+        <div class="project-card">
+          <h3 style="margin:0 0 8px">Project Snapshot</h3>
+          <p style="margin:0 0 8px; color:var(--muted)">Tkinter GUI • NLTK • JSON driven responses • Covid-19 dataset</p>
+          <p style="margin:0; color:var(--muted); font-size:.9rem">Images below show GUI screens and sample static outputs.</p>
+        </div>
+      </aside>
+    </header>
 
-  <h2>Links</h2>
-  <div class="project-links">
-    <a href="https://github.com/Abijspy/Chatbot-Using-python/" target="_blank"><i class="fa-brands fa-github"></i> GitHub Repo</a>
-    <a href="https://www.researchgate.net/publication/372767377_CHATBOT_USING_PYTHON_FOR_CORONA_VIRUS" target="_blank"><i class="fa-solid fa-book"></i> ResearchGate</a>
-  </div>
-</div>
+    <!-- GALLERY -->
+    <section aria-labelledby="gallery-head">
+      <h2 id="gallery-head">Project Images</h2>
+      <div class="gallery" role="list">
+        <figure class="img-card" role="listitem">
+          <img src="images/project1/GUI1.png" alt="Chatbot GUI screenshot 1 — GUI1">
+        </figure>
+        <figure class="img-card" role="listitem">
+          <img src="images/project1/GUI2.png" alt="Chatbot GUI screenshot 2 — GUI2">
+        </figure>
+        <figure class="img-card" role="listitem">
+          <img src="images/project1/Static1.png" alt="Static output screenshot — Static1">
+        </figure>
+      </div>
+    </section>
 
-<script>
-// Theme toggle with localStorage sync
-const themeToggle = document.getElementById('theme-toggle');
-const themeIcon = document.getElementById('theme-icon');
+    <!-- VIDEO -->
+    <section id="video" aria-labelledby="video-head">
+      <h2 id="video-head">Video Presentation</h2>
+      <div class="video-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/vwU75MG0TaI"
+          title="Chat Bot Using Python- Project Exhibition -1"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen></iframe>
+      </div>
+    </section>
 
-function setTheme(theme) {
-  document.documentElement.setAttribute('data-theme', theme);
-  localStorage.setItem('theme', theme);
-  themeIcon.className = theme === 'dark' ? 'fa-regular fa-sun' : 'fa-regular fa-moon';
-}
+    <!-- ARTICLE / DESCRIPTION -->
+    <article aria-labelledby="overview-head">
+      <h2 id="overview-head">Project Overview</h2>
+      <p>
+        The Chatbot uses a combination of simple NLP and pattern-matching to interpret user queries. The user interacts with a Tkinter GUI; responses are driven by a JSON file containing questions and pattern-based replies.
+      </p>
 
-themeToggle.addEventListener('click', () => {
-  const currentTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-  setTheme(currentTheme);
-});
+      <h3>How it works</h3>
+      <ul>
+        <li>User types a question in the GUI input box.</li>
+        <li>The input text is preprocessed (tokenization, normalization).</li>
+        <li>Semantic meaning is extracted and matched against stored patterns.</li>
+        <li>A relevant pre-defined response from the JSON knowledge base is returned.</li>
+      </ul>
 
-(function () {
-  const savedTheme = localStorage.getItem('theme') || 'light';
-  setTheme(savedTheme);
-})();
-</script>
+      <h3>Tech stack</h3>
+      <ul>
+        <li>Python (3.x)</li>
+        <li>NLTK for basic NLP</li>
+        <li>Tkinter for GUI</li>
+        <li>JSON for response patterns / dataset</li>
+      </ul>
 
+      <h3>Notes</h3>
+      <p style="color:var(--muted)">
+        To use the images included here, ensure the files are placed at:
+        <code>images/project1/GUI1.png</code>,
+        <code>images/project1/GUI2.png</code>,
+        and <code>images/project1/Static1.png</code> relative to this HTML file.
+      </p>
+    </article>
+
+    <footer style="margin-top:22px; color:var(--muted)">
+      <p>© Abishek R</p>
+    </footer>
+  </main>
+
+  <!-- ---------- Theme sync script (single-file) ---------- -->
+  <script>
+  // Theme key - keeps theme in sync across pages that use the same script
+  const THEME_KEY = 'abijspy_theme';
+
+  const themeToggleBtn = document.getElementById('theme-toggle');
+  const themeIcon = document.getElementById('theme-icon');
+  const themeLabel = document.getElementById('theme-label');
+
+  // setUI updates icon & label based on current theme
+  function setUI(theme) {
+    if(theme === 'dark') {
+      document.documentElement.setAttribute('data-theme','dark');
+      themeIcon.className = 'fa-regular fa-sun';     // show sun meaning clicking gives light
+      if(themeLabel) themeLabel.textContent = 'Dark';
+    } else {
+      document.documentElement.setAttribute('data-theme','light');
+      themeIcon.className = 'fa-regular fa-moon';
+      if(themeLabel) themeLabel.textContent = 'Light';
+    }
+  }
+
+  // apply theme and persist
+  function applyTheme(theme) {
+    setUI(theme);
+    try { localStorage.setItem(THEME_KEY, theme); } catch(e) { /* ignore storage errors */ }
+  }
+
+  // toggle logic
+  themeToggleBtn.addEventListener('click', () => {
+    const cur = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    const next = cur === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+  });
+
+  // initialize: try localStorage, then prefer OS-level (prefers-color-scheme), else fallback to dark
+  (function initTheme(){
+    let saved = null;
+    try { saved = localStorage.getItem(THEME_KEY); } catch(e) { saved = null; }
+    if(saved === 'dark' || saved === 'light') {
+      applyTheme(saved);
+      return;
+    }
+    // no saved choice — respect system preference if available
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    applyTheme(prefersDark ? 'dark' : 'light');
+  })();
+  </script>
 </body>
 </html>
