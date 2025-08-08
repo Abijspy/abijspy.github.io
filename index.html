@@ -163,6 +163,61 @@ footer{padding:30px 0 80px; color:var(--muted)}
 /* responsive */
 @media (max-width:980px){ .hero{grid-template-columns:1fr} .nav-links{display:none} .nav-inner{justify-content:space-between} }
 @media (max-width:560px){ .social-icons{display:none} .profile-card img{width:92px;height:92px} .project-card img{height:150px} }
+   
+/* Stronger glassmorphism effect */
+nav.sticky,
+.profile-card,
+.skill,
+.card,
+.project-card {
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  background: rgba(255, 255, 255, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+/* Hover glass glow */
+.project-card:hover,
+.skill:hover,
+.card:hover {
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  transform: translateY(-6px) scale(1.02);
+}
+
+/* Smooth theme transitions */
+body {
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* Fade-in up animation */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Fade-in from left */
+@keyframes fadeLeft {
+  from { opacity: 0; transform: translateX(-25px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Apply to sections */
+section, .hero > div, .hero > aside {
+  animation: fadeUp 0.9s ease forwards;
+  opacity: 0;
+}
+
+/* Delay different elements for staggered effect */
+.hero > div { animation-delay: 0.2s; }
+.hero > aside { animation-delay: 0.4s; }
+section:nth-of-type(odd) { animation-delay: 0.3s; }
+section:nth-of-type(even) { animation-delay: 0.5s; }
+
+/* Button glow hover */
+.btn:hover {
+  box-shadow: 0 0 15px var(--accent);
+}   
 </style>
 
 </head>
@@ -491,7 +546,23 @@ toggleBtn.addEventListener('click', () => {
     toggleBtn.addEventListener('keydown', (e) => {
       if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleBtn.click(); }
     });
+    // Simple intersection observer for fadeUp animations
+const animatedElements = document.querySelectorAll("section, .hero > div, .hero > aside");
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = "1";
+      entry.target.style.animationPlayState = "running";
+    }
+  });
+}, { threshold: 0.1 });
+
+animatedElements.forEach(el => {
+  el.style.animationPlayState = "paused";
+  observer.observe(el);
+});
   </script>
 </body>
 </html>
+
 
