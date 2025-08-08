@@ -1,113 +1,182 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<title>Project 2</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		<link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
-		<link rel="manifest" href="favicon/site.webmanifest">
-		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6585175449792244"
-     crossorigin="anonymous"></script>
-	</head>
-	<body class="is-preload" oncontextmenu = "return false" onmousedown="return false" onselectstart="return false">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Face Expression — Abishek R</title>
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+  <!-- FontAwesome for icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
 
-				<!-- Header -->
-					<header id="header">
-						<a class="logo">Intro</a>
-					</header>
+  <style>
+  /* ---------- Theme variables (light + dark) ---------- */
+  :root{
+    --bg-color: #0b1220;
+    --text-color: #e6eef6;
+    --card-bg: #111318;
+    --accent-color: #4dabf7;
+    --nav-bg: #0f1116;
+    --bg: #071026;
+    --text: var(--text-color);
+    --card: var(--card-bg);
+    --muted: #9aa5b1;
+    --accent: var(--accent-color);
+    --glass-border: rgba(255,255,255,0.06);
+  }
+  [data-theme="light"]{
+    --bg-color: #f6f8fb;
+    --text-color: #04202a;
+    --card-bg: rgba(255,255,255,0.9);
+    --accent-color: #0077b6;
+    --nav-bg: #ffffff;
+    --bg: #f6f8fb;
+    --text: #04202a;
+    --card: rgba(255,255,255,0.9);
+    --muted: #44505a;
+    --accent: #0077b6;
+    --glass-border: rgba(0,0,0,0.06);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%; margin:0; font-family:"Poppins",system-ui,Segoe UI,Roboto,Arial; -webkit-font-smoothing:antialiased}
+  body{
+    background: linear-gradient(180deg, var(--bg), var(--bg-color) 80%);
+    color: var(--text);
+    transition: background 300ms ease, color 300ms ease;
+  }
+  a{color:inherit; text-decoration:none}
+  .container{max-width:1100px; margin:0 auto; padding:28px 20px}
 
-				<!-- Nav -->
-					<nav id="nav">
-						<ul class="links">	
-							<li class="active"><a href="project2.html">Project 2</a></li>
-						</ul>
-						<ul class="icons">
-						<li><a href="https://www.x.com/abishekprabaka2" class="fa-brands fa-x-twitter fa-shake"><span class="label"></span></a></li>
-						<li><a href="https://www.reddit.com/user/Abishekr01/" class="fa-brands fa-reddit-alien fa-shake"><span class="label"></span></a></li>
-						<li><a href="https://www.linkedin.com/in/abishek-prabakaran-ramkumar/" class="fa-brands fa-linkedin fa-shake"><span class="label"></span></a></li>
-						<li><a href="https://github.com/Abijspy" class="fa-brands fa-github fa-shake"><span class="label"></span></a></li>
-						<li><a href="https://www.researchgate.net/profile/Abishek-Prabakaran-Ramkumar" class="fa-brands fa-researchgate fa-shake"><span class="label"><span class="label"></span></a></li>
-						<li><a href="https://scholar.google.com/citations?hl=en&user=xMhP6tgAAAAJ" class="fa-brands fa-google-scholar fa-shake"><span class="label"></span></a></li>
-						<li><a href="https://www.youtube.com/channel/UCuLX4A09OKyq7HsbUzjGMtg" class="fa-brands fa-youtube fa-shake"><span class="label"></span></a></li>
-						<li><a href="https://orcid.org/0000-0003-0592-2146" class="fa-brands fa-orcid fa-shake"><span class="label"></span></a></li>
-						<li><a href="https://www.hackerrank.com/reachabishekr" class="fa-brands fa-hackerrank fa-shake"><span class="label"></span></a></li>
-						</ul>
-					</nav>
+  /* NAV */
+  nav.sticky {
+    position:sticky; top:12px; z-index:999; backdrop-filter: blur(8px);
+    background: rgba(255,255,255,0.02);
+    border-radius:14px; margin:10px auto; padding:12px 18px; border:1px solid var(--glass-border);
+    width:calc(100% - 40px);
+  }
+  nav .nav-inner{display:flex; align-items:center; justify-content:space-between; gap:12px}
+  .logo {display:flex; align-items:center; gap:10px; font-weight:700; font-size:1.05rem}
+  .logo i{background:linear-gradient(90deg,var(--accent), #6c63ff); -webkit-background-clip:text; background-clip:text; color:transparent}
+  .breadcrumb {font-size:0.95rem; color:var(--muted)}
+  .breadcrumb a{color:var(--muted); font-weight:600}
+  .breadcrumb a:hover{color:var(--accent)}
+  .theme-toggle{cursor:pointer; display:inline-flex; align-items:center; gap:10px; padding:8px 12px; border-radius:10px; border:1px solid var(--glass-border); background:var(--card)}
 
-				<!-- Main -->
-					<div id="main">
+  /* HERO */
+  header.hero{padding:36px 0 10px; display:flex; gap:18px; align-items:flex-start}
+  .hero-left{flex:1}
+  .hero-right{width:320px; max-width:38%}
+  .project-card{background:var(--card); border-radius:12px; padding:16px; border:1px solid var(--glass-border)}
 
-						<!-- Post -->
-							<section class="post">
-								<header class="major">
-									<h1>Face Expression</h1>
-									<p>The objective of face Expression is, from the incoming image, to find a series of data of the same face in a set of training images in a database. The great difficulty is ensuring that this process is carried out in real-time, something that is not available to all biometric facial recognition software providers.</p>
-								</header>
-								<p>Face recognition is a pattern recognition technique and one of the most important biometrics; it is used in a broad spectrum of applications. The accuracy is not a major problem that specifies the performance of automatic face recognition system alone, the time factor is also considered a major factor in real time environments. Recent architecture of the computer system can be employed to solve the time problem, this architecture represented by multi-core CPUs and manycore GPUs that provide the possibility to perform various tasks by parallel processing. However, harnessing the current advancements in computer architecture is not without difficulties.</p>
-                                <b>Module - 1 Facial detection Design & Implementation</b>
-								<div class="image main"><img src="images/project2/flowchart.png" width="300" height="500"></div>
-                                <p>To recognize a face, it is first important that we detect/locate a face in an image/video. There is various facial detection software that can detect a Human face in an image. We extract a human face and then move on to the next step.
-                                    Viola-Jones algorithm is one of the popular face detection algorithms.The next step is to extract features from a face using a face embedding model. A face embedding is a vector that represents the features extracted from the face and we can use these vectors to recognize faces. Note that face embedding for the same face may be really close in the vector whereas the face embeddings of two different faces may be really far away. We get a face embedding after passing the image through a face embedding model.
-We have face embedding for each face in the system. Whenever we pass a new face to the system, it calculates its face embedding and compares it with the ones we already have. The face is recognized, its face embedding closely matches any other face embedding in the database.</p>
-                                <b>Module-2 Facial Expression Design and Implementation</b>
-                                <p>A deep learning Model based on CNN before, it is noted that the original images collected from online courses need to be preprocessed, including face detection, alignment, rotation, and resize, according to the different elements in the original images. the process of the FER, and the detailed steps of the proposed framework are as follows: first, the cameras built in the electronic devices are utilized to capture the facial images of the attending students. Second, the facial expression recognition algorithm trained by the standard facial expression database is employed to detect the faces and classify the facial expressions. the histogram of probability distribution about the expression is plotted and provided in the form of h5 model graph</p>
-								<div class="image main"><img src="images/project2/Output.png" width="300" height="500"></div>
-                                <div class="image main"><img src="images/project2/Performance.png" width="300" height="500"></div>
-                                <p>To get a better model we need to train with more epoch and with more images. For that we need high computational power, which cannot be done a personal computer.</p>
-								<br>
-								<p><b>Video Link:</b></p>
-								<iframe width="560" height="315" src="https://www.youtube.com/embed/TX85z9PriaI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-								<br>
-									<ul class="actions special">
-										<li><a href="https://abijspy.github.io/" class="button">Back to My Portfolio</a></li>
-										<li><a href="https://github.com/Abijspy/Facial-Regonication-" class="button">Github Link</a></li>
-										<li><a href="https://www.researchgate.net/publication/372743093_FACE_DETECTION_EMOJI_PICKER" class="button">ResearchGate Link</a></li>
-										
-									</ul>
-							</section>
+  /* GALLERY */
+  .gallery{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-top:14px}
+  .gallery .img-card{border-radius:12px; overflow:hidden; border:1px solid var(--glass-border)}
+  .gallery img{width:100%; height:220px; object-fit:cover}
 
-					</div>
+  /* VIDEO */
+  .video-wrap{margin-top:18px; border-radius:12px; overflow:hidden; border:1px solid var(--glass-border); padding:12px; background:var(--card)}
+  .video-wrap iframe{width:100%; height:420px; border:0; border-radius:8px}
 
-				<!-- Footer -->
-					<footer id="footer">
-						<section class="split contact">
-							
-							<section>
-								<h3>Social</h3>
-								<ul class="icons alt">
-									<li><a href="https://www.x.com/abishekprabaka2" class="fa-brands fa-x-twitter fa-shake"><span class="label"></span></a></li>
-									<li><a href="https://www.reddit.com/user/Abishekr01/" class="fa-brands fa-reddit-alien fa-shake"><span class="label"></span></a></li>
-									<li><a href="https://www.linkedin.com/in/abishek-prabakaran-ramkumar/" class="fa-brands fa-linkedin fa-shake"><span class="label"></span></a></li>
-									<li><a href="https://github.com/Abijspy" class="fa-brands fa-github fa-shake"><span class="label"></span></a></li>
-									<li><a href="https://www.researchgate.net/profile/Abishek-Prabakaran-Ramkumar" class="fa-brands fa-researchgate fa-shake"><span class="label"><span class="label"></span></a></li>
-									<li><a href="https://scholar.google.com/citations?hl=en&user=xMhP6tgAAAAJ" class="fa-brands fa-google-scholar fa-shake"><span class="label"></span></a></li>
-									<li><a href="https://www.youtube.com/channel/UCuLX4A09OKyq7HsbUzjGMtg" class="fa-brands fa-youtube fa-shake"><span class="label"></span></a></li>
-									<li><a href="https://orcid.org/0000-0003-0592-2146" class="fa-brands fa-orcid fa-shake"><span class="label"></span></a></li>
-									<li><a href="https://www.hackerrank.com/reachabishekr" class="fa-brands fa-hackerrank fa-shake"><span class="label"></span></a></li>
-									
-								</ul>
-							</section>
-						</section>
-					</footer>
+  /* BUTTONS */
+  .actions{display:flex; gap:12px; margin-top:14px; flex-wrap:wrap}
+  .btn{background:linear-gradient(90deg,var(--accent), #6c63ff); color:white; padding:10px 14px; border-radius:10px; font-weight:700; display:inline-flex; gap:8px; align-items:center}
+  .btn.ghost{background:transparent; border:1px solid var(--glass-border); color:var(--muted)}
 
-				
-			</div>
+  article{margin-top:22px; line-height:1.65}
+  article p{margin:0 0 12px}
+  ul{margin-left:1.15rem}
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+  footer{padding:26px 0 80px; color:var(--muted)}
+  @media (max-width:980px) {.hero-right{display:none} .video-wrap iframe{height:320px}}
+  @media (max-width:560px){.gallery img{height:160px} .video-wrap iframe{height:220px}}
+  </style>
+</head>
+<body>
+  <nav class="sticky">
+    <div class="container nav-inner">
+      <div class="logo"><i class="fa-solid fa-brain"></i> Abishek R</div>
+      <div style="display:flex; align-items:center; gap:14px;">
+        <div class="breadcrumb"><a href="index.html">Home</a> <span style="color:var(--muted)">/ Face Expression</span></div>
+        <button class="theme-toggle" id="theme-toggle"><i class="fa-regular fa-moon" id="theme-icon"></i></button>
+      </div>
+    </div>
+  </nav>
 
-	</body>
+  <main class="container">
+    <header class="hero">
+      <div class="hero-left">
+        <h1>Face Expression Recognition</h1>
+        <div class="meta">By <strong>Abishek Prabakaran R</strong> • Project</div>
+        <p style="max-width:70ch; color:var(--muted)">
+          Real-time facial detection and expression recognition using deep learning CNN models, face embeddings, and image preprocessing for robust classification.
+        </p>
+        <div class="actions">
+          <a class="btn" href="https://github.com/Abijspy/Facial-Regonication-" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+          <a class="btn" href="https://www.researchgate.net/publication/372743093_FACE_DETECTION_EMOJI_PICKER" target="_blank"><i class="fa-solid fa-book"></i> ResearchGate</a>
+          <a class="btn ghost" href="#video">Watch Demo</a>
+        </div>
+      </div>
+      <aside class="hero-right">
+        <div class="project-card">
+          <h3>Project Snapshot</h3>
+          <p style="color:var(--muted)">Facial detection • CNN • Viola-Jones algorithm • Expression classification</p>
+        </div>
+      </aside>
+    </header>
+
+    <section>
+      <h2>Project Images</h2>
+      <div class="gallery">
+        <figure class="img-card"><img src="images/project2/flowchart.png" alt="Flowchart of facial detection process"></figure>
+        <figure class="img-card"><img src="images/project2/Output.png" alt="Facial expression recognition output"></figure>
+        <figure class="img-card"><img src="images/project2/Performance.png" alt="Model performance metrics"></figure>
+      </div>
+    </section>
+
+    <section id="video">
+      <h2>Video Presentation</h2>
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed/TX85z9PriaI" title="Face Expression Project Video" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <article>
+      <h2>Project Overview</h2>
+      <p>
+        The project implements facial detection and expression recognition. It first detects faces using the Viola-Jones algorithm, then generates face embeddings for matching with a database.
+      </p>
+      <h3>Modules</h3>
+      <ul>
+        <li><strong>Facial Detection</strong> — Detect and extract faces from input images or video.</li>
+        <li><strong>Facial Expression Recognition</strong> — CNN-based classification into emotions after preprocessing (alignment, rotation, resizing).</li>
+      </ul>
+    </article>
+
+    <footer>
+      <p>© Abishek R</p>
+    </footer>
+  </main>
+
+  <script>
+  const THEME_KEY = 'abijspy_theme';
+  const themeToggleBtn = document.getElementById('theme-toggle');
+  const themeIcon = document.getElementById('theme-icon');
+  function setUI(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    themeIcon.className = theme === 'dark' ? 'fa-regular fa-sun' : 'fa-regular fa-moon';
+  }
+  function applyTheme(theme) {
+    setUI(theme);
+    localStorage.setItem(THEME_KEY, theme);
+  }
+  themeToggleBtn.addEventListener('click', () => {
+    const cur = document.documentElement.getAttribute('data-theme');
+    applyTheme(cur === 'dark' ? 'light' : 'dark');
+  });
+  (function initTheme(){
+    let saved = localStorage.getItem(THEME_KEY);
+    if(saved) { applyTheme(saved); return; }
+    applyTheme(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  })();
+  </script>
+</body>
 </html>
