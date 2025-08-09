@@ -65,7 +65,7 @@ html,body{height:100%; margin:0; font-family:"Poppins",system-ui,Segoe UI,Roboto
 body{
   background: linear-gradient(180deg, var(--bg), var(--bg-color) 80%);
   color: var(--text);
-  padding-top: 72px;	
+  padding-top: 84px;	
   transition: background 300ms ease, color 300ms ease;
 }
 
@@ -75,20 +75,25 @@ a{color:inherit}
 /* NAV */
 nav.sticky {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 12px; /* small gap from top like before */
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 999;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  border-radius: 0; /* Full width, no rounded corners */
+
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  background: rgba(255, 255, 255, 0.06);
+
+  border-radius: 14px; 
   margin: 0;
   padding: 10px 16px;
-  border-bottom: 1px solid var(--glass-border);
-  width: 100%;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--glass-border);
+
+  width: calc(100% - 40px); /* same width as before */
+  max-width: 1100px; /* keeps it elegant on big screens */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
+
 
 nav .nav-inner {
   display: flex;
@@ -636,6 +641,7 @@ animatedElements.forEach(el => {
   </script>
 </body>
 </html>
+
 
 
 
