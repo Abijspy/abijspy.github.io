@@ -505,12 +505,12 @@ const themeLabel = document.getElementById('theme-label');
 function setUI(theme) {
   if (theme === 'light') {
     body.classList.add('light');
-    themeIcon.className = 'fa-solid fa-sun';
+    themeIcon.className = 'fa-regular fa-sun';
     themeLabel.textContent = 'Light';
     toggleBtn.setAttribute('aria-pressed', 'true');
   } else {
     body.classList.remove('light');
-    themeIcon.className = 'fa-solid fa-moon';
+    themeIcon.className = 'fa-regular fa-moon';
     themeLabel.textContent = 'Dark';
     toggleBtn.setAttribute('aria-pressed', 'false');
   }
@@ -587,6 +587,7 @@ animatedElements.forEach(el => {
   </script>
 </body>
 </html>
+
 
 
 
