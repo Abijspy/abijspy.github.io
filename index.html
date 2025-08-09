@@ -73,20 +73,29 @@ a{color:inherit}
 
 /* NAV */
 nav.sticky {
-  position:sticky; top:12px; z-index:999; backdrop-filter: blur(8px);
-  background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  border-radius:14px; margin:10px auto; padding:10px 16px; border:1px solid var(--glass-border); width:calc(100% - 40px);
+  padding: 10px 12px; /* reduce horizontal padding */
+  width: calc(100% - 24px); /* adjust width accordingly */
+  margin: 10px 12px; /* less margin on sides */
 }
-nav .nav-inner{display:flex; align-items:center; justify-content:space-between; gap:12px}
-.logo {display:flex; align-items:center; gap:10px; font-weight:700; font-size:1.05rem}
-.logo i{background:linear-gradient(90deg,var(--accent), #6c63ff); -webkit-background-clip:text; background-clip:text; color:transparent}
-.nav-links{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
-.nav-links a{padding:8px 12px; border-radius:10px; font-weight:600; font-size:0.92rem; color:var(--muted)}
-.nav-links a:hover{color:var(--text); background: rgba(255,255,255,0.03)}
-.social-icons{display:flex; gap:8px}
-.social-icons a{padding:8px; border-radius:10px; color:var(--muted); font-size:1.05rem}
-.social-icons a:hover{color:var(--accent); transform:translateY(-2px)}
-nav { background-color: var(--nav-bg); box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); }
+
+nav .nav-inner {
+  gap: 8px; /* reduce gap between logo and nav-links */
+}
+
+.logo {
+  flex-shrink: 0; /* prevent logo from shrinking too small */
+  max-width: 220px; /* limit logo max width to keep space */
+  overflow: hidden; /* hide overflow if too long */
+  white-space: nowrap;
+  text-overflow: ellipsis; /* shorten visually if too long */
+}
+
+.nav-links {
+  flex-wrap: nowrap; /* prevent wrapping */
+  overflow-x: auto; /* allow horizontal scroll if needed */
+  gap: 8px;
+}
+
 
 /* theme toggle */
 .theme-toggle{cursor:pointer; display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:10px; border:1px solid var(--glass-border); background:var(--card)}
@@ -590,6 +599,7 @@ animatedElements.forEach(el => {
   </script>
 </body>
 </html>
+
 
 
 
