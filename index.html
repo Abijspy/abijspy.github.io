@@ -53,7 +53,11 @@ body.light{
   --accent: #0077b6;
   --glass-border: rgba(0,0,0,0.06);
 }
-
+#theme-icon {
+  color: var(--text-color);
+  font-size: 24px;
+  transition: color 0.3s ease;
+}
 /* Base reset */
 *{box-sizing:border-box}
 html,body{height:100%; margin:0; font-family:"Poppins",system-ui,Segoe UI,Roboto,Arial; scroll-behavior:smooth; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale}
@@ -587,6 +591,7 @@ animatedElements.forEach(el => {
   </script>
 </body>
 </html>
+
 
 
 
