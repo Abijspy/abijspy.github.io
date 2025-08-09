@@ -159,16 +159,22 @@
   const themeLabel = document.getElementById('theme-label');
 
   function setUI(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
-    themeIcon.className = theme === 'dark' ? 'fa-regular fa-moon' : 'fa-regular fa-sun';
-    themeLabel.textContent = theme === 'dark' ? 'Dark' : 'Light';
+    if(theme === 'dark') {
+      document.documentElement.setAttribute('data-theme','dark');
+      themeIcon.className = 'fa-regular fa-moon';
+      themeLabel.textContent = 'Dark';
+    } else {
+      document.documentElement.setAttribute('data-theme','light');
+      themeIcon.className = 'fa-regular fa-sun';
+      themeLabel.textContent = 'Light';
+    }
   }
   function applyTheme(theme) {
     setUI(theme);
     localStorage.setItem(THEME_KEY, theme);
   }
   themeToggleBtn.addEventListener('click', () => {
-    const cur = document.documentElement.getAttribute('data-theme');
+    const cur = document.documentElement.getAttribute('data-theme') || 'dark';
     applyTheme(cur === 'dark' ? 'light' : 'dark');
   });
   (function initTheme(){
@@ -179,6 +185,7 @@
   </script>
 </body>
 </html>
+
 
 
 
