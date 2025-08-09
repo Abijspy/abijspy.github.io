@@ -65,6 +65,7 @@ html,body{height:100%; margin:0; font-family:"Poppins",system-ui,Segoe UI,Roboto
 body{
   background: linear-gradient(180deg, var(--bg), var(--bg-color) 80%);
   color: var(--text);
+  padding-top: 72px;	
   transition: background 300ms ease, color 300ms ease;
 }
 
@@ -73,16 +74,19 @@ a{color:inherit}
 
 /* NAV */
 nav.sticky {
-  position: sticky;
-  top: 12px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 999;
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  border-radius: 14px;
-  margin: 10px auto;
-  padding: 10px 12px; /* reduced horizontal padding as per your original */
-  border: 1px solid var(--glass-border);
-  width: calc(100% - 24px); /* adjusted width accordingly */
+  border-radius: 0; /* Full width, no rounded corners */
+  margin: 0;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--glass-border);
+  width: 100%;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
@@ -632,6 +636,7 @@ animatedElements.forEach(el => {
   </script>
 </body>
 </html>
+
 
 
 
