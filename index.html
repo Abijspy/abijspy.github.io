@@ -73,27 +73,26 @@ a{color:inherit}
 .container{max-width:1100px; margin:0 auto; padding:36px 20px}
 
 /* NAV */
-.navbar-wrapper {
+nav.sticky {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  right: 0;
   z-index: 999;
-  padding: 12px 0; /* space above and below nav */
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  background: rgba(255, 255, 255, 0.06);
+
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--glass-border);
+
+  width: 100vw; /* Full screen width */
+  border-radius: 0 0 16px 16px; /* Curved bottom corners */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
-nav.sticky {
-  position: relative;
-  margin: 0 auto;
-  max-width: 1200px; /* or any max width you want */
-  padding: 12px 18px;
-  border-radius: 14px;
-  background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  border: 1px solid var(--glass-border);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-}
+
 
 
 nav .nav-inner {
@@ -642,6 +641,7 @@ animatedElements.forEach(el => {
   </script>
 </body>
 </html>
+
 
 
 
