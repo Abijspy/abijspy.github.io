@@ -75,23 +75,25 @@ a{color:inherit}
 /* NAV */
 nav.sticky {
   position: fixed;
-  top: 0;
+  top: 16px; /* create space from the top */
   left: 0;
   right: 0;
   z-index: 999;
-
+  
+  max-width: 960px; /* restrict width */
+  margin: 0 auto; /* center horizontally */
+  padding: 10px 16px;
+  
   backdrop-filter: blur(14px) saturate(140%);
   -webkit-backdrop-filter: blur(14px) saturate(140%);
   background: rgba(255, 255, 255, 0.06);
-
-  border-radius: 0; /* no rounded edges for full width */
-  margin: 0;
-  padding: 10px 16px;
-  border-bottom: 1px solid var(--glass-border);
-
-  width: 100%;
+  
+  border: 1px solid var(--glass-border);
+  border-radius: 16px; /* <<< Rounded corners added */
+  
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
+
 
 
 nav .nav-inner {
@@ -640,6 +642,7 @@ animatedElements.forEach(el => {
   </script>
 </body>
 </html>
+
 
 
 
