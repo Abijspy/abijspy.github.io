@@ -84,13 +84,14 @@ nav.sticky {
   -webkit-backdrop-filter: blur(14px) saturate(140%);
   background: rgba(255, 255, 255, 0.06);
 
-  padding: 10px 10px;
+  padding: 10px;
   border-bottom: 1px solid var(--glass-border);
 
-  width: 100vw; /* Full screen width */
-  border-radius: 16px; /* Curved corners */
+  width: auto; /* Use left & right to define width */
+  border-radius: 16px; /* All corners curved */
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
+
 
 
 
@@ -641,6 +642,7 @@ animatedElements.forEach(el => {
   </script>
 </body>
 </html>
+
 
 
 
