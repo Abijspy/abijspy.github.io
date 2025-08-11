@@ -278,11 +278,18 @@ section:nth-of-type(even) { animation-delay: 0.5s; }
 /* Button glow hover */
 .btn:hover {
   box-shadow: 0 0 15px var(--accent);
-}   
+}
+/* no text select*/	 
+.no-select {
+  user-select: none;
+  -webkit-user-select: none; /* Chrome, Safari */
+  -moz-user-select: none;    /* Firefox */
+  -ms-user-select: none;     /* Internet Explorer/Edge */
+} 
 </style>
 
 </head>
-<body>
+<body class = "no-select">
   <!-- NAV -->
   <nav class="sticky" role="navigation" aria-label="Main navigation">
     <div class="container nav-inner">
@@ -642,6 +649,7 @@ animatedElements.forEach(el => {
   </script>
 </body>
 </html>
+
 
 
 
