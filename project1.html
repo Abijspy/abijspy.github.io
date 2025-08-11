@@ -163,9 +163,16 @@
     .gallery img{height:160px}
     .video-wrap iframe{height:220px}
   }
+/* disable text selection */	  
+.no-select {
+  user-select: none;
+  -webkit-user-select: none; /* Chrome, Safari */
+  -moz-user-select: none;    /* Firefox */
+  -ms-user-select: none;     /* Internet Explorer/Edge */
+}	  
   </style>
 </head>
-<body>
+<body class = "no-select">
   <nav class="sticky">
     <div class="container nav-inner">
       <div class="logo"><i class="fa-solid fa-atom"></i> Abishek Prabakaran R</div>
