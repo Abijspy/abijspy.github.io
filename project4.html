@@ -131,12 +131,18 @@
     background: rgba(255,255,255,0.3);
     color: var(--accent);
   }
-
+	/* disable text selection */	  
+  .no-select {
+  	user-select: none;
+  	-webkit-user-select: none; /* Chrome, Safari */
+  	-moz-user-select: none;    /* Firefox */
+  	-ms-user-select: none;     /* Internet Explorer/Edge */
+  }	
   @media(max-width:980px){.hero-right{display:none} .video-wrap iframe{height:320px}}
   @media(max-width:560px){.gallery img{height:160px} .video-wrap iframe{height:220px}}
   </style>
 </head>
-<body>
+<body class = "no-select">
   <nav class="sticky">
     <div class="container nav-inner">
       <div class="logo"><i class="fa-solid fa-graduation-cap"></i> Abishek Prabakaran R</div>
