@@ -292,7 +292,7 @@ nav.sticky, .project-card, .img-card {
       <i class="ri-github-fill"></i>
 
       <div class="theme-toggle-btn" id="theme-toggle">
-  		<i id="theme-icon" class="fa-moon"></i>
+  		<i id="theme-icon" class="fa-solid fa-moon"></i>
 	  </div>
     </div>
 
@@ -364,7 +364,7 @@ const themeIcon = document.getElementById('theme-icon');
 
 function applyTheme(theme){
     document.documentElement.setAttribute('data-theme', theme);
-    themeIcon.className = theme === 'dark' ? 'fa-moon' : 'fa-sun';
+    themeIcon.className = theme === 'dark' ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
     localStorage.setItem(THEME_KEY, theme);
 }
 
