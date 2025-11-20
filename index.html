@@ -119,10 +119,14 @@ nav.sticky {
 
 
 nav .nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 6px; /* reduced gap between logo and nav-links */
+  gap: 6px;
 }
 
 .logo {
@@ -375,7 +379,7 @@ section:nth-of-type(even) { animation-delay: 0.5s; }
 <body class = "no-select">
   <!-- NAV -->
   <nav class="sticky" role="navigation" aria-label="Main navigation" data-animate="fade-up" data-animate-once>
-    <div class="container nav-inner">
+    <div class="nav-inner">
       <div class="logo"><i class="fa-solid fa-atom"></i> Abishek Prabakaran R</div>
 
       <div style="display:flex; align-items:center; gap:12px">
@@ -780,6 +784,7 @@ animatedElements.forEach(el => {
   </script>
 </body>
 </html>
+
 
 
 
