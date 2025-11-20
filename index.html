@@ -72,92 +72,184 @@ a{color:inherit}
 .container{max-width:1100px; margin:0 auto; padding:36px 20px}
 
 /* NAV */
-nav.sticky {
-  position: fixed;        /* fixed at top */
-  top: 12px;
+/* --------------------------------------------------
+   APPLE–STYLE FLOATING GLASS NAVBAR
+-------------------------------------------------- */
+
+.apple-nav {
+  position: fixed;
+  top: 16px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 999;
+  z-index: 1000;
 
-  width: calc(100% - 40px);
-  max-width: 1100px;       /* prevent over-expansion */
-  padding: 12px 18px;
+  width: calc(100% - 60px);
+  max-width: 1180px;
 
-  backdrop-filter: blur(14px) saturate(140%);
-  background: rgba(255, 255, 255, 0.03);
+  padding: 14px 26px;
+  border-radius: 22px;
 
-  border-radius: 14px;
-  border: 1px solid var(--glass-border);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  /* True Apple Glassmorphism */
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+
+  /* Soft Apple shadow */
+  box-shadow:
+    0 8px 28px rgba(0, 0, 0, 0.25),
+    inset 0 0 1px rgba(255, 255, 255, 0.35);
+
+  transition: all 0.35s ease;
 }
-/* Light Theme Glass Boost */
-[data-theme="light"] nav.sticky {
-  background: rgba(255, 255, 255, 0.65);
-  border: 1px solid rgba(0, 0, 0, 0.06);
+
+body.light .apple-nav {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(0, 0, 0, 0.08);
 
   box-shadow:
-    inset 0 0 1px rgba(255, 255, 255, 0.65),
-    0 8px 26px rgba(0, 0, 0, 0.12);
+    0 8px 24px rgba(0, 0, 0, 0.12),
+    inset 0 0 1px rgba(255, 255, 255, 0.65);
 
-  backdrop-filter: blur(16px) saturate(180%);
+  backdrop-filter: blur(26px) saturate(180%);
 }
 
+/* --------------------------------------------------
+   INNER NAV STRUCTURE
+-------------------------------------------------- */
 
-
-
-
-nav .nav-inner {
+.apple-nav .nav-inner {
   display: flex;
+  width: 100%;
   align-items: center;
   justify-content: space-between;
-
-  padding-left: 0;        /* ensures no unintended shift */
-  padding-right: 0;
 }
 
-.logo {
+/* --------------------------------------------------
+   LOGO
+-------------------------------------------------- */
+
+.apple-nav .logo {
   display: flex;
   align-items: center;
   gap: 10px;
-  flex-shrink: 0; /* prevent logo from shrinking */
-  max-width: 220px; /* limit max width */
-  overflow: hidden;
+  font-weight: 600;
+  font-size: 1.06rem;
+  color: var(--text-color);
   white-space: nowrap;
-  text-overflow: ellipsis;
-  font-weight: 700;
-  font-size: 1.05rem;
 }
 
-.logo i {
-  background: linear-gradient(90deg, var(--accent), #6c63ff);
+.apple-nav .logo i {
+  background: linear-gradient(90deg, var(--accent-color), #6c63ff);
   -webkit-background-clip: text;
-  color: transparent;
+  -webkit-text-fill-color: transparent;
 }
 
-.nav-links {
+/* --------------------------------------------------
+   NAVIGATION LINKS (CENTERED)
+-------------------------------------------------- */
+
+.apple-nav .nav-links {
   display: flex;
-  flex-wrap: nowrap; /* prevent wrapping */
-  overflow-x: auto; /* allow horizontal scroll if needed */
-  gap: 8px;
+  gap: 22px;
+  font-size: 0.96rem;
+  white-space: nowrap;
 }
 
-/* Optional: scrollbar style for horizontal scrolling nav-links */
-.nav-links::-webkit-scrollbar {
-  height: 6px;
+.apple-nav .nav-links a {
+  color: var(--text-color);
+  opacity: 0.75;
+  font-weight: 500;
+  transition: opacity 0.2s ease, color 0.2s ease;
 }
-.nav-links::-webkit-scrollbar-thumb {
-  background: var(--accent);
-  border-radius: 3px;
+
+.apple-nav .nav-links a:hover,
+.apple-nav .nav-links a.active {
+  opacity: 1;
+  color: var(--accent-color);
 }
-/* Light theme override for clearer glass */
-body.light nav.sticky {
-  background: rgba(255, 255, 255, 0.55);
-  border: 1px solid rgba(150, 150, 150, 0.25);
-  box-shadow:
-    inset 0 0 1px rgba(255, 255, 255, 0.65),
-    0 8px 28px rgba(0, 0, 0, 0.12);
-  backdrop-filter: blur(16px) saturate(180%);
+
+/* --------------------------------------------------
+   RIGHT SIDE (SOCIAL + TOGGLE)
+-------------------------------------------------- */
+
+.apple-nav .right-side {
+  display: flex;
+  align-items: center;
+  gap: 18px;
 }
+
+/* Social Icons */
+.apple-nav .social-icons {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.apple-nav .social-icons a {
+  font-size: 1.15rem;
+  color: var(--text-color);
+  opacity: 0.75;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.apple-nav .social-icons a:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+/* --------------------------------------------------
+   iOS–STYLE THEME TOGGLE
+-------------------------------------------------- */
+
+.apple-nav .theme-toggle {
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 10px;
+  font-size: 1.05rem;
+
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(18px);
+
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.apple-nav .theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.22);
+  transform: translateY(-3px);
+}
+
+body.light .theme-toggle {
+  background: rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+/* --------------------------------------------------
+   RESPONSIVE BEHAVIOR
+-------------------------------------------------- */
+
+@media (max-width: 980px) {
+  .apple-nav .nav-links {
+    display: none; /* hide center nav on mobile */
+  }
+}
+
+@media (max-width: 560px) {
+  .apple-nav {
+    padding: 12px 18px;
+    border-radius: 18px;
+  }
+
+  .apple-nav .right-side {
+    gap: 12px;
+  }
+
+  .apple-nav .social-icons {
+    display: none; /* hide socials on small mobile */
+  }
+}
+
 
 
 /* theme toggle */
@@ -242,9 +334,26 @@ footer{padding:30px 0 80px; color:var(--muted)}
 .footer-icons a:hover{color:var(--accent)}
 
 /* responsive */
-@media (max-width:980px){ .hero{grid-template-columns:1fr} .nav-links{display:none} .nav-inner{justify-content:space-between} }
-@media (max-width:560px){ .social-icons{display:none} .profile-card img{width:92px;height:92px} .project-card img{height:150px} }
-@media (max-width: 768px) { html {scroll-padding-top: 80px;} }	 
+@media (max-width: 980px) {
+  .apple-nav .nav-links {
+    display: none; /* hide center nav on mobile */
+  }
+}
+
+@media (max-width: 560px) {
+  .apple-nav {
+    padding: 12px 18px;
+    border-radius: 18px;
+  }
+
+  .apple-nav .right-side {
+    gap: 12px;
+  }
+
+  .apple-nav .social-icons {
+    display: none; /* hide socials on small mobile */
+  }
+}	 
    
 /* Stronger glassmorphism effect */
 nav.sticky,
@@ -364,37 +473,37 @@ section:nth-of-type(even) { animation-delay: 0.5s; }
 </head>
 <body class = "no-select">
   <!-- NAV -->
-  <nav class="sticky" role="navigation" aria-label="Main navigation" data-animate="fade-up" data-animate-once>
-    <div class="nav-inner">
-      <div class="logo"><i class="fa-solid fa-atom"></i> Abishek Prabakaran R</div>
-
-      <div style="display:flex; align-items:center; gap:12px">
-        <div class="nav-links" id="nav-links">
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#projects">Projects</a>
-          <a href="#certificates">Certificates</a>
-          <a href="#internships">Internships</a>
-          <a href="#github-stats">GitHub</a>
-          <a href="#contact">Contact</a>
-        </div>
-
-        <div class="social-icons" aria-hidden="true">
-          <a href="https://x.com/abishekprabaka2" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter"></i></a>
-          <a href="https://www.reddit.com/user/Abishekr01/" target="_blank" rel="noopener"><i class="fa-brands fa-reddit-alien"></i></a>
-          <a href="https://www.linkedin.com/in/abishek-prabakaran-ramkumar/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i></a>
-          <a href="https://github.com/Abijspy" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i></a>
-        </div>
-
-        <div style="width:8px"></div>
-
-        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-          <i class="fa-regular fa-moon" id="theme-icon"></i>
-          <span id="theme-label" style="font-weight:600; font-size:.9rem; color:var(--muted)"></span>
-        </button>
-      </div>
+<nav class="apple-nav">
+  <div class="nav-inner">
+    <div class="logo">
+      <i class="fa-solid fa-atom"></i>
+      <span>Abishek Prabakaran R</span>
     </div>
-  </nav>
+
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#certificates">Certificates</a>
+      <a href="#internships">Internships</a>
+      <a href="#github-stats">GitHub</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <div class="right-side">
+      <div class="social-icons">
+        <a href="https://x.com/abishekprabaka2" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://www.reddit.com/user/Abishekr01/"><i class="fa-brands fa-reddit-alien"></i></a>
+        <a href="https://www.linkedin.com/in/abishek-prabakaran-ramkumar/"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://github.com/Abijspy"><i class="fa-brands fa-github"></i></a>
+      </div>
+
+      <button class="theme-toggle" id="theme-toggle">
+        <i class="fa-regular fa-moon" id="theme-icon"></i>
+      </button>
+    </div>
+  </div>
+</nav>
 
   <!-- HERO / ABOUT -->
   <main>
@@ -770,6 +879,7 @@ animatedElements.forEach(el => {
   </script>
 </body>
 </html>
+
 
 
 
