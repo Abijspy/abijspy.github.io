@@ -172,7 +172,9 @@ nav .nav-inner {
 }
 
 .project-card{background:var(--card); border-radius:12px; padding:16px; border:1px solid var(--glass-border); backdrop-filter: blur(8px);}
-
+.hero {display: flex;align-items: flex-start;justify-content: space-between;gap: 20px;}
+.hero-left {flex: 1;}
+.hero-right {flex: 0 0 280px;}
 h1{font-size:1.9rem; margin:0 0 8px}
 .meta{color:var(--muted); margin-bottom:14px}
 
@@ -209,9 +211,9 @@ nav.sticky, .project-card, .img-card {
 .popup-overlay {
   position: fixed;
   top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.85);
   display: flex; align-items: center; justify-content: center;
-  z-index: 10000;
+  z-index: 99999; /* make sure it's above everything */
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -289,9 +291,9 @@ nav.sticky, .project-card, .img-card {
       <i class="ri-linkedin-box-fill"></i>
       <i class="ri-github-fill"></i>
 
-      <div class="theme-toggle-btn">
-        <i class="ri-moon-line"></i>
-      </div>
+      <div class="theme-toggle-btn" id="theme-toggle">
+  		<i id="theme-icon" class="ri-moon-line"></i>
+	  </div>
     </div>
 
   </div>
@@ -356,35 +358,28 @@ nav.sticky, .project-card, .img-card {
   </div>
 
   <script>
-  const THEME_KEY = 'abijspy_theme';
-  const themeToggleBtn = document.getElementById('theme-toggle');
-  const themeIcon = document.getElementById('theme-icon');
-  const themeLabel = document.getElementById('theme-label');
+ const THEME_KEY = 'abijspy_theme';
+const themeToggleBtn = document.getElementById('theme-toggle');
+const themeIcon = document.getElementById('theme-icon');
 
-  function setUI(theme) {
-    if(theme === 'dark') {
-      document.documentElement.setAttribute('data-theme','dark');
-      themeIcon.className = 'fa-regular fa-moon';
-      themeLabel.textContent = 'Dark';
-    } else {
-      document.documentElement.setAttribute('data-theme','light');
-      themeIcon.className = 'fa-regular fa-sun';
-      themeLabel.textContent = 'Light';
-    }
-  }
-  function applyTheme(theme) {
-    setUI(theme);
+function applyTheme(theme){
+    document.documentElement.setAttribute('data-theme', theme);
+    themeIcon.className = theme === 'dark' ? 'ri-moon-line' : 'ri-sun-line';
     localStorage.setItem(THEME_KEY, theme);
-  }
-  themeToggleBtn.addEventListener('click', () => {
-    const cur = document.documentElement.getAttribute('data-theme') || 'dark';
-    applyTheme(cur === 'dark' ? 'light' : 'dark');
-  });
-  (function initTheme(){
+}
+
+themeToggleBtn.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme') || 'dark';
+    applyTheme(current === 'dark' ? 'light' : 'dark');
+});
+
+// Initialize theme
+(function initTheme() {
     let saved = localStorage.getItem(THEME_KEY);
-    if(saved) { applyTheme(saved); return; }
-    applyTheme(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-  })();
+    if(saved){ applyTheme(saved); }
+    else { applyTheme(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); }
+})();
+
 
   // Popup logic
   const popup = document.getElementById("image-popup");
