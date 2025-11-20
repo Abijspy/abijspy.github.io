@@ -79,11 +79,12 @@ nav.sticky {
   transform: translateX(-50%);
   z-index: 999;
 
-  /* Stronger blur + depth */
+  width: min(1100px, calc(100% - 40px)); /* prevents oversized nav */
+  margin: 0; /* ← important */
+
   backdrop-filter: blur(18px) saturate(180%);
   -webkit-backdrop-filter: blur(18px) saturate(180%);
 
-  /* Frosted layered glass gradient */
   background: linear-gradient(
       135deg,
       rgba(255, 255, 255, 0.14) 0%,
@@ -94,9 +95,6 @@ nav.sticky {
   padding: 12px 18px;
   border: 1px solid var(--glass-border);
 
-  width: calc(100% - 40px);
-
-  /* Soft inner glow + depth shadow */
   box-shadow:
     inset 0 0 0.5px rgba(255, 255, 255, 0.35),
     0 8px 28px rgba(0, 0, 0, 0.3);
@@ -782,6 +780,7 @@ animatedElements.forEach(el => {
   </script>
 </body>
 </html>
+
 
 
 
