@@ -158,10 +158,23 @@ nav .nav-inner {
 
 
   /* HERO */
-  header.hero{padding:36px 0 10px;display:flex;gap:18px;align-items:flex-start}
-  .hero-left{flex:1}
-  .hero-right{width:320px;max-width:38%}
-  .project-card{background:var(--card);border-radius:12px;padding:16px;border:1px solid var(--glass-border)}
+  header.hero {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    flex-wrap: wrap; /* allow wrapping on very small screens */
+}
+
+.hero-left {
+    flex: 1; /* takes remaining space */
+    min-width: 300px; /* optional: ensures it doesn't shrink too much */
+}
+
+.hero-right {
+    flex: 0 0 320px; /* fixed width, don’t grow or shrink */
+    max-width: 38%;
+}
+
 
   /* GALLERY */
   .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:14px}
@@ -300,6 +313,7 @@ themeToggleBtn.addEventListener('click', () => {
   </script>
 </body>
 </html>
+
 
 
 
