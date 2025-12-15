@@ -43,20 +43,106 @@
   .container{max-width:1100px;margin:0 auto;padding:28px 20px}
 
   /* NAV */
-  nav.sticky{
-    position:sticky;top:12px;z-index:999;backdrop-filter:blur(8px);
-    background:rgba(255,255,255,0.02);border-radius:14px;margin:10px auto;
-    padding:12px 18px;border:1px solid var(--glass-border);
-    width:calc(100% - 40px);
-  }
-  nav .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:12px}
-  .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.05rem}
-  .logo i{background:linear-gradient(90deg,var(--accent),#6c63ff);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .breadcrumb{font-size:0.95rem;color:var(--muted)}
-  .breadcrumb a{color:var(--muted);font-weight:600}
-  .breadcrumb a:hover{color:var(--accent)}
-  .theme-toggle{cursor:pointer;display:inline-flex;align-items:center;gap:10px;
-    padding:8px 12px;border-radius:10px;border:1px solid var(--glass-border);background:var(--card)}
+  nav.sticky {
+  position: sticky;
+  top: 12px;
+  z-index: 999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: calc(100% - 40px);
+  margin: 10px auto;
+  padding: 12px 26px;
+
+  border-radius: 40px;
+  border: 1px solid var(--glass-border);
+
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(14px) saturate(140%);
+
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+nav .nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.logo i {
+  font-size: 1.25rem;
+  background: linear-gradient(90deg, var(--accent), #6c63ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.breadcrumb a {
+  font-weight: 600;
+  color: var(--text);
+  opacity: 0.8;
+}
+
+.breadcrumb a:hover {
+  color: var(--accent);
+  opacity: 1;
+}
+
+/* Right Side Icons */
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 1.2rem;
+  color: var(--text-color);
+}
+
+/* Circular Theme Toggle Button */
+.theme-toggle-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--glass-border);
+
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.25s ease;
+}
+
+.theme-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: scale(1.05);
+}
+
+.theme-toggle-btn i {
+  font-size: 1.2rem;
+  color: var(--text-color);
+}
 
   /* HERO */
   header.hero{padding:36px 0 10px;display:flex;gap:18px;align-items:flex-start}
@@ -144,17 +230,30 @@
 </head>
 <body class = "no-select">
   <nav class="sticky">
-    <div class="container nav-inner">
-      <div class="logo"><i class="fa-solid fa-graduation-cap"></i> Abishek Prabakaran R</div>
-      <div style="display:flex;align-items:center;gap:14px;">
-        <div class="breadcrumb"><a href="index.html">Home</a> <span style="color:var(--muted)">/ Smart Student Management</span></div>
-        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-          <i class="fa-regular fa-sun" id="theme-icon"></i>
-          <span id="theme-label" style="font-weight:600; font-size:.9rem; color:var(--muted)"></span>
-        </button>
+  <div class="nav-inner">
+
+    <!-- Left Logo -->
+    <div class="logo">
+      <i class="fa-solid fa-graduation-cap"></i>
+      Abishek Prabakaran R
+    </div>
+
+    <!-- Center Breadcrumb -->
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span style="color:var(--muted)">/ Smart Student Management</span>
+    </div>
+
+    <!-- Right Icons -->
+    <div class="nav-icons">
+      <div class="theme-toggle-btn" id="theme-toggle">
+        <i id="theme-icon" class="fa-solid fa-moon"></i>
       </div>
     </div>
-  </nav>
+
+  </div>
+</nav>
+
 
   <main class="container">
     <header class="hero">
