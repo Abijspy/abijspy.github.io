@@ -354,33 +354,52 @@ nav .nav-inner {
   })();
 
   // Image popup logic
+  <script>
   const popup = document.getElementById("image-popup");
   const popupImg = document.getElementById("popup-img");
   const popupClose = document.getElementById("popup-close");
 
+  // Open popup
   document.querySelectorAll(".gallery img").forEach(img => {
     img.addEventListener("click", () => {
       popupImg.src = img.src;
       popupImg.alt = img.alt;
-      popup.setAttribute('aria-hidden', 'false');
+
       popup.classList.add("show");
+      popup.setAttribute("aria-hidden", "false");
+
+      document.body.style.overflow = "hidden"; // lock scroll
       popupClose.focus();
     });
   });
 
+  // Close popup function
   function closePopup() {
     popup.classList.remove("show");
-    popup.setAttribute('aria-hidden', 'true');
+    popup.setAttribute("aria-hidden", "true");
+
+    popupImg.src = "";
+    document.body.style.overflow = ""; // restore scroll
   }
 
+  // Close button
   popupClose.addEventListener("click", closePopup);
-  popup.addEventListener("click", e => {
-    if(e.target === popup) closePopup();
+
+  // Click outside image closes popup
+  popup.addEventListener("click", (e) => {
+    if (!popupImg.contains(e.target)) {
+      closePopup();
+    }
   });
 
-  // Close popup on Escape key
-  document.addEventListener('keydown', (e) => {
-    if(e.key === "Escape" && popup.classList.contains("show")) {
+  // Prevent image click from closing popup
+  popupImg.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+
+  // Escape key closes popup
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && popup.classList.contains("show")) {
       closePopup();
     }
   });
