@@ -355,56 +355,58 @@ nav .nav-inner {
 
   // Image popup logic
   <script>
+  // Theme toggle code
+  /* --- Navigation Bar (Matches First Page) --- */
+  const THEME_KEY = 'abijspy_theme';
+const themeToggleBtn = document.getElementById('theme-toggle');
+const themeIcon = document.getElementById('theme-icon');
+
+function applyTheme(theme){
+    document.documentElement.setAttribute('data-theme', theme);
+    themeIcon.className = theme === 'dark' ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
+    localStorage.setItem(THEME_KEY, theme);
+}
+
+themeToggleBtn.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme') || 'dark';
+    applyTheme(current === 'dark' ? 'light' : 'dark');
+});
+
+(function initTheme() {
+    let saved = localStorage.getItem(THEME_KEY);
+    if(saved){ applyTheme(saved); }
+    else { applyTheme(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); }
+})();
+
+
+  // Image popup logic
   const popup = document.getElementById("image-popup");
   const popupImg = document.getElementById("popup-img");
   const popupClose = document.getElementById("popup-close");
 
-  let popupOpen = false;
-
-  // OPEN POPUP
   document.querySelectorAll(".gallery img").forEach(img => {
-    img.addEventListener("click", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-
+    img.addEventListener("click", () => {
       popupImg.src = img.src;
       popupImg.alt = img.alt;
-
-      // Delay showing to avoid click-through
-      requestAnimationFrame(() => {
-        popup.classList.add("show");
-        popup.setAttribute("aria-hidden", "false");
-        document.body.style.overflow = "hidden";
-        popupOpen = true;
-      });
+      popup.setAttribute('aria-hidden', 'false');
+      popup.classList.add("show");
+      popupClose.focus();
     });
   });
 
-  // CLOSE FUNCTION
   function closePopup() {
     popup.classList.remove("show");
-    popup.setAttribute("aria-hidden", "true");
-    popupImg.src = "";
-    document.body.style.overflow = "";
-    popupOpen = false;
+    popup.setAttribute('aria-hidden', 'true');
   }
 
-  // Close button
-  popupClose.addEventListener("click", (e) => {
-    e.stopPropagation();
-    closePopup();
+  popupClose.addEventListener("click", closePopup);
+  popup.addEventListener("click", e => {
+    if(e.target === popup) closePopup();
   });
 
-  // Click ONLY on overlay background
-  popup.addEventListener("click", (e) => {
-    if (popupOpen && e.target === popup) {
-      closePopup();
-    }
-  });
-
-  // ESC key
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && popupOpen) {
+  // Close popup on Escape key
+  document.addEventListener('keydown', (e) => {
+    if(e.key === "Escape" && popup.classList.contains("show")) {
       closePopup();
     }
   });
