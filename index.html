@@ -802,18 +802,15 @@ const THEME_KEY = 'abijspy_theme';
 const body = document.body;
 const toggleBtn = document.getElementById('theme-toggle');
 const themeIcon = document.getElementById('theme-icon');
-const themeLabel = document.getElementById('theme-label');
 
 function setUI(theme) {
   if (theme === 'light') {
     body.classList.add('light');
     themeIcon.className = 'fa-regular fa-sun';
-    themeLabel.textContent = 'Light';
     toggleBtn.setAttribute('aria-pressed', 'true');
   } else {
     body.classList.remove('light');
     themeIcon.className = 'fa-regular fa-moon';
-    themeLabel.textContent = 'Dark';
     toggleBtn.setAttribute('aria-pressed', 'false');
   }
 }
@@ -823,20 +820,26 @@ function applyTheme(theme) {
   localStorage.setItem(THEME_KEY, theme);
 }
 
+// Toggle click
 toggleBtn.addEventListener('click', () => {
-  const curTheme = body.classList.contains('light') ? 'light' : 'dark';
-  applyTheme(curTheme === 'light' ? 'dark' : 'light');
+  const currentTheme = body.classList.contains('light') ? 'light' : 'dark';
+  applyTheme(currentTheme === 'light' ? 'dark' : 'light');
 });
 
-// Init theme from saved preference or system preference
+// Init theme
 (function initTheme() {
-  const saved = localStorage.getItem(THEME_KEY);
-  if (saved) {
-    applyTheme(saved);
+  const savedTheme = localStorage.getItem(THEME_KEY);
+  if (savedTheme) {
+    applyTheme(savedTheme);
   } else {
-    applyTheme(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    applyTheme(
+      window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? 'dark'
+        : 'light'
+    );
   }
 })();
+
 
 // Accessibility: keyboard navigation for theme toggle
 toggleBtn.addEventListener('keydown', (e) => {
@@ -889,6 +892,7 @@ animatedElements.forEach(el => {
   </script>
 </body>
 </html>
+
 
 
 
