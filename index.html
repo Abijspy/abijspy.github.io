@@ -74,7 +74,7 @@ a{color:inherit}
 
 /* NAV */
 /* --------------------------------------------------
-   APPLE–STYLE FLOATING GLASS NAVBAR
+FLOATING GLASS NAVBAR
 -------------------------------------------------- */
 
 .apple-nav {
@@ -324,9 +324,6 @@ section p.lead{color:var(--muted); margin:6px 0 18px}
 .card h4{margin:0 0 8px}
 .card p{margin:0; color:var(--muted)}
 
-/* GitHub stats */
-.github-cards{display:flex; gap:12px; flex-wrap:wrap; justify-content:center}
-.github-cards img{max-width:420px; width:100%; border-radius:10px; border:1px solid var(--glass-border)}
 
 /* Contact/footer */
 footer{padding:30px 0 80px; color:var(--muted)}
@@ -399,7 +396,6 @@ section, .hero > div, .hero > aside {
   animation: fadeUp 0.9s ease forwards;
   opacity: 0;
 }
-/* Fix anchor scroll offset to prevent sticky navbar from covering section headings */
 html {
     scroll-padding-top: 100px; /* Adjust based on your nav height */
 }	 
@@ -487,7 +483,6 @@ section:nth-of-type(even) { animation-delay: 0.5s; }
       <a href="#projects">Projects</a>
       <a href="#certificates">Certificates</a>
       <a href="#internships">Internships</a>
-      <a href="#github-stats">GitHub</a>
       <a href="#contact">Contact</a>
     </div>
 
@@ -746,17 +741,7 @@ section:nth-of-type(even) { animation-delay: 0.5s; }
       </div>
     </section>
 
-    <!-- GITHUB STATS -->
-    <section id="github-stats" class="container" data-animate="fade-up" data-animate-delay="100">
-      <div class="section-head"><h2><i class="fa-solid fa-chart-line"></i> GitHub — @abijspy</h2></div>
-      <p class="lead">Live GitHub statistics and top languages (powered by GitHub Readme Stats).</p>
-
-      <div class="github-cards">
-        <!-- Theme can be adjusted (e.g., dark / default) — these images are dynamic -->
-        <img src="https://github-readme-stats.vercel.app/api?username=abijspy&show_icons=true&locale=en" alt="GitHub Stats">
-        <img src="https://github-readme-stats.vercel.app/api/top-langs?username=abijspy&layout=compact&locale=en" alt="Top Languages">
-      </div>
-    </section>
+    
 
     <!-- CONTACT -->
     <section id="contact" class="container" data-animate="fade-up" data-animate-delay="100">
@@ -891,6 +876,7 @@ animatedElements.forEach(el => {
   </script>
 </body>
 </html>
+
 
 
 
