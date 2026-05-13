@@ -464,7 +464,112 @@ section:nth-of-type(even) { animation-delay: 0.5s; }
   animation-fill-mode: forwards;
   animation-timing-function: ease;
 }
-	 
+/* =========================================
+   CURSOR TRACKED ATOM
+========================================= */
+
+#atom-cursor{
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 90px;
+  height: 90px;
+
+  pointer-events: none;
+  z-index: 99999;
+
+  transform: translate(-50%, -50%);
+  transition:
+    transform 0.08s linear;
+
+  mix-blend-mode: screen;
+}
+
+/* Center nucleus */
+#atom-cursor .nucleus{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 12px;
+  height: 12px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(circle, #ffffff, var(--accent-color));
+
+  transform: translate(-50%, -50%);
+
+  box-shadow:
+    0 0 12px var(--accent-color),
+    0 0 24px var(--accent-color),
+    0 0 40px rgba(77,171,247,0.7);
+}
+
+/* Orbit Rings */
+#atom-cursor .orbit{
+  position: absolute;
+  inset: 0;
+
+  border: 1.5px solid rgba(255,255,255,0.22);
+  border-radius: 50%;
+
+  animation: spin 4s linear infinite;
+}
+
+/* Different orbit rotations */
+#atom-cursor .orbit1{
+  transform: rotateX(70deg) rotateY(20deg);
+}
+
+#atom-cursor .orbit2{
+  transform: rotateY(70deg) rotateZ(60deg);
+  animation-duration: 6s;
+}
+
+#atom-cursor .orbit3{
+  transform: rotateX(70deg) rotateZ(120deg);
+  animation-duration: 8s;
+}
+
+/* Electrons */
+#atom-cursor .electron{
+  position: absolute;
+  top: -4px;
+  left: 50%;
+
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+  background: #fff;
+
+  transform: translateX(-50%);
+
+  box-shadow:
+    0 0 10px #fff,
+    0 0 20px var(--accent-color);
+}
+
+/* Orbit animation */
+@keyframes spin{
+  from{
+    transform:
+      rotate(0deg);
+  }
+  to{
+    transform:
+      rotate(360deg);
+  }
+}
+
+/* Mobile disable */
+@media(max-width:768px){
+  #atom-cursor{
+    display:none;
+  }
+}	 
 </style>
 
 </head>
@@ -775,7 +880,22 @@ section:nth-of-type(even) { animation-delay: 0.5s; }
     </footer>
 
   </main>
+  <!-- Cursor Atom Effect -->
+<div id="atom-cursor">
+  <div class="nucleus"></div>
 
+  <div class="orbit orbit1">
+    <div class="electron"></div>
+  </div>
+
+  <div class="orbit orbit2">
+    <div class="electron"></div>
+  </div>
+
+  <div class="orbit orbit3">
+    <div class="electron"></div>
+  </div>
+</div>
   <!-- trig-js -->	
   <script src="https://cdn.jsdelivr.net/npm/trig-js/src/trig.min.js"></script>	
   <script>
@@ -872,7 +992,52 @@ animatedElements.forEach(el => {
   el.style.animationPlayState = "paused";
   observer.observe(el);
 });
+// =========================================
+// CURSOR TRACKED ATOM
+// =========================================
 
+const atomCursor = document.getElementById("atom-cursor");
+
+let mouseX = window.innerWidth / 2;
+let mouseY = window.innerHeight / 2;
+
+let currentX = mouseX;
+let currentY = mouseY;
+
+document.addEventListener("mousemove", (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+// Smooth follow animation
+function animateAtomCursor() {
+  currentX += (mouseX - currentX) * 0.18;
+  currentY += (mouseY - currentY) * 0.18;
+
+  atomCursor.style.left = currentX + "px";
+  atomCursor.style.top = currentY + "px";
+
+  requestAnimationFrame(animateAtomCursor);
+}
+
+animateAtomCursor();
+
+// Scale effect on hover
+const hoverTargets = document.querySelectorAll(
+  "a, button, .project-card, .skill, .card"
+);
+
+hoverTargets.forEach(el => {
+  el.addEventListener("mouseenter", () => {
+    atomCursor.style.transform =
+      "translate(-50%, -50%) scale(1.4)";
+  });
+
+  el.addEventListener("mouseleave", () => {
+    atomCursor.style.transform =
+      "translate(-50%, -50%) scale(1)";
+  });
+});
   </script>
 </body>
 </html>
