@@ -435,6 +435,57 @@ article h3{margin-top:18px}
     }
   }
 
+  /* Project content spacing */
+  main > section,
+  main > article {
+    margin-top: 36px;
+  }
+  main > header + section {
+    margin-top: 38px;
+  }
+  section h2,
+  article h2 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--glass-border);
+  }
+  section h2::after,
+  article h2::after {
+    content: "";
+    flex: 1 1 auto;
+    min-width: 32px;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(77,171,247,0.48), transparent);
+  }
+  .gallery,
+  .video-wrap {
+    margin-top: 0;
+  }
+  .video-wrap + .video-wrap {
+    margin-top: 18px;
+  }
+  @media (max-width:560px) {
+    main > section,
+    main > article {
+      margin-top: 28px;
+    }
+    main > header + section {
+      margin-top: 30px;
+    }
+    section h2,
+    article h2 {
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+    }
+    section h2::after,
+    article h2::after {
+      min-width: 18px;
+    }
+  }
+
   </style>
 </head>
 <body class = "no-select">
@@ -510,7 +561,7 @@ article h3{margin-top:18px}
           <iframe src="https://www.youtube.com/embed/8_UiDmKFfs4" title="Project Demo Video" allowfullscreen></iframe>
         </div>
       </div>
-      <div class="video-wrap" style="margin-top:20px;">
+      <div class="video-wrap">
         <div class="ratio ratio-16x9">
           <iframe src="https://www.youtube.com/embed/xqzCimIJfWo" title="Journal Presentation Video" allowfullscreen></iframe>
         </div>
