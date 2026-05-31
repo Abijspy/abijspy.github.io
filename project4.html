@@ -392,6 +392,102 @@ nav .nav-inner {
       transform 250ms ease;
   }
 
+  .mouse-glow-card {
+    --mouse-x: 50%;
+    --mouse-y: 50%;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    will-change: transform, box-shadow;
+    transition:
+      transform 280ms ease,
+      box-shadow 320ms ease,
+      border-color 320ms ease,
+      background 450ms ease,
+      color 450ms ease;
+  }
+  .mouse-glow-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    border-radius: inherit;
+    opacity: 0;
+    background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(77,171,247,0.28), rgba(108,99,255,0.13) 28%, transparent 58%);
+    transition: opacity 280ms ease;
+  }
+  .mouse-glow-card:hover::before,
+  .mouse-glow-card:focus-within::before {
+    opacity: 1;
+  }
+  .mouse-glow-card:hover {
+    border-color: rgba(77,171,247,0.42);
+    box-shadow: 0 18px 44px rgba(2,6,23,0.38), 0 0 0 1px rgba(77,171,247,0.2);
+  }
+  nav.sticky.mouse-glow-card {
+    overflow: hidden;
+  }
+  nav.sticky .nav-inner {
+    position: relative;
+    z-index: 3;
+  }
+  nav.sticky.mouse-glow-card::before {
+    z-index: 1;
+    background:
+      radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(77,171,247,0.24), rgba(108,99,255,0.13) 26%, transparent 62%);
+  }
+  nav.sticky.mouse-glow-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    border-radius: inherit;
+    opacity: 0;
+    background: linear-gradient(115deg, transparent 14%, rgba(255,255,255,0.18) 42%, transparent 72%);
+    transition: opacity 300ms ease;
+  }
+  nav.sticky.mouse-glow-card:hover,
+  nav.sticky.mouse-glow-card:focus-within {
+    border-color: rgba(77,171,247,0.34);
+    box-shadow:
+      0 12px 34px rgba(2,6,23,0.34),
+      0 0 28px rgba(77,171,247,0.14),
+      inset 0 0 1px rgba(255,255,255,0.42);
+  }
+  nav.sticky.mouse-glow-card:hover::after,
+  nav.sticky.mouse-glow-card:focus-within::after {
+    opacity: 0.55;
+  }
+  [data-theme="light"] .mouse-glow-card::before {
+    background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(0,119,182,0.2), rgba(108,99,255,0.08) 30%, transparent 60%);
+  }
+  [data-theme="light"] .mouse-glow-card:hover {
+    box-shadow: 0 16px 38px rgba(15,23,42,0.16), 0 0 0 1px rgba(0,119,182,0.16);
+  }
+  [data-theme="light"] nav.sticky.mouse-glow-card::before {
+    background:
+      radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(0,119,182,0.18), rgba(108,99,255,0.09) 28%, transparent 64%);
+  }
+  [data-theme="light"] nav.sticky.mouse-glow-card::after {
+    background: linear-gradient(115deg, transparent 14%, rgba(255,255,255,0.36) 42%, transparent 72%);
+  }
+  [data-theme="light"] nav.sticky.mouse-glow-card:hover,
+  [data-theme="light"] nav.sticky.mouse-glow-card:focus-within {
+    box-shadow:
+      0 12px 30px rgba(15,23,42,0.12),
+      0 0 26px rgba(0,119,182,0.12),
+      inset 0 0 1px rgba(255,255,255,0.78);
+  }
+
+  @media (hover: none), (pointer: coarse) {
+    .mouse-glow-card::before,
+    nav.sticky.mouse-glow-card::after {
+      display: none;
+    }
+  }
+
   </style>
 </head>
 <body class = "no-select">
@@ -572,6 +668,30 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowLeft") showImage(currentImageIndex - 1);
   if (e.key === "ArrowRight") showImage(currentImageIndex + 1);
 });
+
+// Mouse-follow overlay for cards and media panels
+function initMouseGlowCards(selector) {
+  const cards = document.querySelectorAll(selector);
+  const canTrackMouse = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  cards.forEach((card) => {
+    card.classList.add('mouse-glow-card');
+    if (!canTrackMouse) return;
+
+    card.addEventListener('mousemove', (event) => {
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty('--mouse-x', `${event.clientX - rect.left}px`);
+      card.style.setProperty('--mouse-y', `${event.clientY - rect.top}px`);
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.setProperty('--mouse-x', '50%');
+      card.style.setProperty('--mouse-y', '50%');
+    });
+  });
+}
+
+initMouseGlowCards('nav.sticky, .project-card, .img-card, .video-wrap');
 </script>
 </body>
 </html>
