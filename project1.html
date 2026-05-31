@@ -344,12 +344,50 @@ nav.sticky, .project-card, .img-card {
   outline: 3px solid var(--accent);
   outline-offset: 3px;
 }
+.popup-nav {
+  position: fixed;
+  top: 50%;
+  width: 48px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  appearance: none;
+  border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 50%;
+  background: rgba(15,23,42,0.72);
+  backdrop-filter: blur(12px) saturate(140%);
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.15rem;
+  line-height: 1;
+  padding: 0;
+  z-index: 100000;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.34);
+  transform: translateY(-50%);
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+.popup-prev{left:24px}
+.popup-next{right:24px}
+.popup-nav:hover {
+  background: rgba(255,255,255,0.22);
+  border-color: rgba(255,255,255,0.45);
+  color: #fff;
+  transform: translateY(-50%) scale(1.04);
+}
+.popup-nav:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
 
 @media (max-width:980px) {
   .hero-right{display:none}
 }
 @media (max-width:560px){
   .popup-close{top:12px; right:12px; width:40px; height:40px; font-size:1.4rem}
+  .popup-nav{width:40px; height:40px; font-size:1rem}
+  .popup-prev{left:12px}
+  .popup-next{right:12px}
   nav.sticky{padding:12px 18px; border-radius:18px}
   .gallery img{height:160px}
 }
@@ -473,7 +511,9 @@ a {
   <!-- Image Popup -->
   <div class="popup-overlay" id="image-popup" role="dialog" aria-modal="true" aria-hidden="true">
     <button type="button" class="popup-close" id="popup-close" aria-label="Close image popup">&times;</button>
+    <button type="button" class="popup-nav popup-prev" id="popup-prev" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
     <img class="popup-img" id="popup-img" src="" alt="">
+    <button type="button" class="popup-nav popup-next" id="popup-next" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
   </div>
 
   <script>
@@ -504,11 +544,21 @@ themeToggleBtn.addEventListener('click', () => {
   const popup = document.getElementById("image-popup");
   const popupImg = document.getElementById("popup-img");
   const popupClose = document.getElementById("popup-close");
+  const popupPrev = document.getElementById("popup-prev");
+  const popupNext = document.getElementById("popup-next");
+  const galleryImages = Array.from(document.querySelectorAll(".gallery img"));
+  let currentImageIndex = 0;
 
-  document.querySelectorAll(".gallery img").forEach(img => {
+  function showImage(index) {
+    currentImageIndex = (index + galleryImages.length) % galleryImages.length;
+    const img = galleryImages[currentImageIndex];
+    popupImg.src = img.src;
+    popupImg.alt = img.alt;
+  }
+
+  galleryImages.forEach((img, index) => {
     img.addEventListener("click", () => {
-      popupImg.src = img.src;
-      popupImg.alt = img.alt;
+      showImage(index);
       popup.classList.add("show");
       popup.setAttribute("aria-hidden", "false");
       popupClose.focus();
@@ -521,9 +571,20 @@ themeToggleBtn.addEventListener('click', () => {
   }
 
   popupClose.addEventListener("click", closePopup);
+  popupPrev.addEventListener("click", (e) => {
+    e.stopPropagation();
+    showImage(currentImageIndex - 1);
+  });
+  popupNext.addEventListener("click", (e) => {
+    e.stopPropagation();
+    showImage(currentImageIndex + 1);
+  });
   popup.addEventListener("click", (e) => { if (e.target === popup) closePopup(); });
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && popup.classList.contains("show")) closePopup();
+    if (!popup.classList.contains("show")) return;
+    if (e.key === "Escape") closePopup();
+    if (e.key === "ArrowLeft") showImage(currentImageIndex - 1);
+    if (e.key === "ArrowRight") showImage(currentImageIndex + 1);
   });
   </script>
 </body>
