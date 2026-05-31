@@ -301,23 +301,39 @@ nav .nav-inner {
     transform: scale(1);
   }
   .popup-close {
-    position: absolute;
-    top: 20px; right: 28px;
-    font-size: 2rem;
-    color: white;
+    position: fixed;
+    top: 20px;
+    right: 24px;
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    appearance: none;
+    border: 1px solid rgba(255,255,255,0.28);
+    border-radius: 50%;
+    background: rgba(15,23,42,0.72);
+    backdrop-filter: blur(12px) saturate(140%);
+    color: #fff;
     cursor: pointer;
-    font-weight: bold;
+    font-size: 1.55rem;
+    font-weight: 600;
+    line-height: 1;
+    padding: 0;
     user-select: none;
     z-index: 10001;
-    background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(8px);
-    padding: 4px 10px;
-    border-radius: 50%;
-    transition: background 0.2s ease, color 0.2s ease;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.34);
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
   }
   .popup-close:hover {
-    background: rgba(255,255,255,0.3);
-    color: var(--accent);
+    background: rgba(255,255,255,0.22);
+    border-color: rgba(255,255,255,0.45);
+    color: #fff;
+    transform: translateY(-1px);
+  }
+  .popup-close:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
   }
 /* disable text selection */	  
 .no-select {
@@ -327,7 +343,7 @@ nav .nav-inner {
   -ms-user-select: none;     /* Internet Explorer/Edge */
 }	
   @media (max-width:980px) {.hero-right{display:none}}
-  @media (max-width:560px){nav.sticky{padding:12px 18px; border-radius:18px} .gallery img{height:160px}}
+  @media (max-width:560px){nav.sticky{padding:12px 18px; border-radius:18px} .popup-close{top:12px; right:12px; width:40px; height:40px; font-size:1.4rem} .gallery img{height:160px}}
 
   /* Theme transition polish */
   body,
@@ -447,7 +463,7 @@ nav .nav-inner {
 
   <!-- Image Popup Overlay -->
   <div class="popup-overlay" id="image-popup" role="dialog" aria-modal="true" aria-hidden="true">
-    <button class="popup-close" id="popup-close" aria-label="Close image popup">&times;</button>
+    <button type="button" class="popup-close" id="popup-close" aria-label="Close image popup">&times;</button>
     <img class="popup-img" id="popup-img" src="" alt="">
   </div>
 
