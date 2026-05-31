@@ -68,12 +68,20 @@ html,body{height:100%; margin:0; font-family:"Poppins",system-ui,Segoe UI,Roboto
 body{
   background: linear-gradient(180deg, var(--bg), var(--bg-color) 80%);
   color: var(--text);
-  padding-top: 72px;	
+  padding-top: 72px;
+  --bs-body-color: var(--text);
+  --bs-body-bg: var(--bg-color);
+  --bs-heading-color: var(--text);
+  --bs-card-color: var(--text);
+  --bs-card-bg: var(--card);
+  --bs-border-color: var(--glass-border);
+  --bs-link-color: var(--text);
+  --bs-link-hover-color: var(--accent);
   transition: background 300ms ease, color 300ms ease;
 }
 
 a{color:inherit}
-.container{max-width:1100px; margin:0 auto; padding:36px 20px}
+.container{max-width:1100px}
 
 /* NAV */
 /* --------------------------------------------------
@@ -82,16 +90,16 @@ FLOATING GLASS NAVBAR
 
 .apple-nav {
   position: fixed;
-  top: 16px;
+  top: 12px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
 
-  width: calc(100% - 60px);
+  width: calc(100% - 40px);
   max-width: 1180px;
 
-  padding: 14px 26px;
-  border-radius: 22px;
+  padding: 12px 26px;
+  border-radius: 40px;
 
   /* True Apple Glassmorphism */
   background: rgba(255, 255, 255, 0.10);
@@ -261,7 +269,7 @@ body.light .theme-toggle {
 .theme-toggle i{font-size:1rem}
 
 /* Hero */
-.hero{padding:80px 0 36px; display:grid; grid-template-columns: 1fr 360px; gap:28px; align-items:center}
+.hero{padding:80px 0 36px}
 .hero h1{margin: 0; padding: 0 8px; white-space: nowrap; font-size: 1.6rem; font-weight: 700; overflow-wrap: normal;}
 .hero p{color:var(--muted); line-height:1.6}
 .cta {margin-top:18px; display:flex; gap:12px; flex-wrap:wrap}
@@ -299,7 +307,7 @@ body.light .theme-toggle {
 /* Sections */
 section {padding:48px 0}
 section .section-head{display:flex; align-items:center; gap:12px; margin-bottom:18px}
-section h2{margin:0; font-size:1.25rem}
+section h2{margin:0; font-size:1.25rem; color:var(--text)}
 section p.lead{color:var(--muted); margin:6px 0 18px}
 
 /* Skills */
@@ -323,8 +331,9 @@ section p.lead{color:var(--muted); margin:6px 0 18px}
 
 /* Certificates & internships */
 .cards-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px}
-.card{background:var(--card); border-radius:12px; padding:16px; border:1px solid var(--glass-border); transition:transform .18s}
-.card h4{margin:0 0 8px}
+.card{background:var(--card); color:var(--text); border-radius:12px; padding:0; border:1px solid var(--glass-border); transition:transform .18s}
+.card .card-body{padding:16px}
+.card h4{margin:0 0 8px; color:var(--text)}
 .card p{margin:0; color:var(--muted)}
 
 
@@ -473,31 +482,31 @@ section:nth-of-type(even) { animation-delay: 0.5s; }
 </head>
 <body class = "no-select">
   <!-- NAV -->
-<nav class="apple-nav">
-  <div class="nav-inner">
-    <div class="logo">
+<nav class="apple-nav navbar">
+  <div class="nav-inner d-flex align-items-center justify-content-between w-100">
+    <div class="logo navbar-brand mb-0">
       <i class="fa-solid fa-atom"></i>
       <span>Abishek Prabakaran R</span>
     </div>
 
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#certificates">Certificates</a>
-      <a href="#internships">Internships</a>
-      <a href="#contact">Contact</a>
+    <div class="nav-links navbar-nav flex-row">
+      <a class="nav-link" href="#about">About</a>
+      <a class="nav-link" href="#skills">Skills</a>
+      <a class="nav-link" href="#projects">Projects</a>
+      <a class="nav-link" href="#certificates">Certificates</a>
+      <a class="nav-link" href="#internships">Internships</a>
+      <a class="nav-link" href="#contact">Contact</a>
     </div>
 
-    <div class="right-side">
-      <div class="social-icons">
+    <div class="right-side d-flex align-items-center">
+      <div class="social-icons d-flex align-items-center">
         <a href="https://x.com/abishekprabaka2" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
         <a href="https://www.reddit.com/user/Abishekr01/"><i class="fa-brands fa-reddit-alien"></i></a>
         <a href="https://www.linkedin.com/in/abishek-prabakaran-ramkumar/"><i class="fa-brands fa-linkedin"></i></a>
         <a href="https://github.com/Abijspy"><i class="fa-brands fa-github"></i></a>
       </div>
 
-      <button class="theme-toggle" id="theme-toggle">
+      <button class="theme-toggle p-2" id="theme-toggle">
         <i class="fa-regular fa-moon" id="theme-icon"></i>
       </button>
     </div>
@@ -506,12 +515,12 @@ section:nth-of-type(even) { animation-delay: 0.5s; }
 
   <!-- HERO / ABOUT -->
   <main>
-    <div class="container hero" id="about">
-      <div >
+    <div class="container hero row align-items-center g-4 mx-auto" id="about">
+      <div class="col-lg-8">
         <h1>Hi — I’m <strong>Abishek Prabakaran R</strong></h1>
         <p class="lead">2023 B.Tech-CSE passout passionate about Data Science, AI & ML. I build practical projects that combine machine learning, IoT and web development.</p>
 
-        <div class="cta">
+        <div class="cta d-flex flex-wrap gap-2 mt-3">
           <a class="btn" href="#projects">View Academic Projects</a>
           <a class="btn ghost" href="mailto:reachabishekr@gmail.com">Contact Me</a>
         </div>
@@ -521,7 +530,7 @@ section:nth-of-type(even) { animation-delay: 0.5s; }
         </div>
       </div>
 
-      <aside class="profile-card" data-animate="fade-left" data-animate-delay="200" data-animate-once>
+      <aside class="profile-card col-lg-4" data-animate="fade-left" data-animate-delay="200" data-animate-once>
         <!-- Replace src with your profile image path if available -->
         <img src="images/New Passport Size.jpg" alt="Profile image" onerror="this.style.display='none'">
         
@@ -535,15 +544,15 @@ section:nth-of-type(even) { animation-delay: 0.5s; }
       </div>
       <p class="lead">Languages, frameworks and tools I use frequently.</p>
 
-      <div class="skills-grid">
-        <div class="skill"><i class="fa-brands fa-python"></i><div class="name">Python</div></div>
-        <div class="skill"><i class="fa-brands fa-js-square"></i><div class="name">JavaScript</div></div>
-        <div class="skill"><i class="fa-brands fa-html5"></i><div class="name">HTML5</div></div>
-        <div class="skill"><i class="fa-brands fa-css3-alt"></i><div class="name">CSS</div></div>
-        <div class="skill"><i class="fa-brands fa-react"></i><div class="name">React</div></div>
-        <div class="skill"><i class="fa-solid fa-microchip"></i><div class="name">IoT / Embedded</div></div>
-        <div class="skill"><i class="fa-solid fa-database"></i><div class="name">SQLite / MySQL</div></div>
-        <div class="skill"><i class="fa-solid fa-cloud"></i><div class="name">AWS Basics</div></div>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3">
+        <div class="col"><div class="skill h-100"><i class="fa-brands fa-python"></i><div class="name">Python</div></div></div>
+        <div class="col"><div class="skill h-100"><i class="fa-brands fa-js-square"></i><div class="name">JavaScript</div></div></div>
+        <div class="col"><div class="skill h-100"><i class="fa-brands fa-html5"></i><div class="name">HTML5</div></div></div>
+        <div class="col"><div class="skill h-100"><i class="fa-brands fa-css3-alt"></i><div class="name">CSS</div></div></div>
+        <div class="col"><div class="skill h-100"><i class="fa-brands fa-react"></i><div class="name">React</div></div></div>
+        <div class="col"><div class="skill h-100"><i class="fa-solid fa-microchip"></i><div class="name">IoT / Embedded</div></div></div>
+        <div class="col"><div class="skill h-100"><i class="fa-solid fa-database"></i><div class="name">SQLite / MySQL</div></div></div>
+        <div class="col"><div class="skill h-100"><i class="fa-solid fa-cloud"></i><div class="name">AWS Basics</div></div></div>
       </div>
     </section>
 
@@ -552,9 +561,10 @@ section:nth-of-type(even) { animation-delay: 0.5s; }
       <div class="section-head"><h2><i class="fa-solid fa-diagram-project"></i> Academic Projects</h2></div>
       <p class="lead">Four selected projects — click "More Info" to view details.</p>
 
-      <div class="projects-grid">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-4">
         <!-- Project 1 -->
-        <article class="project-card" data-animate="zoom-in" data-animate-delay="200">
+        <article class="col" data-animate="zoom-in" data-animate-delay="200">
+          <div class="project-card h-100">
           <img src="images/chatbot using pyhton.png" alt="Chatbot Using Python">
           <div class="project-body">
             <h3>Chatbot — Using Python</h3>
@@ -568,10 +578,12 @@ section:nth-of-type(even) { animation-delay: 0.5s; }
               <a href="/project1.html" class="btn ghost">Details</a>
             </div>
           </div>
+          </div>
         </article>
 
         <!-- Project 2 -->
-        <article class="project-card" data-animate="zoom-in" data-animate-delay="250">
+        <article class="col" data-animate="zoom-in" data-animate-delay="250">
+          <div class="project-card h-100">
           <!-- encode space in src for browsers that need it (both forms often work) -->
           <img src="images/Facial Expression.png" alt="Facial Detection">
           <div class="project-body">
@@ -586,10 +598,12 @@ section:nth-of-type(even) { animation-delay: 0.5s; }
               <a href="/project2.html" class="btn ghost">Details</a>
             </div>
           </div>
+          </div>
         </article>
 
         <!-- Project 3 -->
-        <article class="project-card" data-animate="zoom-in" data-animate-delay="300">
+        <article class="col" data-animate="zoom-in" data-animate-delay="300">
+          <div class="project-card h-100">
           <img src="images/Smart Water Mangement System.png" alt="Smart Water Management System">
           <div class="project-body">
             <h3>Smart Water Management System</h3>
@@ -603,10 +617,12 @@ section:nth-of-type(even) { animation-delay: 0.5s; }
               <a href="/project3.html" class="btn ghost">Details</a>
             </div>
           </div>
+          </div>
         </article>
 
         <!-- Project 4 -->
-        <article class="project-card" data-animate="zoom-in" data-animate-delay="350">
+        <article class="col" data-animate="zoom-in" data-animate-delay="350">
+          <div class="project-card h-100">
           <img src="images/smart student management system.jpg" alt="Smart Student Management System">
           <div class="project-body">
             <h3>Smart Student Management System</h3>
@@ -620,108 +636,118 @@ section:nth-of-type(even) { animation-delay: 0.5s; }
               <a href="/project4.html" class="btn ghost">Details</a>
             </div>
           </div>
+          </div>
         </article>
       </div>
     </section>
 
     <!-- CERTIFICATES -->
 	<section id="certificates" class="container" data-animate="fade-up" data-animate-delay="100">
-  <div class="section-head"><h2><i class="fa-solid fa-certificate"></i> Certificates</h2></div>
-  <p class="lead">Some of the certifications and courses I have completed.</p>
+      <div class="section-head"><h2><i class="fa-solid fa-certificate"></i> Certificates</h2></div>
+      <p class="lead">Some of the certifications and courses I have completed.</p>
 
-  <div class="cards-grid" data-animate="fade-up" data-animate-delay="200">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-3" data-animate="fade-up" data-animate-delay="200">
+        <div class="col">
+          <div class="card h-100">
+            <div class="card-body d-flex flex-column">
+              <h4 class="card-title">NASSCOM Skill Up — AI Foundations</h4>
+              <p class="card-text">Foundations in AI concepts and applications.</p>
+              <a href="Certificates/Skill Up Nasscom Certificate.pdf" class="btn ghost mt-auto align-self-start" download><i class="fa-solid fa-download"></i> Download</a>
+            </div>
+          </div>
+        </div>
 
-    <div class="card">
-      <h4>NASSCOM Skill Up — AI Foundations</h4>
-      <p>Foundations in AI concepts and applications.</p>
-		<br><br>
-      <a href="Certificates/Skill Up Nasscom Certificate.pdf" class="btn ghost" download>
-        <i class="fa-solid fa-download"></i> Download
-      </a>
-    </div>
+        <div class="col">
+          <div class="card h-100">
+            <div class="card-body d-flex flex-column">
+              <h4 class="card-title">HackerRank — Problem Solving (Basic)</h4>
+              <p class="card-text">Core algorithmic problem solving fundamentals.</p>
+              <a href="Certificates/Hackerrank problem_solving_basic Certificate.pdf" class="btn ghost mt-auto align-self-start" download><i class="fa-solid fa-download"></i> Download</a>
+            </div>
+          </div>
+        </div>
 
-    <div class="card">
-      <h4>HackerRank — Problem Solving (Basic)</h4>
-      <p>Core algorithmic problem solving fundamentals.</p>
-		<br>
-      <a href="Certificates/Hackerrank problem_solving_basic Certificate.pdf" class="btn ghost" download>
-        <i class="fa-solid fa-download"></i> Download
-      </a>
-    </div>
+        <div class="col">
+          <div class="card h-100">
+            <div class="card-body d-flex flex-column">
+              <h4 class="card-title">HackerRank — Problem Solving (Intermediate)</h4>
+              <p class="card-text">Intermediate algorithmic challenges and data structures.</p>
+              <a href="Certificates/Hackerrank problem_solving_intermediate Certificate.pdf" class="btn ghost mt-auto align-self-start" download><i class="fa-solid fa-download"></i> Download</a>
+            </div>
+          </div>
+        </div>
 
-    <div class="card">
-      <h4>HackerRank — Problem Solving (Intermediate)</h4>
-      <p>Intermediate algorithmic challenges and data structures.</p>
-	<br>
-      <a href="Certificates/Hackerrank problem_solving_intermediate Certificate.pdf" class="btn ghost" download>
-        <i class="fa-solid fa-download"></i> Download
-      </a>
-    </div>
+        <div class="col">
+          <div class="card h-100">
+            <div class="card-body d-flex flex-column">
+              <h4 class="card-title">HackerRank — Python (Basic)</h4>
+              <p class="card-text">Hands-on Python practice & certifications.</p>
+              <a href="Certificates/Hackerrank python_basic Certificate.pdf" class="btn ghost mt-auto align-self-start" download><i class="fa-solid fa-download"></i> Download</a>
+            </div>
+          </div>
+        </div>
 
-    <div class="card">
-      <h4>HackerRank — Python (Basic)</h4>
-      <p>Hands-on Python practice & certifications.</p>
-		<br>
-      <a href="Certificates/Hackerrank python_basic Certificate.pdf" class="btn ghost" download>
-        <i class="fa-solid fa-download"></i> Download
-      </a>
-    </div>
+        <div class="col">
+          <div class="card h-100">
+            <div class="card-body d-flex flex-column">
+              <h4 class="card-title">HackerRank — SQL (Basic)</h4>
+              <p class="card-text">Hands-on SQL practice & certifications.</p>
+              <a href="Certificates/Hackerrank sql_basic Certificate.pdf" class="btn ghost mt-auto align-self-start" download><i class="fa-solid fa-download"></i> Download</a>
+            </div>
+          </div>
+        </div>
 
-	<div class="card">
-      <h4>HackerRank — SQL (Basic)</h4>
-      <p>Hands-on SQL practice & certifications.</p>
-		<br>
-      <a href="Certificates/Hackerrank sql_basic Certificate.pdf" class="btn ghost" download>
-        <i class="fa-solid fa-download"></i> Download
-      </a>
-    </div>
-	<div class="card">
-      <h4>HackerRank — SQL (Intermediate)</h4>
-      <p>Hands-on SQL practice & certifications.</p>
-		<br>
-      <a href="Certificates/Hackerrank sql_intermediate Certificate.pdf" class="btn ghost" download>
-        <i class="fa-solid fa-download"></i> Download
-      </a>
-    </div>    
+        <div class="col">
+          <div class="card h-100">
+            <div class="card-body d-flex flex-column">
+              <h4 class="card-title">HackerRank — SQL (Intermediate)</h4>
+              <p class="card-text">Hands-on SQL practice & certifications.</p>
+              <a href="Certificates/Hackerrank sql_intermediate Certificate.pdf" class="btn ghost mt-auto align-self-start" download><i class="fa-solid fa-download"></i> Download</a>
+            </div>
+          </div>
+        </div>
 
-    <div class="card">
-      <h4>AWS Cloud Practitioner Essentials</h4>
-      <p>Introductory AWS cloud concepts and services.</p>
-		<br>
-      <a href="Certificates/AWS CPE Certificate.pdf" class="btn ghost" download>
-        <i class="fa-solid fa-download"></i> Download
-      </a>
-    </div>
+        <div class="col">
+          <div class="card h-100">
+            <div class="card-body d-flex flex-column">
+              <h4 class="card-title">AWS Cloud Practitioner Essentials</h4>
+              <p class="card-text">Introductory AWS cloud concepts and services.</p>
+              <a href="Certificates/AWS CPE Certificate.pdf" class="btn ghost mt-auto align-self-start" download><i class="fa-solid fa-download"></i> Download</a>
+            </div>
+          </div>
+        </div>
 
-    <div class="card">
-      <h4>Mirrar DoNext — Full Stack Program</h4>
-      <p>Full stack web development fundamentals & tools.</p>
-		<br>
-      <a href="Certificates/Certificate for Full Stack Development Program.pdf" class="btn ghost" download>
-        <i class="fa-solid fa-download"></i> Download
-      </a>
-    </div>
+        <div class="col">
+          <div class="card h-100">
+            <div class="card-body d-flex flex-column">
+              <h4 class="card-title">Mirrar DoNext — Full Stack Program</h4>
+              <p class="card-text">Full stack web development fundamentals & tools.</p>
+              <a href="Certificates/Certificate for Full Stack Development Program.pdf" class="btn ghost mt-auto align-self-start" download><i class="fa-solid fa-download"></i> Download</a>
+            </div>
+          </div>
+        </div>
 
-    <div class="card">
-      <h4>CISCO NDG — Linux Unhatched</h4>
-      <p>Basic Linux usage and environment certificates.</p>
-		<br>
-      <a href="Certificates/Abishek PrabakarRamkumar-NDG Linux Unhatc-certificate.pdf" class="btn ghost" download>
-        <i class="fa-solid fa-download"></i> Download
-      </a>
-    </div>
+        <div class="col">
+          <div class="card h-100">
+            <div class="card-body d-flex flex-column">
+              <h4 class="card-title">CISCO NDG — Linux Unhatched</h4>
+              <p class="card-text">Basic Linux usage and environment certificates.</p>
+              <a href="Certificates/Abishek PrabakarRamkumar-NDG Linux Unhatc-certificate.pdf" class="btn ghost mt-auto align-self-start" download><i class="fa-solid fa-download"></i> Download</a>
+            </div>
+          </div>
+        </div>
 
-	<div class="card">
-      <h4>PG certificate Program in Cloud Computing and Devops</h4>
-      <p>Basic AWS concepts and virulization concepts</p>
-		<br>
-      <a href="Certificates/Certificate_EICTIITR-PGCCD-B1-25-04.pdf" class="btn ghost" download>
-        <i class="fa-solid fa-download"></i> Download
-      </a>
-    </div>  
-
-  </div>
-</section>
+        <div class="col">
+          <div class="card h-100">
+            <div class="card-body d-flex flex-column">
+              <h4 class="card-title">PG certificate Program in Cloud Computing and Devops</h4>
+              <p class="card-text">Basic AWS concepts and virulization concepts</p>
+              <a href="Certificates/Certificate_EICTIITR-PGCCD-B1-25-04.pdf" class="btn ghost mt-auto align-self-start" download><i class="fa-solid fa-download"></i> Download</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
 
     <!-- INTERNSHIPS / EXTERNSHIPS -->
@@ -729,17 +755,25 @@ section:nth-of-type(even) { animation-delay: 0.5s; }
       <div class="section-head"><h2><i class="fa-solid fa-briefcase"></i> Externships / Internships</h2></div>
       <p class="lead">Hands-on programs and projects I worked on during externships.</p>
 
-      <div class="cards-grid">
-        <div class="card" data-animate="fade-up" data-animate-delay="200">
-          <h4>Verzeo LTD — SHAASTRA2020</h4>
-          <p><strong>Nov 2019 — Feb 2020</strong></p>
-          <p>Built analytics to rate women clothing based on CSV review data; analyzed product popularity across age groups.</p>
+      <div class="row row-cols-1 row-cols-md-2 g-3">
+        <div class="col" data-animate="fade-up" data-animate-delay="200">
+          <div class="card h-100">
+            <div class="card-body">
+              <h4 class="card-title">Verzeo LTD — SHAASTRA2020</h4>
+              <p class="card-text"><strong>Nov 2019 — Feb 2020</strong></p>
+              <p class="card-text">Built analytics to rate women clothing based on CSV review data; analyzed product popularity across age groups.</p>
+            </div>
+          </div>
         </div>
 
-        <div class="card" data-animate="fade-up" data-animate-delay="300">
-          <h4>Mirrar DoNext — Full Stack Development Program</h4>
-          <p><strong>Feb 2023 — Mar 2023</strong></p>
-          <p>Learned frontend (HTML, JS, Vue) and backend basics (PHP, Python, Node), and databases (MySQL, SQLite, MongoDB).</p>
+        <div class="col" data-animate="fade-up" data-animate-delay="300">
+          <div class="card h-100">
+            <div class="card-body">
+              <h4 class="card-title">Mirrar DoNext — Full Stack Development Program</h4>
+              <p class="card-text"><strong>Feb 2023 — Mar 2023</strong></p>
+              <p class="card-text">Learned frontend (HTML, JS, Vue) and backend basics (PHP, Python, Node), and databases (MySQL, SQLite, MongoDB).</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -751,7 +785,7 @@ section:nth-of-type(even) { animation-delay: 0.5s; }
       <div class="section-head"><h2><i class="fa-solid fa-envelope"></i> Contact</h2></div>
       <p class="lead">Reach out — I typically respond within a few days.</p>
 
-      <div style="display:flex; gap:18px; flex-wrap:wrap; align-items:center; justify-content:center; margin-top:12px">
+      <div class="d-flex flex-wrap align-items-center justify-content-center gap-3 mt-3">
         <a class="btn" href="mailto:reachabishekr@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a>
         <a class="btn ghost" href="https://www.linkedin.com/in/abishek-prabakaran-ramkumar/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
         <a class="btn ghost" href="https://github.com/Abijspy" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>

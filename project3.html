@@ -40,10 +40,19 @@
   html,body{margin:0;height:100%;font-family:"Poppins",system-ui,Segoe UI,Roboto,Arial;-webkit-font-smoothing:antialiased}
   body{
     background:linear-gradient(180deg,var(--bg),var(--bg-color)80%);
-    color:var(--text);transition:background 300ms ease,color 300ms ease;
+    color:var(--text);
+    --bs-body-color: var(--text);
+    --bs-body-bg: var(--bg-color);
+    --bs-heading-color: var(--text);
+    --bs-card-color: var(--text);
+    --bs-card-bg: var(--card);
+    --bs-border-color: var(--glass-border);
+    --bs-link-color: var(--text);
+    --bs-link-hover-color: var(--accent);
+    transition:background 300ms ease,color 300ms ease;
   }
   a{color:inherit;text-decoration:none}
-  .container{max-width:1100px;margin:0 auto;padding:28px 20px}
+  .container{max-width:1100px}
 
   /* NAV */
   /* ---------- NAVBAR STYLES ---------- */
@@ -57,6 +66,7 @@ nav.sticky {
   justify-content: center;
 
   width: calc(100% - 40px);
+  max-width: 1180px;
   margin: 10px auto;
   padding: 12px 26px;
 
@@ -161,22 +171,11 @@ nav .nav-inner {
 
 
   /* HERO */
-  header.hero {
-    display: flex;
-    gap: 18px;
-    align-items: flex-start;
-    flex-wrap: wrap; /* allow wrapping on very small screens */
-}
+  header.hero {padding:36px 0 10px}
 
-.hero-left {
-    flex: 1; /* takes remaining space */
-    min-width: 300px; /* optional: ensures it doesn't shrink too much */
-}
+.hero-left {min-width:0}
 
-.hero-right {
-    flex: 0 0 320px; /* fixed width, don’t grow or shrink */
-    max-width: 38%;
-}
+.hero-right {}
 .project-card{
 	background:var(--card); 
 	border-radius:12px; 
@@ -187,14 +186,14 @@ nav .nav-inner {
 
 
   /* GALLERY */
-  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:14px}
+  .gallery{margin-top:14px}
   .gallery .img-card{border-radius:12px;overflow:hidden;border:1px solid var(--glass-border)}
   .gallery img{width:100%;height:220px;object-fit:cover}
   .gallery img.full-size {height: auto;         /* No fixed height */max-height: none;     /* Remove max restriction */object-fit: contain;  /* Keep entire image visible */background: var(--card);}  
 
   /* VIDEO */
   .video-wrap{margin-top:18px;border-radius:12px;overflow:hidden;border:1px solid var(--glass-border);padding:12px;background:var(--card)}
-  .video-wrap iframe{width:100%;height:420px;border:0;border-radius:8px}
+  .video-wrap iframe{border:0;border-radius:8px}
 
   /* BUTTONS */
   .btn{background:linear-gradient(90deg,var(--accent),#6c63ff);color:white;
@@ -213,28 +212,28 @@ nav .nav-inner {
   	-moz-user-select: none;    /* Firefox */
   	-ms-user-select: none;     /* Internet Explorer/Edge */
 	}		  
-  @media(max-width:980px){.hero-right{display:none} .video-wrap iframe{height:320px}}
-  @media(max-width:560px){.gallery img{height:160px} .video-wrap iframe{height:220px}}
+  @media(max-width:980px){.hero-right{display:none}}
+  @media(max-width:560px){nav.sticky{padding:12px 18px; border-radius:18px} .gallery img{height:160px}}
   </style>
 </head>
 <body class = "no-select">
-  <nav class="sticky">
-  <div class="nav-inner">
+  <nav class="sticky navbar">
+  <div class="nav-inner d-flex align-items-center justify-content-between w-100">
 
     <!-- Left Logo -->
-    <div class="logo">
+    <div class="logo navbar-brand mb-0">
       <i class="fa-solid fa-droplet"></i>
       Abishek Prabakaran R
     </div>
 
     <!-- Center Breadcrumb -->
-    <div class="breadcrumb">
-      <a href="index.html">Home</a>
-      <span style="color:var(--muted)">/ Smart Water Supply</span>
+    <div class="breadcrumb mb-0">
+      <a class="breadcrumb-item" href="index.html">Home</a>
+      <span class="breadcrumb-item active" style="color:var(--muted)">Smart Water Supply</span>
     </div>
 
     <!-- Right Icons (FontAwesome Version) -->
-    <div class="nav-icons">
+    <div class="nav-icons d-flex align-items-center">
 
       <!-- Circular Theme Button -->
       <div class="theme-toggle-btn" id="theme-toggle">
@@ -246,23 +245,23 @@ nav .nav-inner {
 </nav>
 
 
-  <main class="container">
-    <header class="hero">
-      <div class="hero-left">
+  <main class="container py-4">
+    <header class="hero row g-4 align-items-start">
+      <div class="hero-left col-lg-8">
         <h1>Smart Water Supply and Management System</h1>
         <div class="meta">By <strong>Abishek Prabakaran R</strong> & other 5 group members</div>
         <p style="max-width:70ch;color:var(--muted)">
           A smart water management system to monitor, distribute, and purify water efficiently for urban and rural needs — featuring leakage detection, purity checks, recycling, and rainwater harvesting integration.
         </p>
-		  <div class="actions">
+		  <div class="actions d-flex flex-wrap gap-2 mt-3">
           <a class="btn" href="http://doi.org/10.35940/ijrte.C7270.0911322" target="_blank"><i class="fa-solid fa-book-journal-whills"></i> Journal Link</a>
           <a class="btn" href="https://www.researchgate.net/publication/372743093_FACE_DETECTION_EMOJI_PICKER" target="_blank"><i class="fa-brands fa-researchgate"></i> ResearchGate</a>
 		  <a class="btn" href="https://stm.bookpi.org/RADER-V1/article/view/10105" target="_blank"><i class="fa-solid fa-book-journal-whills"></i> Book Chapter</a>		  
         </div>
 	  </div>  
         
-      <aside class="hero-right">
-        <div class="project-card">
+      <aside class="hero-right col-lg-4">
+        <div class="project-card card h-100">
           <h3>Project Modules</h3>
           <ul style="color:var(--muted);">
             <li>Water Level Indication</li>
@@ -278,17 +277,22 @@ nav .nav-inner {
 
     <section>
       <h2>Systematic Diagram</h2>
-      <div class="gallery">
-        <figure class="img-card"><img class="full-size" src="images/project3/Systematic diagram1.png" alt="Systematic diagram of water management system"></figure>
+      <div class="gallery row row-cols-1 g-3">
+        <div class="col"><figure class="img-card h-100 mb-0"><img class="full-size" src="images/project3/Systematic diagram1.png" alt="Systematic diagram of water management system"></figure></div>
+      </div>
     </section>
 
     <section id="video">
       <h2>Video Demonstrations</h2>
       <div class="video-wrap">
-        <iframe src="https://www.youtube.com/embed/8_UiDmKFfs4" title="Project Demo Video" allowfullscreen></iframe>
+        <div class="ratio ratio-16x9">
+          <iframe src="https://www.youtube.com/embed/8_UiDmKFfs4" title="Project Demo Video" allowfullscreen></iframe>
+        </div>
       </div>
       <div class="video-wrap" style="margin-top:20px;">
-        <iframe src="https://www.youtube.com/embed/xqzCimIJfWo" title="Journal Presentation Video" allowfullscreen></iframe>
+        <div class="ratio ratio-16x9">
+          <iframe src="https://www.youtube.com/embed/xqzCimIJfWo" title="Journal Presentation Video" allowfullscreen></iframe>
+        </div>
       </div>
     </section>
 

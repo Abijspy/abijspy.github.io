@@ -40,10 +40,19 @@
   html,body{margin:0;height:100%;font-family:"Poppins",system-ui,Segoe UI,Roboto,Arial;-webkit-font-smoothing:antialiased}
   body{
     background:linear-gradient(180deg,var(--bg),var(--bg-color)80%);
-    color:var(--text);transition:background 300ms ease,color 300ms ease;
+    color:var(--text);
+    --bs-body-color: var(--text);
+    --bs-body-bg: var(--bg-color);
+    --bs-heading-color: var(--text);
+    --bs-card-color: var(--text);
+    --bs-card-bg: var(--card);
+    --bs-border-color: var(--glass-border);
+    --bs-link-color: var(--text);
+    --bs-link-hover-color: var(--accent);
+    transition:background 300ms ease,color 300ms ease;
   }
   a{color:inherit;text-decoration:none}
-  .container{max-width:1100px;margin:0 auto;padding:28px 20px}
+  .container{max-width:1100px}
 
   /* NAV */
   nav.sticky {
@@ -56,6 +65,7 @@
   justify-content: center;
 
   width: calc(100% - 40px);
+  max-width: 1180px;
   margin: 10px auto;
   padding: 12px 26px;
 
@@ -148,20 +158,20 @@ nav .nav-inner {
 }
 
   /* HERO */
-  header.hero{padding:36px 0 10px;display:flex;gap:18px;align-items:flex-start}
-  .hero-left{flex:1}
-  .hero-right{width:320px;max-width:38%}
+  header.hero{padding:36px 0 10px}
+  .hero-left{min-width:0}
+  .hero-right{}
   .project-card{background:var(--card);border-radius:12px;padding:16px;border:1px solid var(--glass-border)}
 
   /* GALLERY */
-  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:14px}
+  .gallery{margin-top:14px}
   .gallery .img-card{border-radius:12px;overflow:hidden;border:1px solid var(--glass-border); cursor: pointer;}
   .gallery img{width:100%;height:220px;object-fit:cover;display:block}
   .gallery img.full-size {height:auto;max-height:none;object-fit:contain;background:var(--card)}
 
   /* VIDEO */
   .video-wrap{margin-top:18px;border-radius:12px;overflow:hidden;border:1px solid var(--glass-border);padding:12px;background:var(--card)}
-  .video-wrap iframe{width:100%;height:420px;border:0;border-radius:8px}
+  .video-wrap iframe{border:0;border-radius:8px}
 
   /* BUTTONS */
   .actions{display:flex;gap:12px;margin-top:14px;flex-wrap:wrap}
@@ -227,28 +237,28 @@ nav .nav-inner {
   	-moz-user-select: none;    /* Firefox */
   	-ms-user-select: none;     /* Internet Explorer/Edge */
   }	
-  @media(max-width:980px){.hero-right{display:none} .video-wrap iframe{height:320px}}
-  @media(max-width:560px){.gallery img{height:160px} .video-wrap iframe{height:220px}}
+  @media(max-width:980px){.hero-right{display:none}}
+  @media(max-width:560px){nav.sticky{padding:12px 18px; border-radius:18px} .gallery img{height:160px}}
   </style>
 </head>
 <body class = "no-select">
-  <nav class="sticky">
-  <div class="nav-inner">
+  <nav class="sticky navbar">
+  <div class="nav-inner d-flex align-items-center justify-content-between w-100">
 
     <!-- Left Logo -->
-    <div class="logo">
+    <div class="logo navbar-brand mb-0">
       <i class="fa-solid fa-graduation-cap"></i>
       Abishek Prabakaran R
     </div>
 
     <!-- Center Breadcrumb -->
-    <div class="breadcrumb">
-      <a href="index.html">Home</a>
-      <span style="color:var(--muted)">/ Smart Student Management</span>
+    <div class="breadcrumb mb-0">
+      <a class="breadcrumb-item" href="index.html">Home</a>
+      <span class="breadcrumb-item active" style="color:var(--muted)">Smart Student Management</span>
     </div>
 
     <!-- Right Icons -->
-    <div class="nav-icons">
+    <div class="nav-icons d-flex align-items-center">
       <div class="theme-toggle-btn" id="theme-toggle">
         <i id="theme-icon" class="fa-solid fa-moon"></i>
       </div>
@@ -258,21 +268,21 @@ nav .nav-inner {
 </nav>
 
 
-  <main class="container">
-    <header class="hero">
-      <div class="hero-left">
+  <main class="container py-4">
+    <header class="hero row g-4 align-items-start">
+      <div class="hero-left col-lg-8">
         <h1>Smart Student Management System</h1>
         <div class="meta">By <strong>Abishek Prabakaran R</strong> & other 3 group members</div>
         <p style="max-width:70ch;color:var(--muted)">
           A secure and efficient system to manage student records, academic performance, attendance, and payments — replacing traditional paper-based records with a modern, centralized, and accessible online platform.
         </p>
-        <div class="actions">
+        <div class="actions d-flex flex-wrap gap-2 mt-3">
           <a class="btn" href="https://github.com/Abijspy/Django_Student_Management_System" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
           <a class="btn" href="https://www.researchgate.net/publication/372767286_Student_Management_System_Capstone_Project" target="_blank"><i class="fa-brands fa-researchgate"></i> ResearchGate</a>
         </div>
       </div>
-      <aside class="hero-right">
-        <div class="project-card">
+      <aside class="hero-right col-lg-4">
+        <div class="project-card card h-100">
           <h3>Technologies Used</h3>
           <ul style="color:var(--muted);margin:0;padding-left:1rem;">
             <li><b>Frontend:</b> HTML, CSS</li>
@@ -286,17 +296,19 @@ nav .nav-inner {
 
     <section>
       <h2>Gallery</h2>
-      <div class="gallery">
-        <figure class="img-card"><img src="images/project4/homepage.jpg" alt="Home Page"></figure>
-        <figure class="img-card"><img src="images/project4/studentlist.jpg" alt="Add Student"></figure>
-        <figure class="img-card"><img src="images/project4/facultylist.jpg" alt="Add Faculty"></figure>
+      <div class="gallery row row-cols-1 row-cols-md-3 g-3">
+        <div class="col"><figure class="img-card h-100 mb-0"><img src="images/project4/homepage.jpg" alt="Home Page"></figure></div>
+        <div class="col"><figure class="img-card h-100 mb-0"><img src="images/project4/studentlist.jpg" alt="Add Student"></figure></div>
+        <div class="col"><figure class="img-card h-100 mb-0"><img src="images/project4/facultylist.jpg" alt="Add Faculty"></figure></div>
       </div>
     </section>
 
     <section id="video">
       <h2>Project Demo</h2>
       <div class="video-wrap">
-        <iframe src="https://www.youtube.com/embed/uFsCrUkC0Tg" title="Student Management System Demo" allowfullscreen></iframe>
+        <div class="ratio ratio-16x9">
+          <iframe src="https://www.youtube.com/embed/uFsCrUkC0Tg" title="Student Management System Demo" allowfullscreen></iframe>
+        </div>
       </div>
     </section>
 
