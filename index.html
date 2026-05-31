@@ -802,6 +802,106 @@ body.light .apple-nav.mouse-glow-card:focus-within {
   }
 }
 
+/* Index page glass layer: keep frosted blur and mouse glow together. */
+.apple-nav,
+.apple-nav.mouse-glow-card {
+  position: fixed !important;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1050;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.14), rgba(255,255,255,0.035)),
+    rgba(8,13,24,0.42);
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow:
+    0 14px 38px rgba(0,0,0,0.28),
+    inset 0 1px 0 rgba(255,255,255,0.16),
+    inset 0 -1px 0 rgba(255,255,255,0.05);
+  backdrop-filter: blur(32px) saturate(190%) brightness(0.94);
+  -webkit-backdrop-filter: blur(32px) saturate(190%) brightness(0.94);
+}
+.apple-nav.nav-scrolled,
+.apple-nav.mouse-glow-card.nav-scrolled {
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.16), rgba(255,255,255,0.04)),
+    rgba(8,13,24,0.56);
+  border-color: rgba(77,171,247,0.3);
+}
+.profile-card,
+.skill,
+.card,
+.project-card,
+.profile-card.mouse-glow-card,
+.skill.mouse-glow-card,
+.card.mouse-glow-card,
+.project-card.mouse-glow-card {
+  background:
+    linear-gradient(145deg, rgba(255,255,255,0.12), rgba(255,255,255,0.035)),
+    rgba(8,13,24,0.38);
+  border-color: rgba(255,255,255,0.14);
+  box-shadow:
+    0 16px 44px rgba(0,0,0,0.22),
+    inset 0 1px 0 rgba(255,255,255,0.13),
+    inset 0 -1px 0 rgba(255,255,255,0.045);
+  backdrop-filter: blur(22px) saturate(170%) brightness(0.95);
+  -webkit-backdrop-filter: blur(22px) saturate(170%) brightness(0.95);
+}
+.profile-card.mouse-glow-card:hover,
+.skill.mouse-glow-card:hover,
+.card.mouse-glow-card:hover,
+.project-card.mouse-glow-card:hover {
+  background:
+    linear-gradient(145deg, rgba(255,255,255,0.17), rgba(255,255,255,0.055)),
+    rgba(8,13,24,0.44);
+  box-shadow:
+    0 18px 48px rgba(0,0,0,0.3),
+    0 0 30px rgba(77,171,247,0.13),
+    inset 0 1px 0 rgba(255,255,255,0.18);
+}
+body.light .apple-nav,
+body.light .apple-nav.mouse-glow-card {
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.86), rgba(255,255,255,0.48)),
+    rgba(255,255,255,0.58);
+  border-color: rgba(0,119,182,0.16);
+  box-shadow:
+    0 14px 34px rgba(15,23,42,0.12),
+    inset 0 1px 0 rgba(255,255,255,0.86),
+    inset 0 -1px 0 rgba(255,255,255,0.32);
+}
+body.light .apple-nav.nav-scrolled,
+body.light .apple-nav.mouse-glow-card.nav-scrolled {
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.92), rgba(255,255,255,0.62)),
+    rgba(255,255,255,0.74);
+}
+body.light .profile-card,
+body.light .skill,
+body.light .card,
+body.light .project-card,
+body.light .profile-card.mouse-glow-card,
+body.light .skill.mouse-glow-card,
+body.light .card.mouse-glow-card,
+body.light .project-card.mouse-glow-card {
+  background:
+    linear-gradient(145deg, rgba(255,255,255,0.9), rgba(255,255,255,0.56)),
+    rgba(255,255,255,0.58);
+  border-color: rgba(0,0,0,0.07);
+  box-shadow:
+    0 16px 38px rgba(15,23,42,0.11),
+    inset 0 1px 0 rgba(255,255,255,0.88),
+    inset 0 -1px 0 rgba(255,255,255,0.35);
+}
+body.light .profile-card.mouse-glow-card:hover,
+body.light .skill.mouse-glow-card:hover,
+body.light .card.mouse-glow-card:hover,
+body.light .project-card.mouse-glow-card:hover {
+  background:
+    linear-gradient(145deg, rgba(255,255,255,0.96), rgba(255,255,255,0.68)),
+    rgba(255,255,255,0.68);
+}
+
 </style>
 
 </head>
