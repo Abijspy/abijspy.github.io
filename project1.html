@@ -117,21 +117,34 @@ nav .nav-inner {
   color: transparent;
 }
 
-/* --- Center Navigation Links --- */
-.nav-links {
+/* --- Center Breadcrumb --- */
+.breadcrumb {
   display: flex;
-  gap: 28px;
+  align-items: center;
+  gap: 6px;
+  --bs-breadcrumb-divider-color: var(--muted);
 }
 
-.nav-links a {
-  font-size: 1rem;
+.breadcrumb a,
+.breadcrumb .breadcrumb-item {
   font-weight: 600;
-  color: var(--text-color);
-  opacity: 0.85;
+  color: var(--text) !important;
+  opacity: 0.9;
   transition: color 0.25s ease, opacity 0.25s ease;
 }
 
-.nav-links a:hover {
+.breadcrumb .breadcrumb-item.active {
+  color: var(--text) !important;
+  opacity: 0.95;
+}
+
+.breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+  content: "/" !important;
+  color: var(--muted) !important;
+  opacity: 0.85;
+}
+
+.breadcrumb a:hover {
   color: var(--accent);
   opacity: 1;
 }
