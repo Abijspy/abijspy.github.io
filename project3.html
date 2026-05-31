@@ -54,6 +54,49 @@
     --bs-link-hover-color: var(--accent);
     transition:background 300ms ease,color 300ms ease;
   }
+
+  body,
+  nav.sticky,
+  .project-card,
+  .img-card,
+  .video-wrap,
+  .btn,
+  .theme-toggle-btn,
+  .breadcrumb .breadcrumb-item,
+  h1,
+  h2,
+  h3,
+  p,
+  li,
+  a {
+    transition:
+      background-color 450ms ease,
+      background 450ms ease,
+      color 450ms ease,
+      border-color 450ms ease,
+      box-shadow 450ms ease,
+      opacity 350ms ease,
+      transform 250ms ease;
+  }
+
+  #theme-icon {
+    transition: color 350ms ease, transform 450ms ease, opacity 250ms ease;
+  }
+
+  [data-theme="light"] #theme-icon {
+    transform: rotate(180deg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    body,
+    body *,
+    body *::before,
+    body *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
+
   a{color:inherit;text-decoration:none}
   .container{max-width:1100px}
 
@@ -235,6 +278,32 @@ article h3{margin-top:18px}
 	}		  
   @media(max-width:980px){.hero-right{display:none}}
   @media(max-width:560px){nav.sticky{padding:12px 18px; border-radius:18px} .gallery img{height:160px}}
+
+  /* Theme transition polish */
+  body,
+  nav.sticky,
+  .project-card,
+  .img-card,
+  .video-wrap,
+  .btn,
+  .theme-toggle-btn,
+  .breadcrumb .breadcrumb-item,
+  h1,
+  h2,
+  h3,
+  p,
+  li,
+  a {
+    transition:
+      background-color 450ms ease,
+      background 450ms ease,
+      color 450ms ease,
+      border-color 450ms ease,
+      box-shadow 450ms ease,
+      opacity 350ms ease,
+      transform 250ms ease;
+  }
+
   </style>
 </head>
 <body class = "no-select">
