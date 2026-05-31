@@ -203,7 +203,12 @@ nav .nav-inner {
 .hero {padding:36px 0 10px}
 .hero-left {min-width:0}
 .hero-right {}
-h1{font-size:1.9rem; margin:0 0 8px}
+h1{font-size:clamp(1.55rem,2.5vw,1.9rem); line-height:1.2; font-weight:700; color:var(--text); margin:0 0 8px}
+section h2,
+article h2{font-size:1.25rem; line-height:1.35; font-weight:600; color:var(--text); margin:0 0 12px}
+.project-card h3,
+article h3{font-size:1rem; line-height:1.35; font-weight:600; color:var(--text); margin:0 0 10px}
+article h3{margin-top:18px}
 .meta{color:var(--muted); margin-bottom:14px}
 
 .gallery{margin-top:14px}
@@ -219,7 +224,7 @@ h1{font-size:1.9rem; margin:0 0 8px}
 
 article{margin-top:22px; line-height:1.65}
 article p{color:var(--text); margin:0 0 12px}
-article h2{margin-top:18px; color:var(--text)}
+article h2{margin-top:18px}
 ul{color:var(--muted); margin-left:1.15rem}
 
 footer{padding:26px 0 80px; color:var(--muted)}
