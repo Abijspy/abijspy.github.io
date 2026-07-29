@@ -1,0 +1,74 @@
+/* Lightweight motion layer shared by the portfolio pages. */
+:root {
+  --motion-fast: 160ms;
+  --motion-standard: 220ms;
+  --motion-ease: cubic-bezier(.2, .7, .25, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Avoid costly transitions of layout, paint, and filter properties. */
+body,
+body * {
+  transition-duration: var(--motion-standard) !important;
+  transition-timing-function: var(--motion-ease) !important;
+}
+
+section,
+.hero > div,
+.hero > aside {
+  animation-duration: 420ms !important;
+  animation-timing-function: var(--motion-ease) !important;
+  will-change: opacity, transform;
+}
+
+.mouse-glow-card {
+  will-change: transform;
+}
+
+/* The mouse-following glow repaints blurred layers for every pointer event. */
+.mouse-glow-card::before,
+.apple-nav.mouse-glow-card::after,
+nav.sticky.mouse-glow-card::after {
+  display: none !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .project-card:hover,
+  .skill:hover,
+  .card:hover,
+  .img-card:hover {
+    transform: translateY(-4px) !important;
+  }
+}
+
+@media (max-width: 760px), (prefers-reduced-motion: reduce) {
+  .mouse-glow-card,
+  .profile-card,
+  .skill,
+  .card,
+  .project-card,
+  .img-card,
+  .video-wrap,
+  .apple-nav,
+  nav.sticky {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .mouse-glow-card,
+  .profile-card,
+  .skill,
+  .card,
+  .project-card,
+  .img-card,
+  .video-wrap {
+    will-change: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
