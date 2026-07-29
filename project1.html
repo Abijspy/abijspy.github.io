@@ -614,8 +614,34 @@ article h2::after {
   section h2::after,
   article h2::after {
     min-width: 18px;
+    }
   }
-}
+
+  /* Responsive layout for project details and media. */
+  img, iframe { max-width: 100%; }
+  .video-wrap .ratio { width: 100%; }
+  @media (max-width: 760px) {
+    nav.sticky { top: 6px; width: calc(100% - 12px); margin: 6px auto; padding: 10px 14px; border-radius: 18px; }
+    nav .nav-inner { display: grid !important; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 12px; }
+    .logo { min-width: 0; font-size: .92rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .breadcrumb { grid-column: 1 / -1; order: 3; min-width: 0; overflow: hidden; white-space: nowrap; font-size: .84rem; }
+    .breadcrumb .breadcrumb-item.active { overflow: hidden; text-overflow: ellipsis; }
+    .nav-icons { gap: 0; }
+    .theme-toggle-btn { width: 38px; height: 38px; flex: 0 0 38px; }
+    main.container { padding-left: 16px; padding-right: 16px; }
+    header.hero { padding-top: 24px; }
+    h1 { font-size: clamp(1.45rem, 7vw, 1.9rem); overflow-wrap: anywhere; }
+    .hero-right { display: block; }
+    .project-card { padding: 14px; }
+    .actions .btn { flex: 1 1 auto; justify-content: center; }
+    article, article p, li { overflow-wrap: anywhere; }
+  }
+  @media (max-width: 380px) {
+    .logo { font-size: .84rem; }
+    .breadcrumb { font-size: .78rem; }
+    main.container { padding-left: 12px; padding-right: 12px; }
+    .video-wrap { padding: 8px; }
+  }
 	  
   </style>
 </head>
