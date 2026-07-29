@@ -35,6 +35,23 @@ nav.sticky.mouse-glow-card::after {
   display: none !important;
 }
 
+/* Keep the dark theme rich and readable instead of overly transparent. */
+body:not(.light) .apple-nav,
+html[data-theme="dark"] nav.sticky {
+  background: rgba(8, 13, 24, .82) !important;
+}
+
+body:not(.light) .profile-card,
+body:not(.light) .skill,
+body:not(.light) .card,
+body:not(.light) .project-card,
+html[data-theme="dark"] .project-card,
+html[data-theme="dark"] .img-card,
+html[data-theme="dark"] .video-wrap {
+  background: linear-gradient(145deg, rgba(30, 41, 59, .94), rgba(15, 23, 42, .9)) !important;
+  border-color: rgba(148, 163, 184, .18) !important;
+}
+
 @media (hover: hover) and (pointer: fine) {
   .project-card:hover,
   .skill:hover,
