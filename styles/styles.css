@@ -39,8 +39,8 @@ nav.sticky.mouse-glow-card::after {
 body:not(.light) .apple-nav,
 html[data-theme="dark"] nav.sticky {
   background: rgba(8, 13, 24, .94) !important;
-  backdrop-filter: blur(20px) saturate(165%) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(165%) !important;
+  backdrop-filter: blur(32px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(32px) saturate(180%) !important;
 }
 
 body:not(.light) .profile-card,
@@ -104,13 +104,13 @@ html[data-theme="dark"] .video-wrap {
   background: rgba(8, 13, 24, .82);
   box-shadow: 0 14px 38px rgba(0, 0, 0, .28), inset 0 1px 0 rgba(255, 255, 255, .16);
   transform: translateX(-50%);
-  backdrop-filter: blur(20px) saturate(165%) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(165%) !important;
+  backdrop-filter: blur(32px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(32px) saturate(180%) !important;
 }
 
 nav.sticky {
-  backdrop-filter: blur(20px) saturate(165%) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(165%) !important;
+  backdrop-filter: blur(32px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(32px) saturate(180%) !important;
 }
 
 .apple-nav .nav-inner,
@@ -191,4 +191,21 @@ body.project-page main.container {
   body.project-page main.container { padding-top: 3rem !important; }
   .apple-nav:has(.project-title) .nav-inner { gap: 10px; }
   .apple-nav:has(.project-title) .logo { font-size: .9rem; }
+}
+
+/* Project headers float with their page instead of staying pinned to the viewport. */
+body.project-page {
+  padding-top: 0;
+}
+
+body.project-page .apple-nav {
+  position: relative;
+  top: auto;
+  left: auto;
+  margin: 12px auto 0;
+  transform: none;
+}
+
+body.project-page main.container {
+  padding-top: 2rem !important;
 }
