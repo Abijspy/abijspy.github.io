@@ -22,7 +22,7 @@
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="styles/performance.css?v=20260731-2">
+  <link rel="stylesheet" href="styles/styles.css?v=20260731-2">
 
  <style>
 :root{
@@ -1268,63 +1268,10 @@ img, iframe { max-width: 100%; }
   </main>
   <!-- Cursor Atom Effect -->
 
-  <!-- trig-js -->	
-  <script src="https://cdn.jsdelivr.net/npm/trig-js/src/trig.min.js"></script>	
+  <!-- trig-js -->
+  <script src="https://cdn.jsdelivr.net/npm/trig-js/src/trig.min.js"></script>
+  <script src="scripts/site.js"></script>
   <script>
-
-
-// -------------------- Theme Toggle --------------------
-const THEME_KEY = 'abijspy_theme';
-const body = document.body;
-const toggleBtn = document.getElementById('theme-toggle');
-const themeIcon = document.getElementById('theme-icon');
-
-function setUI(theme) {
-  if (theme === 'light') {
-    body.classList.add('light');
-    themeIcon.className = 'fa-regular fa-sun';
-    toggleBtn.setAttribute('aria-pressed', 'true');
-  } else {
-    body.classList.remove('light');
-    themeIcon.className = 'fa-regular fa-moon';
-    toggleBtn.setAttribute('aria-pressed', 'false');
-  }
-}
-
-function applyTheme(theme) {
-  setUI(theme);
-  localStorage.setItem(THEME_KEY, theme);
-}
-
-// Toggle click
-toggleBtn.addEventListener('click', () => {
-  const currentTheme = body.classList.contains('light') ? 'light' : 'dark';
-  applyTheme(currentTheme === 'light' ? 'dark' : 'light');
-});
-
-// Init theme
-(function initTheme() {
-  const savedTheme = localStorage.getItem(THEME_KEY);
-  if (savedTheme) {
-    applyTheme(savedTheme);
-  } else {
-    applyTheme(
-      window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? 'dark'
-        : 'light'
-    );
-  }
-})();
-
-
-// Accessibility: keyboard navigation for theme toggle
-toggleBtn.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter' || e.key === ' ') {
-    e.preventDefault();
-    toggleBtn.click();
-  }
-});
-
 // -------------------- Highlight Current Nav --------------------
 const floatingNav = document.querySelector('.apple-nav');
 const navLinks = document.querySelectorAll('.nav-links a');
@@ -1372,30 +1319,6 @@ animatedElements.forEach(el => {
   el.style.animationPlayState = "paused";
   observer.observe(el);
 });
-
-// -------------------- Mouse-follow Card Overlay --------------------
-function initMouseGlowCards(selector) {
-  const cards = document.querySelectorAll(selector);
-  const canTrackMouse = false; // CSS glow is disabled to avoid per-pointer repaint work.
-
-  cards.forEach((card) => {
-    card.classList.add('mouse-glow-card');
-    if (!canTrackMouse) return;
-
-    card.addEventListener('mousemove', (event) => {
-      const rect = card.getBoundingClientRect();
-      card.style.setProperty('--mouse-x', `${event.clientX - rect.left}px`);
-      card.style.setProperty('--mouse-y', `${event.clientY - rect.top}px`);
-    });
-
-    card.addEventListener('mouseleave', () => {
-      card.style.setProperty('--mouse-x', '50%');
-      card.style.setProperty('--mouse-y', '50%');
-    });
-  });
-}
-
-initMouseGlowCards('.apple-nav, .profile-card, .skill, .project-card, .card');
 
   </script>
 </body>

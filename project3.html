@@ -19,7 +19,7 @@
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="styles/performance.css?v=20260731-2">
+  <link rel="stylesheet" href="styles/styles.css?v=20260731-2">
 
   <style>
   :root{
@@ -588,53 +588,7 @@ article h3{margin-top:18px}
     </footer>
   </main>
 
-  <script>
-  // Theme toggle code
-const THEME_KEY = 'abijspy_theme';
-const themeToggleBtn = document.getElementById('theme-toggle');
-const themeIcon = document.getElementById('theme-icon');
-
-function applyTheme(theme){
-    document.documentElement.setAttribute('data-theme', theme);
-    themeIcon.className = theme === 'dark' ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
-    localStorage.setItem(THEME_KEY, theme);
-}
-
-themeToggleBtn.addEventListener('click', () => {
-    const current = document.documentElement.getAttribute('data-theme') || 'dark';
-    applyTheme(current === 'dark' ? 'light' : 'dark');
-});
-
-(function initTheme() {
-    let saved = localStorage.getItem(THEME_KEY);
-    if(saved){ applyTheme(saved); }
-    else { applyTheme(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); }
-})();
-
-// Mouse-follow overlay for cards and media panels
-function initMouseGlowCards(selector) {
-    const cards = document.querySelectorAll(selector);
-    const canTrackMouse = false; // CSS glow is disabled to avoid per-pointer repaint work.
-
-    cards.forEach((card) => {
-        card.classList.add('mouse-glow-card');
-        if (!canTrackMouse) return;
-
-        card.addEventListener('mousemove', (event) => {
-            const rect = card.getBoundingClientRect();
-            card.style.setProperty('--mouse-x', `${event.clientX - rect.left}px`);
-            card.style.setProperty('--mouse-y', `${event.clientY - rect.top}px`);
-        });
-
-        card.addEventListener('mouseleave', () => {
-            card.style.setProperty('--mouse-x', '50%');
-            card.style.setProperty('--mouse-y', '50%');
-        });
-    });
-}
-
-initMouseGlowCards('nav.sticky, .project-card, .img-card, .video-wrap');
-  </script>
+  <script src="scripts/site.js"></script>
 </body>
 </html>
 
