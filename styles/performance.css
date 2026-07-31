@@ -170,7 +170,18 @@ body:has(.apple-nav) main.container {
   padding-top: 3rem !important;
 }
 
+/* Explicit project-page spacing also covers browsers without :has() support. */
+body.project-page {
+  padding-top: 112px;
+}
+
+body.project-page main.container {
+  padding-top: 4rem !important;
+}
+
 @media (max-width: 560px) {
+  body.project-page { padding-top: 76px; }
+  body.project-page main.container { padding-top: 3rem !important; }
   .apple-nav:has(.project-title) .nav-inner { gap: 10px; }
   .apple-nav:has(.project-title) .logo { font-size: .9rem; }
 }
