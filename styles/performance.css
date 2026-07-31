@@ -165,6 +165,11 @@ html[data-theme="light"] .apple-nav .theme-toggle { background: rgba(0, 0, 0, .0
   flex: 0 0 auto;
 }
 
+/* Reserve clear space below the floating project header. */
+body:has(.apple-nav) main.container {
+  padding-top: 3rem !important;
+}
+
 @media (max-width: 560px) {
   .apple-nav:has(.project-title) .nav-inner { gap: 10px; }
   .apple-nav:has(.project-title) .logo { font-size: .9rem; }
