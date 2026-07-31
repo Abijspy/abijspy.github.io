@@ -38,7 +38,9 @@ nav.sticky.mouse-glow-card::after {
 /* Keep the dark theme rich and readable instead of overly transparent. */
 body:not(.light) .apple-nav,
 html[data-theme="dark"] nav.sticky {
-  background: rgba(8, 13, 24, .82) !important;
+  background: rgba(8, 13, 24, .94) !important;
+  backdrop-filter: blur(20px) saturate(165%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(165%) !important;
 }
 
 body:not(.light) .profile-card,
@@ -68,9 +70,7 @@ html[data-theme="dark"] .video-wrap {
   .card,
   .project-card,
   .img-card,
-  .video-wrap,
-  .apple-nav,
-  nav.sticky {
+  .video-wrap {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
   }
@@ -104,6 +104,13 @@ html[data-theme="dark"] .video-wrap {
   background: rgba(8, 13, 24, .82);
   box-shadow: 0 14px 38px rgba(0, 0, 0, .28), inset 0 1px 0 rgba(255, 255, 255, .16);
   transform: translateX(-50%);
+  backdrop-filter: blur(20px) saturate(165%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(165%) !important;
+}
+
+nav.sticky {
+  backdrop-filter: blur(20px) saturate(165%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(165%) !important;
 }
 
 .apple-nav .nav-inner,
